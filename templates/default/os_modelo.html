@@ -1,0 +1,120 @@
+<!-- InicioDaPagina -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>SHOW TECNOLOGIA - CONTRATO</title>
+<link href="./{tpldir}/css/estilos.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.titulo {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.texto {
+	font-size: 11px;
+	text-align:justify;
+}
+.corpo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	width: 15cm;
+	text-align: left;
+	vertical-align: top;
+}
+p {
+	font-size: 11px;
+	text-align:justify;
+}
+</style>
+</head>
+
+<body>
+<center><img src="./{tpldir}/img/logo-showtecnologia.png" height="50" /></center>
+<table align="center" >
+<tr>
+<td class="corpo">
+
+<div align="center" class="titulo">ORDEM DE SERVI&Ccedil;OS
+    <div align="right">Numero: {OS}</div>
+</div>
+<p>
+
+<table id="cad" width="500" border="0" cellpadding="5" cellspacing="0">
+  <tr><td>
+  <div id="moldura">
+  	<div class="titulo_moldura">Dados do Cliente</div>
+<table width="500" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="100" align="right">Cliente</td>
+    <td><b>{cliente}</b><br>
+           {endereco}<br>
+           {bairro} - {cidade} - {estado}
+    </td>
+  </tr>
+  <tr>
+    <td width="100" align="right">Solicitante</td>
+    <td>{solicitante}</td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">Data da Solicitação</td>
+    <td>
+    	{data_solicitacao}
+    </td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">Contato</td>
+    <td>{contato}</td>
+  </tr>   
+  <tr>
+    <td width="100" align="right">Telefone</td>
+    <td>{telefone}</td>
+  </tr>   
+  <tr>
+    <td width="100" align="right" valign="top">Endereço destino</td>
+    <td><pre id="moldura_0">{endereco_destino}</pre></td>
+  </tr> 
+</table>
+</div>
+  <div id="moldura">
+  	<div class="titulo_moldura">Dados da Instalação</div>
+<table width="500" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="100" align="right">Instalador</td>
+    <td>
+        {instalador}
+<!-- OS_Instalacao_Formulario_Continuacao_Instalador -->   
+    
+	</td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">Data da Inicial</td>
+    <td>
+    	{data_inicial} &nbsp;&nbsp;&nbsp;
+    	Hora {hora_inicial}    </td>
+  </tr>  
+  <tr>
+    <td width="100" align="right">Data da Final</td>
+    <td>
+    	{data_final} &nbsp;&nbsp;&nbsp;
+    	Hora {hora_final}    </td>
+  </tr>
+  <tr>
+    <td width="100" align="right" valign="top">Observa&ccedil;&otilde;es</td>
+    <td><p id="moldura_0">{observacoes}</p></td>
+  </tr>    
+</table>
+</div>
+<!--          
+  <div id="moldura">
+  	<div class="titulo_moldura">Equipamentos</div>
+             
+   </div>-->
+   <!-- ContinuacaoEquipamentos -->
+</table>
+</p>
+  
+<div align="center">_________________________<br>Assinatura do Cliente<hr>Av. Rui Barbosa, Nº 104 - CEP: 58200-000 - Centro - Guarabira/PB<br />www.showtecnologia.com | (83) 3271-6559</div>
+  
+</body>
+</html>

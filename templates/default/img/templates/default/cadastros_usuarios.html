@@ -1,0 +1,283 @@
+<!-- Usuarios_Titulo -->
+<link href="./{tpldir}/css/estilos.css" rel="stylesheet" type="text/css" />
+<h2>{Usuarios_Titulo}</h2>
+
+<!-- Usuarios_SubTitulo -->
+<h3><u>Usu&aacute;rio</u>: {Usuarios_SubTitulo_Id} - {Usuarios_SubTitulo_Nome}</h3>
+
+<!-- Usuarios_Acao -->
+<script type="text/javascript"><!--
+
+function acao(com,grid)
+{
+
+	switch(com){
+		case "Cadastrar":
+	       	$.post("includes/incAcao.php",
+	       		{
+	           		acao: "CADASTRO_USUARIO_CADASTRAR",
+	           		id: ""
+				},
+				function(data){
+					$('#conteudo').html(data);
+				});
+			break;
+
+		case "Editar":
+				if($('.trSelected',grid).length>0){
+			    	var items = $('.trSelected',grid);
+			    	var id = items[0].cells[0].children[0].innerHTML;
+			       	$.post("includes/incAcao.php",
+			       		{
+							acao: "CADASTRO_USUARIO_EDITAR",
+			           		id: id
+						},
+						function(data){
+							$('#conteudo').html(data);
+						});
+				}				
+				break;
+
+		case "Bloquear":
+				if($('.trSelected',grid).length>0){
+			    	var items = $('.trSelected',grid);
+			    	var id = items[0].cells[0].children[0].innerHTML;
+			    	var login = items[0].cells[1].children[0].innerHTML;
+			       	$.post("includes/incAcao.php",
+			       		{
+							acao: "CADASTRO_USUARIO_BLOQUEAR",
+			           		id: id,
+			           		login: login
+						},
+						function(data){
+
+							if (data == 1){
+								$.get('includes/Cadastros/incCadastrosUsuariosLista.php', function(data) {		    	
+							        $('#conteudo').html(data);
+							    });
+							}
+						});
+				}				
+				break;
+
+		case "Desbloquear":
+			if($('.trSelected',grid).length>0){
+		    	var items = $('.trSelected',grid);
+		    	var id = items[0].cells[0].children[0].innerHTML;
+		    	var login = items[0].cells[1].children[0].innerHTML;
+		       	$.post("includes/incAcao.php",
+		       		{
+						acao: "CADASTRO_USUARIO_DESBLOQUEAR",
+		           		id: id,
+		           		login: login
+					},
+					function(data){
+
+						if (data == 1){
+							$.get('includes/Cadastros/incCadastrosUsuariosLista.php', function(data) {		    	
+						        $('#conteudo').html(data);
+						    });
+						}
+					});
+			}				
+			break;						
+	}
+		
+}
+
+</script>
+
+<!-- Usuario_Formulario_Cadastro_INICIO -->
+<script type="text/javascript" src="{tpldir}/js/password/jQuery.dPassword.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.dialog.js"></script>
+<script type="text/javascript" src="js/external/bgiframe/jquery.bgiframe.js"></script>
+<script type="text/javascript"><!--
+	function msg(id,msg){
+		
+		$(".ui-dialog-title").html("");
+		
+		switch(id){
+			case 'erro': $("#aviso").attr("title","Erro");
+						 $(".ui-dialog-title").html("Erro");
+						 var img = '<span class="ui-icon ui-icon-alert"'+
+						 'style="float:left; margin:0 7px 20px 0;"></span>';
+						 break;
+			case 'sucesso': $("#aviso").attr("title","Sucesso");
+							$(".ui-dialog-title").html("Sucesso");
+							var img = '<span class="ui-icon ui-icon-circle-check"'+
+							 'style="float:left; margin:0 7px 20px 0;"></span>';
+							break;
+		}
+		
+		$(".msg").html(img+msg);
+		
+		$("#aviso").dialog('open');
+		
+		$("#aviso").dialog({
+			bgiframe: true,
+			resizable: false,
+			autoOpen: false,
+			height:210,
+			modal: true,
+			overlay: {
+				backgroundColor: '#000',
+				opacity: 0.5
+			},
+			buttons: {
+				OK: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+	}
+
+	function retorno(data){  
+		switch(data){
+			case "cadastrado":
+				msg("sucesso","Usuário CADASTRADO com sucesso!");
+			break; 
+			
+			case "alterado":
+				msg("sucesso","Usuário EDITADO com sucesso!");
+			break; 	
+			
+			default:
+				msg("erro","Os dados NÃO foram alterados ainda. Por favor TENTE NOVAMENTE!");
+			break; 					
+		}
+		
+		if (data != ""){
+
+			$.get('includes/Cadastros/incCadastrosUsuariosLista.php', function(data) {		    	
+		        $('#conteudo').html(data);
+		    });
+		}
+	}  
+	
+	$(document).ready( function() {
+
+		msg("","");
+
+		$.ui.dialog.defaults.bgiframe = true;
+		
+		$('input:password').dPassword({
+			duration: 2000,
+			prefix: 'my_'
+		});
+		
+		$('#btEnviar').css("cursor","pointer").click(function() {
+
+			// Fazendo as verificacoes
+			var mens1 = "";
+			if ($("#login").val()  == "") mens1 += "<li>Login</li>";
+			if ($("#nome").val()   == "") mens1 += "<li>Nome</li>";
+			if ($("#perfil option:selected").val() == "") mens1 += "<li>Perfil</li>";
+
+			if ($("#id").val() == ""){
+				if ($("#senha1").val() == "") mens1 += "<li>Senha nova</li>";
+			}
+			
+			if ($("#senha1").val() == "" && $("#senha2").val() != "") mens1 += "<li>Senha nova</li>";
+			if ($("#senha1").val() != "" && $("#senha2").val() == "") mens1 += "<li>Repita a senha nova</li>";
+			if (($("#senha1").val() != "" && $("#senha2").val() != "") && 
+				($("#senha1").val() != $("#senha2").val()) ) mens1 += "<li>As senhas novas não estão iguais.</li>";
+
+			if (mens1 != ""){
+				// Definindo as mensagens de erro
+				var mens = "";
+				if ( ($("#senha1").val() != "") && ($("#senha1").val() != $("#senha2").val()) ){
+					mens += "Erro nas senhas:<br><ul>";
+				}
+				else{
+					mens += "Campos obrigatórios em branco:<br><ul>";
+				}
+				mens += mens1 + "</ul>";
+				msg("erro",mens);
+			}
+			else {
+				// Se nao houverem erros, enviar os dados
+				var params = { 
+						acao  : "CADASTRO_USUARIO_ENVIAR",
+						id    : $('#id')   .val(),
+						login : $('#login').val(),
+						nome  : $('#nome') .val(),
+						perfil: $('#perfil option:selected').val()
+					};
+
+				if ( ($("#senha1").val() != "" && $("#senha2").val() != "") && ($("#senha1").val() == $("#senha2").val()) ){
+					params['senha']    = $("#senha1").val();
+				}
+
+				$.post("includes/incAcao.php", params,
+						function(data){
+							retorno(data);
+						}
+				);
+			}
+		})
+		.hover(
+			function(){ 
+				$(this).addClass("ui-state-hover"); 
+			},
+			function(){ 
+				$(this).removeClass("ui-state-hover"); 
+			}
+		).mousedown(function(){
+			$(this).addClass("ui-state-active"); 
+		})
+		.mouseup(function(){
+				$(this).removeClass("ui-state-active");
+		});
+	});
+--></script>
+<p>
+	Favor preencher corretamente o formulário abaixo.
+</p>
+<table id="cad" width="350" border="0" align="left" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="100" align="right">Login</td>
+    <td><input type="text" name="login" id="login" value="{USUFORMCAD_Login}" class="forms" /></td>
+  </tr>
+  <tr>
+    <td align="right">Nome</td>
+    <td><input type="text" name="nome" id="nome" value="{USUFORMCAD_Nome}" size="30" class="forms" /></td>
+  </tr>
+  <tr>
+    <td align="right">Perfil</td>
+    <td>
+<!-- Usuario_Formulario_Cadastro_PERFIL -->
+    	<input type="text" name="perfil" id="perfil" value="{USUFORMCAD_Perfil}" class="forms" />
+<!-- Usuario_Formulario_Cadastro_FIMPERFIL -->   
+    </td>
+  </tr>
+<!-- Usuario_Formulario_Cadastro_AVISO -->    
+  <tr>
+    <td colspan="2">
+    	<br>
+    	Para definir NOVA senha para este usuário, favor preencher os campos abaixo.
+    	Caso contrário, deixe-os em branco.
+    </td>
+  </tr>  
+<!-- Usuario_Formulario_Cadastro_FIM -->    
+  <tr>
+    <td align="right">Senha</td>
+    <td><input type="password" name="senha1" id="senha1" value="" class="forms" /></td>
+  </tr>
+  <tr>
+    <td align="right">Repita sua senha</td>
+    <td><input type="password" name="senha2" id="senha2" value="" class="forms" /></td>
+  </tr>
+  <tr>
+    <td align="right">
+    	&nbsp;
+    	<input type="hidden" name="id" id="id" value="{USUFORMCAD_Id}" />
+    </td>
+    <td><button id="btEnviar" class="ui-button ui-state-default ui-corner-all">ENVIAR</button></td>
+  </tr>
+</table>
+
+<div id="aviso">
+	<p class="msg"></p>
+</div>

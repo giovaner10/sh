@@ -1,0 +1,214 @@
+body{
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #03a9f4;
+}
+.breadcrumb{
+    background: #03a9f4;
+}
+.breadcrumb > li > a, .breadcrumb > li.active{
+    color: white;
+}
+/* Use this selector to override the line style on a given series */
+.ct-series-a .ct-line {
+    /* Set the colour of this series line */
+    stroke: #01579b;
+    /* Control the thikness of your lines */
+    stroke-width: 5px;
+    /* Linha com traços */
+    /*stroke-dasharray: 10px 20px;*/
+}
+.ct-series-b .ct-line {
+    /* Set the colour of this series line */
+    stroke: #ffab40;
+    /* Control the thikness of your lines */
+    stroke-width: 5px;
+    /* Linha com traços */
+    /*stroke-dasharray: 10px 20px;*/
+}
+.ct-series-c .ct-line {
+    /* Set the colour of this series line */
+    stroke: #69f0ae;
+    /* Control the thikness of your lines */
+    stroke-width: 5px;
+    /* Linha com traços */
+    /*stroke-dasharray: 10px 20px;*/
+}
+.ct-series-2 .ct-line {
+    /* Set the colour of this series line */
+    stroke: #ffab40;
+    /* Control the thikness of your lines */
+    stroke-width: 5px;
+    /* Linha com traços */
+    /*stroke-dasharray: 10px 20px;*/
+}
+#grafico{
+    width: 80%;
+    height: 400px;
+}
+#grafico h1 i{
+    font-size: 3em;
+}
+#label-ticket{
+    width: 20%;
+}
+#label-ticket > span > input{
+    background: white;
+    border-radius: 0px;
+    font-weight: bold;
+}
+.ct-labels > foreignObject > span{
+    color: white;
+}
+.titulo{
+    text-align: center;
+    color: #FFFFff;
+    padding-right: 11%;
+    margin-top: -2%;
+}
+.label-grafico{
+    color: white;
+     background: -moz-linear-gradient(top, rgba(86,163,235,1) 0%, rgba(1,87,155,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(86,163,235,1)), color-stop(100%, rgba(1,87,155,1)));
+    background: -webkit-linear-gradient(top, rgba(86,163,235,1) 0%, rgba(1,87,155,1) 100%);
+    background: -o-linear-gradient(top, rgba(86,163,235,1) 0%, rgba(1,87,155,1) 100%);
+    background: -ms-linear-gradient(top, rgba(86,163,235,1) 0%, rgba(1,87,155,1) 100%);
+    background: linear-gradient(to bottom, rgba(86,163,235,1) 0%, rgba(1,87,155,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#56a3eb', endColorstr='#01579b', GradientType=0 );
+    margin-top: 0;
+    text-align: center;
+}
+.label-grafico > h3, h1{
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    line-height: 1;
+}
+.label-grafico > h1{
+    font-size: 6em;
+    font-weight: 100;
+}
+.label-ticket{
+    text-align: left;
+    color: #FFFFff;
+    padding-left: 40px;
+}
+.label-cores{
+    float: right;
+    margin-right: 18%;
+    margin-top: -2%;
+}
+.label-cores > .ball-orange, .ball-blue, .ball-green{
+    height: 25px;
+    width: 25px;
+    border-radius: 70%;
+    display: inline-flex;
+    margin-right: 85px;
+}
+.label-cores > div > strong{
+    margin-left: 30px;
+    color: white;
+    line-height: 25px;
+}
+#list-dash{
+    margin-left: 1%;
+    align-items: center;
+    display: inline-block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.row-fluid > ul > #dash1, #dash2, #dash3, #dash4, #dash5, #dash6 {
+    background: #01579b;
+    height: 200px;
+    border-radius: 10px;
+    text-align: right;
+    width: 24.6%;
+}
+#dash2, #dash5{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#dash1 > i, #dash2 > i, #dash3 > i{
+    text-align: right;
+    margin-top: -50px;
+}
+
+#dash1 > h3, #dash2 > h3, #dash3 > h3{
+    color: white;
+    background: rgba(86,163,235,1);
+    background: -moz-linear-gradient(top, rgba(86,163,235,1) 0%, rgba(1,87,155,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(86,163,235,1)), color-stop(100%, rgba(1,87,155,1)));
+    background: -webkit-linear-gradient(top, rgba(86,163,235,1) 0%, rgba(1,87,155,1) 100%);
+    background: -o-linear-gradient(top, rgba(86,163,235,1) 0%, rgba(1,87,155,1) 100%);
+    background: -ms-linear-gradient(top, rgba(86,163,235,1) 0%, rgba(1,87,155,1) 100%);
+    background: linear-gradient(to bottom, rgba(86,163,235,1) 0%, rgba(1,87,155,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#56a3eb', endColorstr='#01579b', GradientType=0 );
+    margin-top: 0;
+    text-align: center;
+}
+#dash4{
+    color: white;
+    background: #ffab40;    
+    margin-top: 0;
+    text-align: center;
+}
+#dash5{
+    color: white;
+    background: #F08080;    
+    margin-top: 0;
+    text-align: center;
+}
+#dash6{
+    color: white;
+    background: #69f0ae;    
+    margin-top: 0;
+    text-align: center;
+}
+#dash1 > h2, #dash2 > h2, #dash3 > h2  {
+    text-align: center;
+    font-size: 6em;
+    color: white;
+    font-family: robot;
+    line-height: 100px;
+    margin-bottom: -25px;
+}
+#dash1 > h5, #dash2 > h5, #dash3 > h5  {
+    text-align: center;
+    color: white;
+    font-family: robot;
+}
+#dash4 > i, #dash5 > i, #dash6 > i{
+    text-align: right;
+    margin-top: -50px;
+}
+
+#dash4 > h2, #dash5 > h2, #dash6 > h2  {
+    text-align: center;
+    font-size: 6em;
+    color: white;
+    font-family: robot;
+    line-height: 100px;
+    margin-bottom: -25px;
+}
+#dash4 > h5, #dash5 > h5, #dash6 > h5  {
+    text-align: center;
+    color: white;
+    font-family: robot;
+}
+.ball-orange{
+    background: #ffab40;
+}
+.ball-blue{
+    background: #01579b;
+}
+.ball-green{
+    background: #69f0ae;
+}
+#center{
+    text-align: center;
+}
+#None {
+    display: none;
+}

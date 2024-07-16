@@ -1,0 +1,16 @@
+div.tree-multiselect span.remove-selected {
+    background-color: #1C69AD !important;
+}
+
+div.tree-multiselect > div.selected > div.item {
+    padding: 4px 5px !important;
+}
+
+div.tree-multiselect span.section-name {
+    padding: 0 5px !important;
+}
+
+div.tree-multiselect div.title {
+    background: #e2e2e2 !important;
+    color: #7F7F7F !important;
+}

@@ -1,0 +1,545 @@
+@font-face {
+    font-family: 'Mont';
+    src: url('../../fonts/Mont-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Mont SemiBold';
+    src: url('../../fonts/Mont-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Mont Bold';
+    src: url('../../fonts/Mont-Bold.ttf') format('truetype');
+}
+
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    background-color: #EFF2F8 !important;
+    font-family: 'Mont';
+}
+
+.div-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Centraliza horizontalmente */
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#loading {
+    display: none;
+    z-index: 9999;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.58);
+}
+
+.loader {
+    margin-top: 20%;
+    margin-left: 45%;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+.loadingMessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+h4.modal-title {
+    color: #1C69AD !important;
+    font-size: 22px !important;
+    font-family: 'Mont SemiBold';
+    display: flex;
+    justify-content: space-between;
+}
+
+.close{
+    font-family: 'Mont SemiBold';
+    border-radius: 25px;
+    background-color: #e5e5e5!important;
+    width: 30px;
+    height: 30px;
+    color: #7F7F7F;
+    font-size: 32px;
+}
+
+.btn{
+    border-radius: 7px !important;
+}
+
+.btn-success{
+    background-color: #28A745 !important;
+}
+
+.btn-success:hover{
+    background-color: #28a746e7 !important;
+}
+
+.btn-primary{
+    background-color: #007BFF !important;
+}
+
+.btn-primary:hover{
+    background-color: #007bffcb !important;
+}
+
+.btn-danger{
+    background-color: #ee3340 !important;
+}
+
+.btn-danger:hover{
+    background-color: #ee333fcf !important;
+}
+.btn-light{
+    background-color: #f8f9fa !important;
+    box-shadow: none !important;
+}
+
+.btn-light:hover{
+    background-color: #e2e6ea !important;
+}
+
+.label-info{
+    background-color: #D4EDFE !important;
+    color: #1C69AD;
+    font-family: 'Mont SemiBold';
+}
+
+.modal-content{
+    border-radius: 25px;
+    gap: 25px;
+}
+
+.modal-xl {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.footer-group{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 18px;
+}
+
+.text-title{
+    margin-bottom: 10px;
+}
+
+.card{
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.metrica-card {
+    border: 2px solid white; 
+}
+
+#card-hot-list:hover {
+    border: 2px solid #1C69AD !important; 
+    cursor: pointer !important;
+}
+
+#card-veiculos-monitorados:hover {
+    border: 2px solid #1C69AD !important; 
+    cursor: pointer !important;
+}
+
+#card-placas-alertas:hover {
+    border: 2px solid #1C69AD !important; 
+    cursor: pointer !important;
+}
+
+#card-placas-alertas-mensal:hover {
+    border: 2px solid #1C69AD !important; 
+    cursor: pointer !important;
+}
+
+.material-icons-card {
+    float: left !important;
+    font-size: 40px !important;
+    color: #494949;
+}
+
+.metrica-img {
+    width: 60px !important;
+    margin-bottom: 5px;
+}
+
+#card-cold-list:hover {
+    border: 2px solid #1C69AD !important; 
+    cursor: pointer !important;
+}
+
+.card > p {
+    text-align: center; 
+    margin: 0;
+    font-size: 12px !important;
+    font-family: 'Mont Bold';
+    color: #494949 !important;
+}
+
+.number-indicator {
+    float: right !important;
+    color: #1C69AD !important;
+    margin: 0;
+    font-family: 'Mont SemiBold';
+}
+
+#charts-title {
+    color: #1C69AD !important;
+    font-family: 'Mont Bold';
+}
+
+.chart-div {
+    padding: 0px;
+    border: 2px solid white;
+}
+
+.badge-info {
+    background-color: #3a87ad;
+}
+
+.badge-success {
+    background-color: #468847;
+}
+
+.badge-warning {
+    background-color: #f89406;
+}
+
+.badge-danger{
+    background-color:#d9534f
+}
+
+/* .my-grid {
+    border: 1px solid white; 
+}
+
+.my-grid:hover {
+    border: 2px solid #1C69AD; 
+    border-radius: 10px;
+} */
+
+.my-grid .ag-chart-wrapper {
+    cursor: pointer !important;
+    border-radius: 10px;
+}
+
+#charts {
+    padding: 15px 20px;
+}
+
+.card-header {
+    margin-bottom: 10px;
+}
+
+.text-title h3 {
+    color: #1C69AD !important;
+    font-size: 22px !important;
+    font-family: 'Mont SemiBold';
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-title h4 {
+    color: #7F7F7F !important;
+    font-size: 16px !important;
+    font-weight: inherit !important;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.modal-body hr{
+    display: block;
+    margin-left: 0px !important;
+    width: 100% !important;
+}
+
+.metrica {
+    padding: 0 5px !important;
+}
+
+.modal-xl {
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Media Queries */
+@media screen and (max-width: 867px) {
+    .number-indicator {
+        width: 100%;
+        word-break: break-all;
+        word-wrap: break-word;
+        text-align: center;
+    }
+
+    .metrica-img {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}
+
+/* Mapas */
+.item-popup-title{
+    font-weight: 600;
+}
+
+.evento-item-title {
+    color: black !important;
+    font-family: 'Mont SemiBold';
+}
+
+.float-right {
+    float: right !important;
+}
+
+.card-text-map span {
+    font-size: 10px;
+}
+
+.leaflet-popup-content {
+    margin: 0px !important;
+}
+
+.list-group {
+    max-height: none;
+    overflow-y: auto;
+    margin-bottom: 0px;
+}
+
+.list-group-item {
+    border-width: 1px 0 1px 0 !important;
+}
+
+.event-list {
+    max-height: none;
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    background-color: #f8f8f8 !important;
+}
+
+.event-item {
+    border-width: 0px !important;
+    background-color: transparent !important;
+    padding: 6px 15px;
+}
+
+.info-eventos-modal {
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: .25em;
+}
+
+.ref-eventos-modal {
+    padding-left: 0px;
+    padding-top: 15px;
+}
+
+.lat-log-eventos-modal {
+    padding-right: 0px;
+    padding-top: 15px;
+}
+
+@media screen and (max-width: 991px) {
+    .ref-eventos-modal {
+        padding-right: 0px;
+    }
+    .lat-log-eventos-modal {
+        padding-left: 0px;
+    }
+}
+
+.highlighted-row {
+    background-color: #e8f4fe !important;
+}
+
+#eventos-hot-list-grid .ag-row:hover {
+    cursor: pointer !important;
+}
+
+
+#eventos-cold-list-grid .ag-row:hover {
+    cursor: pointer !important;
+}
+
+#veiculos-monitorados-grid .ag-row:hover {
+    cursor: pointer !important;
+}
+
+#eventos-placas-alertas-grid .ag-row:hover {
+    cursor: pointer !important;
+}
+
+#placas-alertas-grid .ag-row:hover{
+    cursor: pointer !important;
+}
+
+#eventos-placas-alertas-mensal-grid .ag-row:hover {
+    cursor: pointer !important;
+}
+
+#placas-alertas-grid-mensal .ag-row:hover {
+    cursor: pointer !important;
+}
+
+.badge-info {
+    background-color: #3a87ad;
+}
+
+.chart-exp:hover {
+    font-size: 20px !important;
+    color: #7F7F7F !important;
+    cursor: pointer;
+}
+
+.my-modal-header {
+    text-align: center;
+}
+
+.my-modal-header h4.modal-title,
+.my-modal-header .modal-subtitle {
+    margin: 0 auto; /* Adiciona margem automática (esquerda e direita) para centralizar */
+    justify-content: center;
+}
+
+.dropdown-menu-acoes{
+    width: 0px;
+    border: 0px solid #fff !important;
+    position: absolute;
+    top: 165%;
+    left: -146px; 
+    right: 0;
+    
+}
+.dropdown-item-acoes:active{
+    background-color: lightblue !important;
+    color: black !important;
+}
+
+.dropdown-item-acoes {
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    text-align: start;
+    border: 0;
+    background-color: #fff;
+    color:black!important;
+    border: 5px!important;
+    border-color: #1492E6!important;
+    justify-content: center;
+  }
+
+@media screen and (max-width: 767px) {
+    .modal {
+        padding-right: 20px !important;
+    }
+    .dropdown-menu-acoes{
+        min-width: fit-content;
+    }
+}
+
+.btn-dropdown {
+    background-color: #f8f9fa;
+    color: #212529;
+    border-color: #f8f9fa;
+    border-radius: 0.2rem;
+    box-shadow: none !important;
+}
+
+.btn-dropdown:hover {
+    color: #212529;
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+}
+
+.btn-dropdown:focus {
+    color: #212529;
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+    box-shadow: 0 0 0 0.2rem rgba(216,217,219,.5);
+}
+
+.dropdown-item-acoes:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #e9ecef;
+}
+
+.dropdown-title {
+    margin: 10px auto 10px auto;
+    text-align: center;
+}
+
+.dropdown-item-acoes > a {
+    cursor: pointer; 
+    color: black; 
+    text-decoration: none !important; 
+    width: 100%; 
+    display: block;
+}
+
+.dropdown-menu {
+    z-index: 999;
+}
+
+.opcao_importacao {
+    height: 30px;
+    border: 1px solid #ccc;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opcao_importacao:hover {
+    background-color: #f0f0f0;
+}
+
+.opcoes_importacao {
+    min-width: 200px; 
+    top: 62px; 
+    height: auto !important;
+    padding: 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}

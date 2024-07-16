@@ -1,0 +1,6 @@
+INSERT INTO `showtecsystem`.`cad_permissoes_funcionarios` (`descricao`, `modulo`, `cod_permissao`) VALUES ('Dashboards', 'Dashboards', 'vis_dashboards');
+INSERT INTO `showtecsystem`.`cad_permissoes_funcionarios` (`descricao`, `modulo`, `cod_permissao`) VALUES ('Dashboards Painel OS', 'Dashboards', 'vis_dashboardspainelos');
+INSERT INTO `showtecsystem`.`cad_permissoes_funcionarios` (`descricao`, `modulo`, `cod_permissao`) VALUES ('Dashboards Painel Call Center', 'Dashboards', 'vis_dashboardspainelcallcenter');
+INSERT INTO `showtecsystem`.`cad_permissoes_funcionarios` (`descricao`, `modulo`, `cod_permissao`) VALUES ('Dashboards Estoque de Terceiros', 'Dashboards', 'vis_dashboardsestoquedeterceiros');
+INSERT INTO `showtecsystem`.`cad_permissoes_funcionarios` (`descricao`, `modulo`, `cod_permissao`) VALUES ('Dashboards Painel de Vendas', 'Dashboards', 'vis_dashboardspaineldevendas');
+INSERT INTO `showtecsystem`.`cad_permissoes_funcionarios` (`descricao`, `modulo`, `cod_permissao`) VALUES ('Dashboards Primeira Comunicação', 'Dashboards', 'vis_dashboardsprimeiracomunicacao');

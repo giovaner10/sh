@@ -1,0 +1,99 @@
+.container_calendar{
+    width: 100%;
+    height: 380px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar{
+    width: 300px;
+    height: 350px;
+    /* background-color: #222227; */
+}
+
+.month{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.month i{
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.weekdays{
+    width: 100%;
+    height: 5rem;
+    padding: 0 .4rem;
+    display: flex;
+    align-items: center;
+}
+.weekdays div{
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    width: calc(300px / 7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.days{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: .1.5rem;
+}
+
+.days div{
+    font-size: 1.5rem;
+    /* margin: 0.3rem; */
+    width: calc(300px / 7);
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    transition: border 0.2s;
+}
+
+.days div:hover:not(.today){
+    border: 2px solid #ccc;
+    cursor: pointer;
+}
+
+.prev-date, .next-date{
+    opacity: 0.5;
+}
+
+.today{
+    border: 2px solid #209bde !important;
+}
+
+#filtroBusca{
+    min-width: 300px;
+    max-width: 300px;
+}
+
+
+@media screen and (min-width: 950px) and (max-width: 1300px) {
+    .card-conteudo {
+        margin-left: 90px !important;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    /* Estilos para telas com largura igual ou inferior a 600px */
+    .card-conteudo {
+        margin-left: 0 !important;
+    }
+}

@@ -1,0 +1,414 @@
+@font-face {
+    font-family: 'Mont';
+    src: url('../../fonts/Mont-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Mont SemiBold';
+    src: url('../../fonts/Mont-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Mont Bold';
+    src: url('../../fonts/Mont-Bold.ttf') format('truetype');
+}
+
+.modal-content {
+    gap: 25px;
+    padding: 18px;
+}
+
+#div2 {
+    width: 100%;
+}
+
+#search-input::placeholder {
+    font-style: italic;
+}
+
+#search-input {
+    font-style: normal;
+}
+
+#exibir_dashboard {
+    text-align: center;
+    align-content: center;
+}
+
+.informations {
+    display: flex;
+    flex-direction: row;
+    flex-flow: column wrap;
+    max-height: fit-content;
+    justify-items: center;
+    align-content: center;
+    width: 100%;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 1rem;
+}
+
+.information-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    justify-content: space-around;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.inner-item {
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 1rem;
+    background-color: #f8f9fb;
+    flex: 1 1 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .inner-item {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .inner-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1600px) {
+    .chart-plot-container {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 1220px) {
+    .information-card {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+    }
+
+    #total-licitacoes-div {
+        height: inherit;
+    }
+
+    .chart-plot-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .chart-plot {
+        max-width: 60rem;
+    }
+}
+
+@media (max-width: 920px) {
+    .informations {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .information-card {
+        width: inherit;
+    }
+
+    #search-input {
+        width: 35vw;
+        justify-self: center;
+        float: none;
+        margin: auto;
+    }
+
+    #filterAndPaginationDiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    #internal-navbar {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .dropdown {
+        width: 100%;
+    }
+}
+
+.tablePageHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .tablePageHeader {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.chartPlotContainer {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow wrapping */
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px;
+}
+
+.chartContainer {
+    display: flex;
+    flex: 1 1 calc((100% / 3) - 10px);
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: calc((100% / 3) - 10px);
+    padding: 0;
+    border-radius: 5px;
+    border: 1px solid #c8c8c8;
+    box-shadow: 3px 3px 10px rgba(56, 56, 56, 0.089);
+    overflow: hidden;
+}
+
+.chartContainer:hover {
+    transition: all 0.60s ease-out;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px rgba(39, 39, 39, 0.306);
+}
+
+.chartPlotContainer .chartContainer:last-child:not(:nth-last-child(2)),
+.chartPlotContainer .chartContainer:nth-last-child(2):last-child,
+.chartPlotContainer .chartContainer:nth-last-child(2):nth-last-child(odd),
+.chartPlotContainer .chartContainer:last-child:nth-last-child(odd) {
+    width: calc((100% / 2) - 10px);
+    /* Adjust the width to 50% minus gap for the last two items */
+}
+
+.chartPlotContainer .chartContainer:nth-last-child(2):nth-last-child(odd),
+.chartPlotContainer .chartContainer:last-child:nth-last-child(odd) {
+    width: calc((100% / 2) - 10px);
+    flex-basis: calc((100% / 2) - 10px);
+}
+
+.chartPlotContainer .chartContainer:last-child:not(:nth-last-child(2)) {
+    width: calc((100% / 3) - 10px);
+    flex-basis: calc((100% / 3) - 10px);
+}
+
+.chartHeader {
+    display: flex;
+    flex-direction: row;
+    justify-items: left;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 60px !important;
+    min-height: 60px !important;
+    background-color: #F7F7F7;
+    padding: 5px;
+    border-radius: 4px 4px 0px 0px;
+    border-bottom: 1px solid #dcdcdc;
+    margin: 0;
+    font-weight: 900 !important;
+}
+
+charttitle {
+    font-size: 8pt !important;
+    font-weight: 900 !important;
+    margin: 0;
+    color: #232c49;
+    margin-left: 5px;
+}
+
+.chartBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 5px;
+    border-radius: 0px 0px 4px 4px;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+.ag-chart-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    max-width: 340px;
+    width: 340px;
+    height: 300px !important;
+}
+
+.modalChart .ag-chart-wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 600px !important;
+}
+
+._icon_1tqo9_1 {
+    fill: var(--color-icon);
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+@media (max-width: 1480px) {
+    .chartContainer {
+        flex: 1 1 calc((100% / 2) - 10px);
+        width: calc((100% / 2) - 10px);
+    }
+}
+
+@media (max-width: 1080px) {
+    .chartContainer {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 992px) {
+    .ag-chart-wrapper {
+        max-width: 600px !important;
+        width: 600px !important;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ag-chart-wrapper {
+        width: 450px !important;
+    }
+}
+
+@media (max-width: 620px) {
+    .ag-chart-wrapper {
+        width: 330px !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .chartContainer {
+        height: 265px !important;
+    }
+
+    .ag-chart-wrapper {
+        width: 230px !important;
+        height: 150px !important;
+    }
+}
+
+@media (max-width: 403px) {
+    .ag-chart-wrapper {
+        max-width: 160px !important;
+    }
+}
+
+.grade-sec {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    margin: 5px;
+    margin-bottom: 30px;
+    min-width: 200px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    /* Garantir que ocupe toda a largura disponível */
+}
+
+.dashboard-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.metrica-card {
+    font-family: 'Mont Bold';
+    text-align: center;
+    border: 0px solid #e7e7e7;
+    box-shadow: 0px 1px 20px 0 rgba(0, 0, 0, 0.09);
+    border-radius: 14px !important;
+    padding: 0 15px;
+    width: 100%;
+    max-width: 240px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 27%);
+    box-sizing: border-box;
+}
+
+.metrica-card h4 {
+    padding: 10px 0 0 0;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.metrica-card h2 {
+    color: #1C69AD;
+    font-family: 'Mont SemiBold';
+    margin-top: 10px;
+    word-wrap: break-word;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    justify-content: space-around;
+    /* Garante que o cabeçalho ocupe 100% da largura */
+}
+
+.card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* Garante que o corpo ocupe 100% da largura */
+}
+
+.dashboard-number {
+    font-size: 35px;
+    color: #1C69AD;
+    margin: 0;
+}
+
+.metrica-img2 {
+    width: 30px;
+    height: 30px;
+}

@@ -1,0 +1,132 @@
+.material-icons-atalho {
+    color: #666 !important;
+    font-size: 37px !important;
+    top: 0 !important;
+}
+
+.text-button-atalho {
+    color: #666 !important;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 0 5px;
+    margin: 0;
+    word-break: keep-all;
+    text-align: center;
+}
+
+.btn-atalho {
+    padding: 10px;
+    border-left: 6px solid #03A9F4 !important;
+    border-radius: 6px !important;
+    margin-bottom: 10px;
+    white-space: normal;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+/* scroll personalizado */
+.div-scroll {
+overflow: hidden;
+}
+.div-scroll:hover {
+overflow-y: scroll;
+}
+::-webkit-scrollbar-track {
+background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 9px;
+    background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+}
+
+/* carousel */
+.quote-carousel 
+{
+    padding: 0 10px 30px 10px;
+}
+
+/* Control buttons  */
+.quote-carousel .carousel-control
+{
+    background: none;
+    color: #222;
+    font-size: 2.3em;
+    text-shadow: none;
+    margin-top: 70px;
+}
+.quote-carousel .carousel-control-aniversariantes
+{
+    margin-top: 50px;
+    width: 4%;
+}
+
+/* Changes the position of the indicators */
+.quote-carousel .carousel-indicators 
+{
+    right: 50%;
+    top: auto;
+}
+/* Changes the color of the indicators */
+.quote-carousel .carousel-indicators li 
+{
+    background: #c0c0c0;
+}
+.quote-carousel .carousel-indicators .active 
+{
+    background: #333333;
+}
+/* End carousel */
+
+.item blockquote {
+    border-left: none; 
+    margin: 0;
+}
+
+
+/**
+MEDIA QUERIES
+*/
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .quote-carousel 
+    {
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+    }
+    
+}
+
+/* Small devices (tablets, up to 768px) */
+@media (max-width: 768px) { 
+    
+    /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
+    
+    .quote-carousel .carousel-indicators {
+        bottom: -20px !important;  
+    }
+    .quote-carousel .carousel-indicators li {
+        display: inline-block;
+        margin: 0px 5px;
+        width: 15px;
+        height: 15px;
+    }
+    .quote-carousel .carousel-indicators li.active {
+        margin: 0px 5px;
+        width: 20px;
+        height: 20px;
+    }
+
+}
+
+#sortable > div {
+    border-top: 1px solid transparent;
+}

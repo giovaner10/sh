@@ -1,0 +1,40 @@
+
+.modeloIsca {
+    width: 100%;
+    word-wrap: break-word;
+}
+
+#coluna_search {
+    border: none;
+    width: 100%;
+}
+
+.opcoes_acao {
+    min-width: 200px; 
+    top: 62px; 
+    height: auto !important;
+    padding: 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.text-title h3, h3.modal-title, .card-conteudo h3 {
+    color: #1C69AD !important;
+    font-size: 22px !important;
+    font-family: 'Mont SemiBold';
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown-menu-importacao {
+    color: #1C69AD !important;
+    font-family: 'Mont SemiBold';
+    left: -84px !important;
+    top: 68px !important;
+}
+
+@media (max-width: 768px) {
+    .dropdown-menu-importacao {
+        left: 0px !important;
+    }
+}

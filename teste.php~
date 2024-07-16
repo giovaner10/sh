@@ -1,0 +1,4 @@
+<?php
+setlocale(LC_ALL, "pt_BR", "ptb");
+echo date("d/m/Y", strftime("%d/%m/%Y", strtotime('10/6/2012')));
+?>

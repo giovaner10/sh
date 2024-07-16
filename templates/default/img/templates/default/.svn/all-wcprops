@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/showtecsystem/!svn/ver/32/templates/default
+END
+contratos.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/showtecsystem/!svn/ver/30/templates/default/contratos.html
+END
+cadastros_usuarios.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/showtecsystem/!svn/ver/3/templates/default/cadastros_usuarios.html
+END
+cadastros_equipamentos.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/showtecsystem/!svn/ver/19/templates/default/cadastros_equipamentos.html
+END
+os.html
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/showtecsystem/!svn/ver/32/templates/default/os.html
+END
+cadastros_fornecedores.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/showtecsystem/!svn/ver/10/templates/default/cadastros_fornecedores.html
+END
+relatorios.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/showtecsystem/!svn/ver/4/templates/default/relatorios.html
+END
+main.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/showtecsystem/!svn/ver/27/templates/default/main.html
+END
+contrato_modelo.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/showtecsystem/!svn/ver/26/templates/default/contrato_modelo.html
+END
+geral.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/showtecsystem/!svn/ver/1/templates/default/geral.html
+END
+cadastros_instaladores.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/showtecsystem/!svn/ver/23/templates/default/cadastros_instaladores.html
+END
+cadastros_equipamentos_instalador.html
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/showtecsystem/!svn/ver/27/templates/default/cadastros_equipamentos_instalador.html
+END
+cadastros_vendedores.html
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/showtecsystem/!svn/ver/23/templates/default/cadastros_vendedores.html
+END
+meusdados_senha.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/showtecsystem/!svn/ver/1/templates/default/meusdados_senha.html
+END
+meusdados_acessos.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/showtecsystem/!svn/ver/4/templates/default/meusdados_acessos.html
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/showtecsystem/!svn/ver/1/templates/default/index.html
+END
+login.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/showtecsystem/!svn/ver/1/templates/default/login.html
+END
+cadastros_clientes.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/showtecsystem/!svn/ver/26/templates/default/cadastros_clientes.html
+END
+cadastros_chips.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/showtecsystem/!svn/ver/24/templates/default/cadastros_chips.html
+END

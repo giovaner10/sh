@@ -1,0 +1,492 @@
+#menuBar {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    flex-wrap: wrap;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.menu-item {
+    position: relative;
+    color: #7F7F7F;
+    cursor: pointer;
+    padding: 8px 10px;
+    transition: border-bottom 0.2s;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: auto;
+    white-space: nowrap;
+    border-bottom: 4px solid white;
+}
+
+.with-submenu .submenu {
+    display: none;
+    position: absolute;
+    top: 130%;
+    left: -10px;
+    background-color: #fff;
+    z-index: 100;
+    border-radius: 5px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1); 
+}
+.with-submenu .subsubmenu {
+    display: none;
+    position: absolute;
+    left: 102%; 
+    top: auto;
+    background-color: #fff;
+    z-index: 100;
+    border-radius: 5px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.with-submenu .subsubsubmenu {
+    display: none;
+    position: absolute;
+    left: 102%; 
+    top: auto;
+    background-color: #fff;
+    z-index: 100;
+    border-radius: 5px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.menu-item.active {
+    border-bottom: 4px solid #1C69AD;
+}
+
+.submenu .submenu {
+    left: 100%;
+}
+
+.submenu a {
+    display: block;
+    padding: 5px 20px;
+    color: #7F7F7F;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.submenu a:hover {
+    background-color: #D4EDFE;
+    border-radius: 5px;
+}
+
+.submenu a.menu-item-select {
+    font-weight: normal;
+}
+
+.acesso-rapido-container {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-sem-aniversariantes {
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1); 
+    background-color: #D4EDFE;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 135px;
+    width: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+
+.card-acesso {
+    margin-right: 20px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1); 
+    background-color: #D4EDFE;
+    text-align: start;
+    align-items: center;
+    justify-content: start;
+    display: flex;
+    width: 280px;
+    min-height: 60px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.card-acesso b {
+    margin: 0;
+    padding: 5px;
+    color: #1C69AD;
+    font-weight: bold;
+    margin-left: 5px;
+    white-space: normal;
+}
+
+.card-acesso:hover {
+    transform: scale(1.01);
+    transition: all 0.2s ease-in-out;
+    
+}
+
+.card-container a:hover,
+.card-container a:active,
+.card-container a:visited,
+.card-container a:focus {
+    text-decoration: none;
+}
+
+.text-title h3 {
+    color: #1C69AD !important;
+    font-size: 22px !important;
+}
+
+.text-title h4 {
+    color: #7F7F7F !important;
+    font-size: 16px !important;
+    font-weight: inherit !important;
+}
+
+.acesso-rapido-container h4 {
+    color: #1C69AD !important;
+    font-size: 17px !important;
+    font-weight: bold !important;
+}
+
+.material-icons-atalho {
+    font-size: 37px !important;
+    top: 0 !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #1C69AD;
+}
+
+.text-button-atalho {
+    color: #666 !important;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 0 5px;
+    margin: 0;
+    word-break: keep-all;
+    text-align: center;
+}
+
+.btn-atalho {
+    white-space: normal;
+    display: inline-flex;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1); 
+    background-color: #D4EDFE;
+    text-align: start;
+    align-items: center;
+    justify-content: start;
+    display: flex;
+    min-height: 60px;
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+/* scroll personalizado */
+.div-scroll {
+    overflow: auto;
+}
+
+.div-scroll:hover {
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    background: #F4F4F4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
+    border-radius: 10px !important;
+}
+
+/* carousel */
+.quote-carousel {
+    padding: 0 10px 30px 10px;
+}
+
+/* Control buttons  */
+.quote-carousel .carousel-control {
+    background: none;
+    color: #222;
+    font-size: 2.3em;
+    text-shadow: none;
+    margin-top: 70px;
+}
+
+.quote-carousel .carousel-control-aniversariantes {
+    margin-top: 50px;
+    width: 4%;
+}
+
+/* Changes the position of the indicators */
+.quote-carousel .carousel-indicators {
+    right: 50%;
+    top: auto;
+}
+
+/* Changes the color of the indicators */
+.quote-carousel .carousel-indicators li {
+    background: #c0c0c0;
+}
+
+.quote-carousel .carousel-indicators .active {
+    background: #333333;
+}
+
+/* End carousel */
+
+
+/**
+MEDIA QUERIES
+*/
+
+/* Small devices (tablets, up to 768px) */
+@media (max-width: 767px) {
+
+    #img-noticias {
+        padding-right: 15px !important;
+    }
+
+    .square-container {
+        padding: 15px 15px 0 15px !important;
+    }
+
+    .square-container img {
+        height: 50% !important;
+        width: 50% !important;
+    }
+
+}
+
+@media (max-width: 1370px) {
+    .texto-noticia {
+        -webkit-line-clamp: 2;
+    }
+}
+
+@media (min-width: 1370px) {
+    .texto-noticia {
+        -webkit-line-clamp: 3;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    .titulo-noticia {
+        -webkit-line-clamp: 1 !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .column-responsive {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    #releaseNotes {
+        margin-top: 0px !important;
+    }
+    
+}
+
+#sortable>div {
+    border-top: 1px solid transparent;
+}
+
+.panel {
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #FDC2C2;
+    border-radius: 10px;
+    box-shadow: 2px 2px 0px 0px #FDC2C2;
+}
+
+.panel:hover {
+    transform: scale(1.01);
+    transition: all 0.2s ease-in-out;
+}
+
+.panel-body {
+    color: #348AD6;
+}
+
+.panel-footer {
+    border-radius: 0 0 9px 10px;
+    background-color: #D4EDFE;
+}
+
+.comunicado-item {
+    text-decoration: none;
+}
+
+.comunicado-item:hover,
+.comunicado-item:active,
+.comunicado-item:visited,
+.comunicado-item:focus {
+    text-decoration: none;
+    transform: scale(1.01);
+    transition: all 0.2s ease-in-out;
+}
+
+.texto-noticia {
+    font-size: 13px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.titulo-noticia {
+    font-size: 14px;
+    -webkit-line-clamp: 2;
+}
+
+.saiba-mais {
+    color: #348AD6;
+}
+
+.square-container {
+    height: 100%;
+    clip-path: inset(0);
+}
+
+.square-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.aniversariante {
+    padding: 5px 0px 0px 0px !important;
+    position: relative;
+    width: 280px;
+}
+
+.aniversariante .panel {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #FDC2C2;
+    border-radius: 10px;
+    box-shadow: 2px 2px 0px 0px #FDC2C2;
+}
+
+.aniversariante .panel-body {
+    height: 65px;
+    padding-top: 10px !important;
+}
+
+.aniversariante .image-container {
+    position: absolute;
+    top: 50%;
+    left: 62%; 
+    z-index: 0;
+    margin-top: -47px; 
+}
+
+.aniversariante .panel:hover {
+    text-decoration: none;
+    transform: none;
+    transition: none;
+}
+
+.aniversariante img {
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.div-scroll-horizontal {
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+}
+
+.div-scroll-horizontal > .aniversariante,
+.div-scroll-horizontal > .releaseNote {
+    display: inline-block;
+    white-space: normal; 
+}
+
+.div-scroll-horizontal::-webkit-scrollbar,
+.div-scroll-horizontal::-webkit-scrollbar-thumb,
+.div-scroll-horizontal::-webkit-scrollbar-track {
+    height: 9px !important;
+}
+
+.releaseNote .panel-footer {
+    background-color: #FDC2C2;
+}
+
+.releaseNote .panel {
+    margin-bottom: 10px;
+}
+
+.releaseNote .panel-body {
+    height: 70px;
+    vertical-align: middle;
+}
+
+.releaseNote {
+    padding: 5px 0px 0px 0px !important;
+    width: 220px;
+}
+
+.releaseNote:hover,
+.releaseNote:active,
+.releaseNote:visited,
+.releaseNote:focus {
+    text-decoration: none;
+    transform: scale(1.01);
+    transition: all 0.2s ease-in-out;
+}
+
+.releaseText {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+}
+
+.nomeAniversariante {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+}
+
+.ocupacaoAniversariante {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+}

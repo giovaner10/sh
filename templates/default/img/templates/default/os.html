@@ -1,0 +1,406 @@
+<!-- OS_Titulo -->
+<link href="./{tpldir}/css/estilos.css" rel="stylesheet" type="text/css" />
+<h2>{OS_Titulo}</h2>
+
+<!-- OS_SubTitulo -->
+<h3><u>OS</u>: {OS_SubTitulo_Id} - {OS_SubTitulo_Nome}</h3>
+
+<!-- OS_Instalacao_Acao -->
+<script type="text/javascript">
+function acao(com,grid)
+{
+	switch(com){
+		case "Gerar OS":
+			if($('.trSelected',grid).length>0){
+		    	var items = $('.trSelected',grid);
+		    	var id = items[0].cells[0].children[0].innerHTML;
+		       	$.post("includes/incAcao.php",
+			       		{
+			           		acao: "OS",
+			           		tipo: 1,
+			           		id: id
+						},
+					function(data){
+						$('#conteudo').html(data);
+					});
+			}
+		break;
+                
+		case "Imprimir":
+			if($('.trSelected',grid).length>0){
+		    	var items = $('.trSelected',grid);
+		    	var id = items[0].cells[0].children[0].innerHTML;
+		       	$.post("includes/incAcao.php",
+		       		{
+			       		acao: "OS_IMPRIMIR",
+		           		id: id
+					},
+					function(data){
+						$('#conteudo').html(data);
+					});
+			}				
+			break;                
+	}
+}
+
+</script>
+
+<!-- OS_Instalacao_Formulario -->
+<script type="text/javascript" src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.dialog.js"></script>
+<script type="text/javascript" src="js/external/bgiframe/jquery.bgiframe.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.datepicker.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/i18n/ui.datepicker-pt-BR.js"></script>
+<script type="text/javascript" src="{tpldir}/js/maskedinput/maskedinput-1.3.js"></script>
+<script type="text/javascript">
+
+	function msg(id,msg){
+		
+		$(".ui-dialog-title").html("");
+		
+		switch(id){
+			case 'erro': $("#aviso").attr("title","Erro");
+						 $(".ui-dialog-title").html("Erro");
+						 var img = '<span class="ui-icon ui-icon-alert"'+
+						 'style="float:left; margin:0 7px 20px 0;"></span>';
+						 break;
+			case 'sucesso': $("#aviso").attr("title","Sucesso");
+							$(".ui-dialog-title").html("Sucesso");
+							var img = '<span class="ui-icon ui-icon-circle-check"'+
+							 'style="float:left; margin:0 7px 20px 0;"></span>';
+							break;
+		}
+		
+		$(".msg").html(img+msg);
+		
+		$("#aviso").dialog('open');
+		
+		$("#aviso").dialog({
+			bgiframe: true,
+			resizable: false,
+			autoOpen: false,
+			height:210,
+			modal: true,
+			overlay: {
+				backgroundColor: '#000',
+				opacity: 0.5
+			},
+			buttons: {
+				OK: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+	}
+
+	function retorno(data){ 
+		
+		switch(data){
+			case "cadastrado":
+				msg("sucesso","OS CADASTRADA com sucesso!");
+			break; 
+			
+			case "editado":
+				msg("sucesso","OS EDITADA com sucesso!");
+			break; 	
+			
+			default:
+				msg("erro","Os dados NÃO foram alterados ainda. Por favor TENTE NOVAMENTE!");
+			break; 					
+		}
+		
+		if (data != ""){
+			
+			$.get('includes/OS/incOSLista.php', function(data) {		    	
+		        $('#conteudo').html(data);
+		    });
+		}
+	} 
+
+$(document).ready( function() {
+	
+	$("#telefone").mask("(99) 9999-9999");
+	$("#hora_inicial").mask("99:99");
+	$("#hora_final").mask("99:99");
+	$("#data_solicitacao").datepicker();
+	$("#data_inicial").datepicker();
+	$("#data_final").datepicker();
+	
+	var loader = "<center><p>&nbsp</p><img id='loader' hspace='5' src='templates/default/img/ajax-loader.gif'><br>Carregando...</center>";
+	
+	$("#id_instalador").change(function(){
+		if ($("#id_instalador option:selected").val() != ""){
+			
+			$('#modulosInstalador').html(loader);
+			
+	       	$.post("includes/OS/incOSModulosInstalador.php",
+		       		{
+		           		id: $("#id_instalador option:selected").val()
+					},
+				function(data){
+					$('#modulosInstalador').html(data);
+				});
+		}
+	});
+	
+	msg("","");
+
+	$.ui.dialog.defaults.bgiframe = true;
+	
+	$('#btEnviar').css("cursor","pointer").click(function() {
+		
+		var c = 0;
+		$('#cad').find("input[type='checkbox'], input[type='radio']").each(function(){
+			if ($(this).is(":checked")) {
+				c = c+1;
+			}
+		});
+
+		// Fazendo as verificacoes
+		var mens1 = "";
+		if ($("#solicitante").val() == "" || $("#solicitante").val() == " ") mens1 += "<li>Solicitante</li>";
+		if ($("#data_solicitacao").val() == "" || $("#data_solicitacao").val() == " ") mens1 += "<li>Data da solicita&ccedil;&atilde;o</li>";
+		if ($("#contato").val() == "" || $("#contato").val() == " ") mens1 += "<li>Contato</li>";
+		if ($("#telefone").val() == "" || $("#telefone").val() == " ") mens1 += "<li>telefone</li>";
+		if ($("#endereco_destino").val() == "" || $("#endereco_destino").val() == " ") mens1 += "<li>Endere&ccedil;o destino</li>";
+		if ($("#id_instalador option:selected").val() == "") mens1 += "<li>Instalador</li>";
+		if ($("#data_inicial").val() == "" || $("#data_inicial").val() == " ") mens1 += "<li>Data Inicial</li>";
+		if ($("#hora_inicial").val() == "" || $("#hora_inicial").val() == " ") mens1 += "<li>Hora Inicial</li>";
+		if ($("#data_final").val() == "" || $("#data_final").val() == " ") mens1 += "<li>Data Final</li>";
+		if ($("#hora_final").val() == "" || $("#hora_final").val() == " ") mens1 += "<li>Hora Final</li>";
+		if ($("#observacoes").val() == "" || $("#observacoes").val() == " ") mens1 += "<li>Observa&ccedil;&otilde;es</li>";
+		if (c < {quantidade_equipamentos}) mens1 += "<li>Escolha pelo menos {quantidade_equipamentos} m&oacute;dulos</li>";
+		
+		if (mens1 != ""){
+			// Definindo as mensagens de erro
+			var mens = "Campos obrigatórios em branco:<br><ul>";
+			mens += mens1 + "</ul>";
+			msg("erro",mens);
+		}		
+		else {
+			
+			// Se nao houverem erros, enviar os dados
+			var params = { 
+					acao : "OS_CADASTRAR",
+					tipo_os : 1,
+					id_cliente : $('#id_cliente').val(),
+					id_contrato : $('#id_contrato').val(),
+					quantidade_equipamentos : $('#quantidade_equipamentos').val()
+				};
+			
+			$('#cad').find("input[type='text'], input[type='hidden'],"+
+					 "input[type='password'], input[type='submit'], option:selected,"+
+					 "textarea").filter(":enabled").each(function(){
+						 params[ this.name || this.id || this.parentNode.name || this.parentNode.id ] = this.value;
+					 });
+	
+			var c = "";
+			$('#cad').find("input[type='checkbox'], input[type='radio']").each(function(){
+				if ($(this).is(":checked")) {
+					c += this.value + ",";
+				}
+			});
+			
+			params[ 'modulos' ] = substr(c,0,-1); // retira a ultima virgula 
+			
+			$.post("includes/incAcao.php", params,
+					function(data){
+						retorno(data);
+					}
+				);
+		}
+	})
+	.hover(
+		function(){ 
+			$(this).addClass("ui-state-hover"); 
+		},
+		function(){ 
+			$(this).removeClass("ui-state-hover"); 
+		}
+	).mousedown(function(){
+		$(this).addClass("ui-state-active"); 
+	})
+	.mouseup(function(){
+			$(this).removeClass("ui-state-active");
+	});
+	
+});
+</script>
+<p align="center">
+<b>TODOS os campos são de preenchimento obrigat&oacute;rio.</b><br>
+	Favor preencher corretamente o formulário abaixo.
+</p>
+<table id="cad" width="500" border="0" cellpadding="5" cellspacing="0">
+  <tr><td>
+  <div id="moldura">
+  	<div class="titulo_moldura">Dados do Cliente</div>
+<table width="500" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="100" align="right">Cliente</td>
+    <td><b>{nome}</b></td>
+  </tr>
+  <tr>
+    <td width="100" align="right">Solicitante</td>
+    <td><input type="text" name="solicitante" id="solicitante" value="{solicitante}" size="30" class="forms" /></td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">Data da Solicitação</td>
+    <td>
+    	<input type="text" name="data_solicitacao" id="data_solicitacao" value="{data_solicitacao}" size="10" class="forms" />
+    	(ex: 99/99/9999)
+    </td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">Contato</td>
+    <td><input type="text" name="contato" id="contato" value="{contato}" size="30" class="forms" /></td>
+  </tr>   
+  <tr>
+    <td width="100" align="right">Telefone</td>
+    <td><input type="text" name="telefone" id="telefone" value="{telefone}" size="14" class="forms" /></td>
+  </tr>   
+  <tr>
+    <td width="100" align="right" valign="top">Endereço destino</td>
+    <td><textarea name="endereco_destino" id="endereco_destino" rows="3" cols="35">{endereco_destino}</textarea></td>
+  </tr> 
+</table>
+</div>
+  <div id="moldura">
+  	<div class="titulo_moldura">Dados da Instalação</div>
+<table width="500" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="100" align="right">Instalador</td>
+    <td>
+<!-- OS_Instalacao_Formulario_Continuacao_Instalador -->   
+	</td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">Data da Inicial</td>
+    <td>
+    	<input type="text" name="data_inicial" id="data_inicial" value="{data_inicial}" size="10" class="forms" />
+    	(ex: 99/99/9999) &nbsp;&nbsp;&nbsp;
+    	Hora <input type="text" name="hora_inicial" id="hora_inicial" value="{hora_inicial}" size="5" class="forms" />
+    </td>
+  </tr>  
+  <tr>
+    <td width="100" align="right">Data da Final</td>
+    <td>
+    	<input type="text" name="data_final" id="data_final" value="{data_final}" size="10" class="forms" />
+    	(ex: 99/99/9999) &nbsp;&nbsp;&nbsp;
+    	Hora <input type="text" name="hora_final" id="hora_final" value="{hora_final}" size="5" class="forms" />
+    </td>
+  </tr>
+  <tr>
+    <td width="100" align="right" valign="top">Observa&ccedil;&otilde;es</td>
+    <td><textarea name="observacoes" id="observacoes" rows="3" cols="35">{observacoes}</textarea></td>
+  </tr>    
+</table>
+</div>
+  <div id="moldura">
+  	<div class="titulo_moldura">Equipamentos</div>
+<table width="500" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td align="center">
+    <h3>Instala&ccedil;&atilde;o em {quantidade_equipamentos} ve&iacute;culos.</h3>
+    Escolher no mínimo <b>{quantidade_equipamentos}</b> m&oacute;dulos dando preferência 
+    aos  m&oacute;dulos que est&atilde;o com o instalador.
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+		<table width="90%" border="0" cellpadding="5" cellspacing="1" bgcolor="#C9C9C9">
+		  <tr bgcolor="#F3F3F3">
+		    <td align="center" width="50%">M&Oacute;DULOS COM O INSTALADOR</td>
+		    <td align="center">M&Oacute;DULOS DISPON&Iacute;VEIS</td>
+		  </tr>
+		  <tr bgcolor="#FFFFFF">
+		    <td align="center" valign="top">
+		    	<div id="modulosInstalador"></div>
+		    </td>
+		    <td align="center" valign="top">
+<!-- OS_Instalacao_Formulario_Continuacao_Modulos_Disponiveis -->   
+		    </td>
+		  </tr> 
+		</table>
+    </td>
+  </tr>
+</table>
+</div>
+<p align="center">
+		<input type="hidden" name="id_contrato" id="id_contrato" value="{id_contrato}" />
+    	<input type="hidden" name="id_cliente" id="id_cliente" value="{id_cliente}" />
+    	<input type="hidden" name="quantidade_equipamentos" id="quantidade_equipamentos" value="{quantidade_equipamentos}" />
+    	<button id="btEnviar" class="ui-button ui-state-default ui-corner-all">ENVIAR</button>
+</p>  	
+	</td>
+  </tr>
+</table>
+
+<div id="aviso">
+	<p class="msg"></p>
+</div>
+
+<!-- Titulo_Abas_Conteudo -->
+ {Titulo_Abas_Conteudo}
+ 
+<!-- OS_IMPRIMIR_BASE -->
+<script src="{tpldir}/js/ui/ui.core.js"></script>
+<script src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script src="{tpldir}/js/ui/ui.dialog.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready( function() {
+	
+	$.ui.dialog.defaults.bgiframe = true;
+	$(".ui-dialog-content").css("padding","0");
+
+	dlg("includes/OS/incOSModelo.php?id={id}");
+	
+});
+
+function dlg(arquivo){
+	var loader = "<center><p>&nbsp</p><img id='loader' hspace='5' src='{tpldir}/img/ajax-loader.gif'><br>Carregando...</center>";
+	
+	$("#print").dialog("open");
+	$("iframe#conteudo_impressao").attr("src",arquivo);
+	
+	$("#print").dialog({
+		
+		bgiframe: true,
+		resizable: false,
+		height:500,
+		width: 850,
+		modal: true,
+		overlay: {
+			backgroundColor: '#000',
+			opacity: 0.5
+		},
+		buttons: {
+			
+			Imprimir: function() {
+			  		 document.getElementById('conteudo_impressao').contentWindow.focus();
+					 document.getElementById('conteudo_impressao').contentWindow.print();
+			},
+			
+			Fechar: function() {
+				$("iframe#conteudo_impressao").remove();
+				$(this).dialog('close');
+				$.get('includes/OS/incOSLista.php', function(data) {		    	
+			        $('#conteudo').html(data);
+			    });
+			}
+		}
+	});
+}
+</script>
+<style>
+.ui-dialog-titlebar-close{
+    display: none;
+}
+</style>
+
+<div id="print" title="Visualizar Impress&atilde;o" style="display:none;">
+	<iframe id="conteudo_impressao" width="100%" height="100%" frameborder="0" scrolling="auto"></iframe>
+</div>

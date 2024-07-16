@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/showtecsystem/!svn/ver/32/classes
+END
+DB.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/showtecsystem/!svn/ver/1/classes/DB.class.php
+END
+Usuario.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/showtecsystem/!svn/ver/23/classes/Usuario.class.php
+END
+Login.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/showtecsystem/!svn/ver/3/classes/Login.class.php
+END
+Template.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/showtecsystem/!svn/ver/1/classes/Template.class.php
+END
+cfg.php
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/showtecsystem/!svn/ver/22/classes/cfg.php
+END
+Util.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/showtecsystem/!svn/ver/32/classes/Util.class.php
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/showtecsystem/!svn/ver/1/classes/index.html
+END
+Relatorio.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/showtecsystem/!svn/ver/4/classes/Relatorio.class.php
+END
+Cadastro.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/showtecsystem/!svn/ver/32/classes/Cadastro.class.php
+END
+Log.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/showtecsystem/!svn/ver/1/classes/Log.class.php
+END
+Html.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/showtecsystem/!svn/ver/1/classes/Html.class.php
+END

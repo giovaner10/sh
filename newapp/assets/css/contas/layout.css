@@ -1,0 +1,12 @@
+div .card-metricas-contas {
+    margin: 10px !important; 
+    flex-direction: column !important; 
+    flex: 1 !important;
+    font-family: 'Mont SemiBold' !important;
+    font-size: 15px;
+}
+
+.number-metrica-contas {
+    word-break: break-word !important;
+    text-align: center;
+}

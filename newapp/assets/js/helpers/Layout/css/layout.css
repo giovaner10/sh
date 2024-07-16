@@ -1,0 +1,13 @@
+.content-container {
+    float: right;
+    -webkit-transition: width 0.5s ease;
+    -moz-transition: width 0.5s ease;
+    -o-transition: width 0.5s ease;
+    transition: width 0.5s ease;
+}
+
+@media (max-width: 992px) {
+    .content-container {
+        width: 100% !important;
+    }
+}

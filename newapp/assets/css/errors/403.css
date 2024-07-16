@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "Mont";
+  src: url("../../fonts/Mont-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Mont SemiBold";
+  src: url("../../fonts/Mont-SemiBold.ttf") format("truetype");
+}
+
+.forbidden-page,
+.forbidden-page * {
+  box-sizing: border-box;
+}
+
+.forbidden-page {
+  height: 70vh;
+  margin: 0;
+  font-family: "Mont SemiBold";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eff2f8;
+}
+
+.forbidden-page #error-container {
+  text-align: center;
+}
+
+.forbidden-page #error-code {
+  font-size: 3.2em;
+  margin: 15px;
+  color: #1c69ad !important;
+}
+
+.forbidden-page #error-message {
+  font-size: 1.2em;
+  margin: 40px;
+  color: #7f7f7f;
+}
+
+.forbidden-page .go-back-btn {
+  margin-top: 1.2em;
+  padding: 10px 20px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.go-back-btn {
+  background-color: #1c69ad;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  outline: none;
+  font-weight: bold;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+  border: 1px solid transparent;
+  color: #fff;
+}
+
+.img-403 {
+  width: 50px;
+  fill: #7f7f7f;
+  margin-bottom: 10px;
+}

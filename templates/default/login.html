@@ -1,0 +1,74 @@
+<!-- inicio -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>.: Sistema Show Tecnologia Administrativo :.</title>
+<link href="{tpl_dir}/css/estilos.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<p align="center">
+	<br>
+	<img src="{tpl_dir}/img/logo-showtecnologia.png" height="130">
+</p>
+
+
+<!-- mensagemErro -->
+<br>
+<table width="327" align="center" cellspacing="1" bgcolor="#E6E6E6">
+  <tr>
+    <td align="center" bgcolor="#FFFFFF" class="verdana_10px_cinza_escuro"><font color="red" size="1"><b>Login e/ou Senha inv&aacute;lidos.<br>
+      Tente novamente.</b></font> </td>
+  </tr>
+</table>
+<br>
+
+<!-- formulario -->        
+<form id="form_login" name="form_login" method="post" action="?">
+  <table width="326" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td colspan="4"><div align="left"><img src="{tpl_dir}/img/form_1.gif" width="326" height="17" /></div></td>
+    </tr>
+    <tr>
+      <td width="18" background="{tpl_dir}/img/form_2.gif">&nbsp;</td>
+      <td colspan="2" background="{tpl_dir}/img/form_3.gif" class="vermelho_escuro"><b>&nbsp;&Aacute;rea de Acesso Restrito</b></td>
+      <td width="54"><img src="{tpl_dir}/img/form_4.gif" width="54" height="20" /></td>
+    </tr>
+    <tr>
+      <td colspan="4"><img src="{tpl_dir}/img/form_5.gif" width="326" height="16" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" valign="top"><img src="{tpl_dir}/img/form_6.gif" width="49" height="135" /></td>
+      <td width="224" valign="top" background="{tpl_dir}/img/form_7.gif" class="verdana_12px_negrito_cinza_escuro">
+        Informe seu Login e Senha<br>
+        <br />
+
+          <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr>
+              <td width="24%" align="right" class="verdana_10px_cinza_escuro">Login</td>
+              <td width="76%"><input name="login" type="text" class="forms" id="login" size="20" maxlength="15" TABINDEX="1" /></td>
+              <td rowspan="2" valign="bottom"><input type="image" name="imageField" src="{tpl_dir}/img/form_ok.gif" /></td>
+            </tr>
+            <tr>
+              <td align="right" class="verdana_10px_cinza_escuro">Senha</td>
+              <td>
+              	  <input name="senha" type="password" class="forms" id="senha" size="20" maxlength="50" TABINDEX="2" />
+                  <input name="acao" type="hidden" id="acao" value="logar">
+              </td>
+            </tr>
+          </table>
+        </td>
+      <td background="{tpl_dir}/img/form_12.gif"></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td width="31"><img src="{tpl_dir}/img/form_8.gif" width="31" height="25" /></td>
+      <td background="{tpl_dir}/img/form_9.gif">&nbsp;</td>
+      <td><img src="{tpl_dir}/img/form_10.gif" width="54" height="25" /></td>
+    </tr>
+  </table>
+</form>
+
+<!-- final -->
+</body>
+</html>

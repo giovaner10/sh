@@ -1,0 +1,23 @@
+#moldura {
+	border: #E0E0E0 solid 1px;
+	height: auto;
+	width: auto;
+	padding: 35px;
+	margin-bottom: 30px;
+	clear: both;
+}
+
+#moldura .titulo_moldura {
+	background-color:#FFFFFF;
+	color:#999999;
+	display:inline;
+	margin-bottom:10px;
+	margin-left:-10px;
+	margin-top:-45px;
+	padding-left:10px;
+	padding-right:10px;
+	position:absolute;
+	text-align:center;
+	width:auto;
+}
+

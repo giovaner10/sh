@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS `financeiro` (
+  `id_fn` int(11) NOT NULL auto_increment,
+  `id_ps` int(11) NOT NULL,
+  `vencimento_fn` date NOT NULL,
+  `pagamento_fn` date NOT NULL,
+  `valor_fn` float NOT NULL,
+  `valor_pago_fn` float NOT NULL,
+  `multa_fn` float NOT NULL,
+  `juros_fn` float NOT NULL,
+  `status_fn` varchar(20) character set latin1 collate latin1_general_ci NOT NULL,
+  `data_fn` date NOT NULL,
+  `hora_fn` time NOT NULL,
+  `retorno_fn` varchar(50) NOT NULL,
+  `competencia_fn` int(11) NOT NULL,
+  PRIMARY KEY  (`id_fn`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Upload de arquivos</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="generator" content="Geany 0.16" />
+        <link href="./{tpldir}/css/estilos.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <h2>Enviar arquivo</h2>
+<form enctype="multipart/form-data" action="includes/Documentos/upload/save.php" method="post">
+	<!--<input type="hidden" name="MAX_FILE_SIZE" value="1048576" />-->
+        <label for "descrever">Descrição:</label>
+        <input id="descricao" name="descricao" type="text"  size="100"/>
+        <br>
+        <label for="file">Arquivo a ser enviado:</label>
+	<input id="file" name="file" type="file" />
+        <br>
+	<input type="submit" value="Enviar" />
+</form>
+
+</body>
+</html>

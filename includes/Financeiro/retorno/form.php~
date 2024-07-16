@@ -1,0 +1,7 @@
+<form action="importa_retorno.php" method="post" enctype="multipart/form-data" name="enviar" id="enviar">
+  <label>
+    <input type="file" name="arquivo" id="arquivo" />
+  </label>
+<label>
+<input type="submit" value="ok">
+</form>

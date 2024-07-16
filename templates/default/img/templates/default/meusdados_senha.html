@@ -1,0 +1,128 @@
+<!-- MudarSenha -->
+<link href="./{tpldir}/css/estilos.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{template_dir}/js/password/jQuery.dPassword.js"></script>
+<script type="text/javascript" src="{template_dir}/js/ui/ui.draggable.js"></script>
+<script type="text/javascript" src="{template_dir}/js/ui/ui.resizable.js"></script>
+<script type="text/javascript" src="{template_dir}/js/ui/ui.dialog.js"></script>
+<script type="text/javascript" src="js/external/bgiframe/jquery.bgiframe.js"></script>
+
+<script type="text/javascript">
+	function msg(id,msg){
+		
+		$(".ui-dialog-title").html("");
+		
+		switch(id){
+			case 'erro': $("#aviso").attr("title","Erro");
+						 $(".ui-dialog-title").html("Erro");
+						 var img = '<span class="ui-icon ui-icon-alert"'+
+						 'style="float:left; margin:0 7px 20px 0;"></span>';
+						 break;
+			case 'sucesso': $("#aviso").attr("title","Sucesso");
+							$(".ui-dialog-title").html("Sucesso");
+							var img = '';
+							break;
+		}
+		
+		$(".msg").html(img+msg);
+		
+		$("#aviso").dialog('open');
+		
+		$("#aviso").dialog({
+			bgiframe: true,
+			resizable: false,
+			autoOpen: false,
+			height:210,
+			modal: true,
+			overlay: {
+				backgroundColor: '#000',
+				opacity: 0.5
+			},
+			buttons: {
+				OK: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+	}
+
+	function retorno(data){  
+		if (data == "alterado")
+			msg("sucesso","Senha ALTERADA com sucesso!");
+		else
+			msg("erro","Confira se a SENHA ANTIGA est&aacute; correta!");
+
+	}  
+	
+	$(document).ready( function() {
+
+		msg("","");
+		
+		$.ui.dialog.defaults.bgiframe = true;
+		
+		$('input:password').dPassword({
+			duration: 2000,
+			prefix: 'my_'
+		});
+		
+		$('#mudar_senha').css("cursor","pointer").click(function() {
+
+			// Fazendo as verificacoes
+			var mens1 = "";
+			if ($("#antiga_senha").val()  == "") mens1 += "<li>Senha Antiga</li>";
+			if ($("#nova_senha").val() == "") 	 mens1 += "<li>Senha nova</li>";
+			if ($("#nova_senha2").val() == "") 	 mens1 += "<li>Repita a nova senha</li>";
+			if ($("#nova_senha").val() != "" && $("#nova_senha2").val() == "") mens1 += "<li>Repita a senha nova</li>";
+			if ( $("#nova_senha").val() != $("#nova_senha2").val() ) mens1 += "<li>As senhas novas não estão iguais.</li>";
+
+			if (mens1 != ""){
+				// Definindo as mensagens de erro
+				var mens = "";
+				if ( ($("#nova_senha").val() != "") && ($("#nova_senha").val() != $("#nova_senha2").val()) ){
+					mens += "Erro nas senhas:<br><ul>";
+				}
+				else{
+					mens += "Campos obrigatórios em branco:<br><ul>";
+				}
+				mens += mens1 + "</ul>";
+				msg("erro",mens);
+			}
+			else {
+				$.post("includes/MeusDados/incMeusDadosSenha.php",
+						{ 
+							nova_senha: $("#nova_senha").val(), 
+							antiga_senha: $("#antiga_senha").val()
+						},
+						function(data){
+							retorno(data);
+							$("#antiga_senha").val("");
+							$("#nova_senha").val("");
+							$("#nova_senha2").val("");						
+						}
+				);
+			}
+		})
+		.hover(
+			function(){ 
+				$(this).addClass("ui-state-hover"); 
+			},
+			function(){ 
+				$(this).removeClass("ui-state-hover"); 
+			}
+		).mousedown(function(){
+			$(this).addClass("ui-state-active"); 
+		})
+		.mouseup(function(){
+				$(this).removeClass("ui-state-active");
+		});
+	});
+</script>
+
+<h2>Mudar a Senha</h2>
+<label>Senha antiga: </label> <input id="antiga_senha" name="antiga_senha" type="password"></input><br />
+<label>Senha nova: </label> <input id="nova_senha" name="nova_senha" type="password"></input><br />
+<label>Repita a nova senha: </label> <input id="nova_senha2" name="nova_senha2" type="password"></input><br /><br />
+<button id="mudar_senha" class="ui-button ui-state-default ui-corner-all">Mudar Senha</button>
+
+<div id="aviso">
+	<p class="msg"></p>
+</div>

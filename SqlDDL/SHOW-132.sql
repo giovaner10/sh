@@ -1,0 +1,1 @@
+INSERT INTO `showtecsystem`.`cad_permissoes_funcionarios` (`descricao`, `cod_permissao`, `status`, `data_cad`, `modulo`) VALUES ('Dashboards Pagamento Prestadores', 'vis_dashboardspagamentoprestadores', '1', '2021-07-20 17:12:55', 'Dashboards');

@@ -1,0 +1,31 @@
+#formPesquisa button:first-child {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#formPesquisa {
+    text-align: right;
+}
+
+#advancedSearchSupportPanelButtonContainer {
+    margin-top: 10px;
+    padding: 0 4px;
+}
+
+@media (min-width: 970px) {
+    #formPesquisa {
+        display: flex;
+        gap: 8px;
+        text-align: left;
+    }
+
+    #formPesquisa button:first-child {
+        flex-grow: 1;
+        margin-bottom: 0;
+    }
+
+    #advancedSearchSupportPanelButtonContainer {
+        margin-top: 24.14px;
+        padding: 0 4px;
+    }
+}

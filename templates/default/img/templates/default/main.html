@@ -1,0 +1,194 @@
+<!-- Principal -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>.: Sistema Show Tecnologia :.</title>
+
+<link rel="stylesheet" type="text/css" href="{tpl_dir}/css1/estilos.css" />
+<link rel="stylesheet" type="text/css" href="{tpl_dir}/css/superfish/superfish.css">
+<link rel="stylesheet" type="text/css" href="{tpl_dir}/css/superfish/superfish-vertical.css">
+<link type="text/css" href="{tpl_dir}/css/ui/themes/smoothness/ui.all.css" rel="stylesheet" />
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="{tpl_dir}/js/ui/jquery-ui-1.7.2.custom.js"></script>
+<script type="text/javascript" src="{tpl_dir}/js/ui/ui.core.js"></script>
+<script type="text/javascript" src="{tpl_dir}/js/superfish/hoverIntent.js"></script>
+<script type="text/javascript" src="{tpl_dir}/js/superfish/superfish.js"></script>
+<script type="text/javascript" src="{tpl_dir}/js/curvycorners/jq-corner.js"></script>
+<script type="text/javascript" src="{tpl_dir}/js/jqdock/fisheye-iutil.min.js"></script>
+<script type="text/javascript" src="{tpl_dir}/js/jqdock/jquery.jqDock.min.js"></script>
+<script type="text/javascript" src="js/phpjs.js"></script>
+<script type="text/javascript" src="{tpl_dir}/js/functions.js"></script>
+
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="#E5E5E5">
+
+<table width="100%" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="82" class="titulo" align="center">
+			<table width="800" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td height="82" align="center">
+						<table class="cabecalho" width="100%" align="center" cellpadding="0" cellspacing="0">
+							<tr>
+								<td height="82" width="25%" align="center">
+									<a href="./"><img src="{tpl_dir}/img/logo-showtecnologia.png" height="80" border="0"></a>
+								</td>
+								<td align="right" valign="top">
+									<div class="menu">
+										<div id="fisheye" class="fisheye">
+											<div class="fisheyeContainter">
+												<a href="#" id="Cadastros" class="fisheyeItem"><img src="{tpl_dir}/img/ico-cadastro.png" alt="Cadastros"><span>Cadastros</span></a>
+												<a href="#" id="Contratos" class="fisheyeItem"><img src="{tpl_dir}/img/ico-contratos.png" alt="Contratos"><span>Contratos</span></a>
+												<a href="#" id="OS" class="fisheyeItem"><img src="{tpl_dir}/img/ico-os.png" alt="Ordem de Serviços"><span>Ordem de Serviços</span></a>
+												<a href="#" id="Agenda" class="fisheyeItem"><img src="{tpl_dir}/img/ico-agenda.png" alt="Agenda"><span>Agenda</span></a>
+                                                                                                <a href="#" id="Documentos" class="fisheyeItem"><img src="{tpl_dir}/img/ico-scanner.png" alt="Agenda"><span>Digitalizar</span></a>
+												<a href="#" id="Financeiro" class="fisheyeItem"><img src="{tpl_dir}/img/ico-financeiro.png" alt="Financeiro"><span>Financeiro</span></a>
+												<a href="#" id="Relatorios" class="fisheyeItem"><img src="{tpl_dir}/img/ico-relatorios.png" alt="Relatórios"><span>Relatórios</span></a>
+												<a href="#" id="MeusDados" class="fisheyeItem"><img src="{tpl_dir}/img/ico-meusdados.png" alt="Meus Dados"><span>Meus Dados</span></a>
+												<a href="?acao=sair" class="fisheyeItem"><img src="{tpl_dir}/img/ico-sair.png" alt="Sair"><span>Sair</span></a>
+											</div>
+										</div>
+										
+										<table cellpadding="0" cellspacing="0">
+											<tr>
+												<td><strong>Usuário:</strong> {usuario_nome}</td>
+											</tr>
+											<tr>
+												<td><strong>Data:</strong> {data}</td>
+											</tr>
+										</table>
+										
+									</div>								
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+ 	</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF">
+			<table width="800" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td align="center">
+						<table width="100%" cellpadding="10" cellspacing="0">
+							<tr>
+								<td height="450" id="menu_modulo" width="130" align="center" valign="top">
+									<script type="text/javascript">
+									
+										var loader = "<center><p>&nbsp</p><img id='loader' hspace='5' src='templates/default/img/ajax-loader.gif'><br>Carregando...</center>";
+										$("#conteudo").html("");
+										$("#menu_modulo").html(loader);
+										
+									    $.get('includes/MeusDados/incMenuMeusDados.php', function(data) {
+
+									    	var imagem = tipo_imagem('MeusDados');
+									    	$("#menu_modulo").html('<img src="'+imagem+'"></img><br>MEUS DADOS');
+									        $('#menu_modulo').append(data);
+
+									        // funcoes do Menu
+											$('.sf-menu li').click(function() {
+												
+												if (this.id){
+
+													$("#conteudo").html(loader);
+													
+													var arquivo = new Array();
+													arquivo = explode('-', this.id);
+													
+													var tipo = ""; 
+													
+													if(arquivo[1])
+														status = "?status="+arquivo[1];
+													
+													if (this.id){
+													    $.get('includes/MeusDados/inc'+ arquivo[0] +'.php'+ status, function(data) {		    	
+													        $('#conteudo').html(data);
+													    });
+													}
+												}
+											});									        
+
+									        // Retirando o ponteiro da mão no link do menu do lado esquerdo
+											$("li.sem-link a").each(function(){
+												$(this).css("cursor","default");
+											});
+											
+									    });
+									    
+									</script>
+									<p align="center">&nbsp;</p>
+								</td>
+								<td id="conteudo" valign="top">
+									<h2>Itens finalizados</h2>
+									<ol>
+										<li>Base pronta com acesso restrito (tipos de usuário) e Log de ações e acessos</li>
+										<li>Meus Dados completo
+											<ul>
+												<li>Mudar senha</li>
+												<li>Meus passos (Log de acoes e acessos)</li>
+											</ul>
+										</li>
+										<li>Cadastro de Usuários
+											<ul>
+												<li>Cadastrar</li>
+												<li>Editar</li>
+												<li>Bloquear/Desbloquear</li>
+											</ul>
+										</li>
+										<li>Relatórios iniciais
+											<ul>
+												<li>Usuários cadastrados</li>
+												<li>Acessos e Ações</li>
+											</ul>
+										</li>
+										<li>Novos Ícones para os Módulos</li>
+										<li>Definição dos MENU's de cada Módulo</li>
+										<li>Cadastro de Vendedores</li>
+										<li>Cadastro de Instaladores</li>
+										<li>Cadastro de Fornecedores</li>
+										<li>Cadastro de Chips com ABAS
+											<ul>
+												<li>ABA - Dados</li>
+												<li>ABA - Histórico</li>
+											</ul>										
+										</li>
+										<li>Cadastro de Módulos com ABAS
+											<ul>
+												<li>ABA - Dados</li>
+												<li>ABA - Histórico</li>
+											</ul>										
+										</li>
+										<li>Cadastro de Clientes com ABAS (incompleto)
+											<ul>
+												<li>ABA - Dados</li>
+											</ul>										
+										</li>
+										<li>Contratos com ABAS
+											<ul>
+												<li>IMPRIMIR</li>
+												<li>ABA - Dados</li>
+												<li>ABA - Histórico</li>
+											</ul>										
+										</li>
+										<li>Estoque de Instaladores</li>									
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+ 	</tr> 	
+	<tr>
+		<td height="82" align="center" class="rodape">
+			Copyright © 2012 - Show Tecnologia - Todos os direitos reservados.
+		</td>
+	</tr>
+</table>
+</body>
+</html>

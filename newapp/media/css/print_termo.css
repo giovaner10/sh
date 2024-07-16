@@ -1,0 +1,69 @@
+.thLogo img{
+    max-width: 12%;
+}
+h3.title{
+    margin-right: 30px;
+}
+.nomeShow, .foneShow{
+    border-top: none!important;
+    font-weight: 500!important;
+    padding-top: 0!important;
+}
+.dadosCtt th{
+    border-top: none!important;
+}
+.tbodyTopo{
+    border: 2px solid #dddddd;
+}
+.tbodyBlue{
+    border: 2px solid #dddddd;
+    background: #2b84ed;
+    color: white;
+}
+.tdLetrasMiudas{
+    font-size: 10px;
+}
+
+@media print {
+    table{
+        margin-top: -50px;
+    }
+    table td{
+        line-height: 10px!important;
+        font-size: 8px!important;
+    }
+    .thLogo img{
+        max-width: 20%!important;
+    }
+    .thLogo h3{
+        font-size: 20px!important;
+    }
+    .nomeShow, .foneShow{
+        border-top: none!important;
+        font-weight: 500!important;
+        padding-top: 0!important;
+    }
+    .dadosCtt th{
+        border-top: none!important;
+    }
+    .tbodyTopo{
+        border: 2px solid #dddddd!important;
+    }
+    .tbodyBlue{
+        border: 2px solid #dddddd!important;
+        background-color: #80a4ed !important;
+        color: white!important;
+        -webkit-print-color-adjust: exact;
+    }
+    .tbodyBlue tr td b, .tbodyBlue tr td b small{
+        color: white!important;
+    }
+    .tdLetrasMiudas{
+        font-size: 8px!important;
+        line-height: 10px!important;
+    }
+    .no-print{
+        display: none;
+    }
+
+}

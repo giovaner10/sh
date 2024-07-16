@@ -1,0 +1,132 @@
+<table id="dt_table" class="table table-striped table-bordered custom-table">
+    <thead>
+        <tr class="tableheader">
+            <th><?=lang('quotenumber')?></th>
+            <th type="date" class="sorting_desc"><?=lang('createdon')?></th>
+            <th><?=lang('statecode')?></th>
+            <th><?=lang('tz_valor_total_licenca')?></th>
+            <th><?=lang('tz_valor_total_hardware')?></th>
+            <th><?=lang('effectivefrom')?></th>
+            <th><?=lang('effectiveto')?></th>
+            <th><?=lang('cliente')?></th>
+            <th><?=lang('acoes')?></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+                if (!empty($oportunidadeCliente)) {
+                    foreach ($oportunidadeCliente as $for ) {
+                        echo '<tr>';  
+                        
+                        if ($for->quotenumber != null) {
+                            echo '<td>'. $for->quotenumber.'</td>';
+                        } else{
+                            echo '<td>  </td>';
+                        } 
+                        if ($for->createdon) {
+                            echo '<td >'. dh_for_humans(substr($for->createdon, 0, 10)).'</td>';
+                        } else{
+                            echo '<td>  </td>';
+                        } 
+                        if (!empty($for->statuscode))
+                        {
+                            echo '<td>';                           
+                            if($for->statecode == 0){
+                                if($for->statuscode == 1){
+                                    if($for->tz_docusign_status == 419400000){
+                                        echo "Em Andamento";
+                                    }
+                                }
+                                if($for->statuscode == 419400002){
+                                    if($for->tz_docusign_status == 419400000){
+                                        echo "Pedido Gerado";
+                                    }
+                                    if($for->tz_docusign_status == 419400001){
+                                        echo "Aguardando Assinatura";
+                                    }
+                                    if($for->tz_docusign_status == 419400002){
+                                        echo "Proposta Assinada";
+                                    }
+                                }                                
+                            }
+                            if ($for->statecode == 0) {
+                                if($for->statuscode == 419400001){
+                                    if($for->tz_docusign_status == 419400002){
+                                        echo "Em Validação ADV";
+                                    }
+                                }
+                            }
+                            if ($for->statecode == 2) {
+                                if($for->statuscode == 4){
+                                    echo "Ganha";
+                                }
+                            }
+                            if ($for->statecode == 3) {
+                                if($for->statuscode == 5){
+                                    echo "Perdida";
+                                }
+                            } 
+                            echo '</td>';
+                        } else{echo '<td>   </td>';}                       
+                        if ($for->tz_valor_total_licenca) {
+                            echo '<td> R$ '. number_format($for->tz_valor_total_licenca,2,",",".").'</td>';
+                        } else{
+                            echo '<td>  </td>';
+                        }                    
+                        if ($for->tz_valor_total_hardware) {
+                            echo '<td> R$ '. number_format($for->tz_valor_total_hardware,2,",",".").'</td>';
+                        } else{
+                            echo '<td>  </td>';
+                        } 
+                        if (!empty($for->effectivefrom)) {
+                            echo '<td>'. dh_for_humans(substr($for->effectivefrom, 0, 10)).'</td>';
+                        } else{
+                            echo '<td>  </td>';
+                        }                       
+                        if (!empty($for->effectiveto)) {
+                            echo '<td>'. dh_for_humans(substr($for->effectiveto, 0, 10)).'</td>';
+                        } else{
+                            echo '<td>  </td>';
+                        }               
+                        if (!empty($for->CLIENTE_PF_x002e_fullname)) {
+                            echo '<td>'. $for->CLIENTE_PF_x002e_fullname.'</td>';
+                        }
+                        else{
+                            echo '<td>'. $for->CLIENTE_PJ_x002e_name.'</td>';
+                        }                        
+                        echo '<td>'; 
+                        if (($for->statecode == 0) && ($for->statuscode == 1) && ($for->tz_docusign_status == 419400000)){                      
+                            echo '<div > <a data-serial="'.$for->quoteid.'" class="btn btn-success gerar_pedido" role="button" id="gerar_pedido" title="Gerar Pedido"  ><i class="fa fa-cloud-upload"></i> Gerar Pedido</a></button>';
+                        }
+                        if (($for->statecode == 0) && ($for->statuscode == 419400002) && ($for->tz_docusign_status == 419400000)){
+                            echo '<div > <a data-docsign="'.$for->quoteid.'" class="btn btn-info enviar_docsign"  role="button" id="enviar_docsign" style="margin-top: 4px;" title="Solicitar assinatura" ><i class="fa fa-pencil"></i> Solicitar Assinatura</a></button>';
+                        } 
+                                               
+
+                          if (($for->statecode == 2) && ($for->statuscode == 4)){
+                            echo '<div > <a data-status="'.$for->quoteid.'" class="btn btn-warning solicitar_statusclie"  role="button" id="solicitar_statusclie" style="margin-top: 4px;" title="Solicitar status" ><i class="fa fa-file"></i> Status</a></button>';
+                          }
+                          echo '<div>
+                                    <button
+                                        class="btn btn-primary"
+                                        data-statuscode="'.$for->quoteid.'"
+                                        title="Resumo cotação"
+                                        style="margin-top: 4px;"
+                                        id="resumoCotacaoCliente"
+                                        onClick="javascript:abrirModalResumoCotacao(this)">
+                                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                        Resumo
+                                    </button>
+                                </div>
+                                '; 
+                         
+                        
+                         echo '</div>
+                           </td>
+                      </tr>';
+                    }
+                } 
+            ?>
+    </tbody>
+</table>

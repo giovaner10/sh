@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<importacao>
+  <nota>
+    <rps_data>2018-04-24</rps_data>
+    <tomador_nome>GABINETE DO PREFEITO</tomador_nome>
+    <tomador_cnpjcpf>01.612.489/0001-15</tomador_cnpjcpf>
+    <tomador_inscrmunicipal/>
+    <tomador_logradouro>R IDEARTE ALVES DE SOUZA</tomador_logradouro>
+    <tomador_numero>2484</tomador_numero>
+    <tomador_complemento>SEDE	</tomador_complemento>
+    <tomador_bairro>CENTRO</tomador_bairro>
+    <tomador_cep>39314-000</tomador_cep>
+    <tomador_municipio>CHAPADA GAUCHA</tomador_municipio>
+    <tomador_uf>MG</tomador_uf>
+    <tomador_email>SEPOP.CHAPADA@GMAIL.COM</tomador_email>
+    <discriminacao>Contrato nº 233/2017 - Processo Licitatório nº 135/2017 - Pregão Presencial nº 076/2017 - Ordem de Serviço nº 670 - Empenho nº 1153
+INSTALAÇÃO DE RASTREADORES NOS VEÍCULOS ÔNIBUS ESCOLARES COM PLACA GTM-8728, HIL-2379, HLF-1618, HLF-8531, NXX-1253, OPJ-9694, QMU-3897 E PZL-1501, UTILIZ. PELA SEC. MUN. DE EDUCAÇÃO
+SOLICITAMOS QUE O VALOR SEJA CREDITADO EM CONTA DO BANCO DO BRASIL - AGENCIA: 0200-3 CONTA: 39321-5 - NORIO MOMOI ME.</discriminacao>
+    <observacao/>
+    <aliqinss>0.00</aliqinss>
+    <aliqirrf>0.00</aliqirrf>
+    <deducaoirrf>0.00</deducaoirrf>
+    <valordeducoes>0.00</valordeducoes>
+    <codservico/>
+    <estado>Normal</estado>
+    <valoriss>0.00</valoriss>
+    <basecalculo>278.40<aliqpercentual>0.00</aliqpercentual></basecalculo>
+    <issretido>0.00</issretido>
+    <discriminacao/>
+  </nota>
+</importacao>

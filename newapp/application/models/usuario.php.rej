@@ -1,0 +1,19 @@
+diff a/newapp/application/models/usuario.php b/newapp/application/models/usuario.php	(rejected hunks)
+@@ -59,12 +59,12 @@
+ 	    return $this->db->get_where('cad_contasbank', array('cad_retorno' => 'usuario', 'id_retorno' => $id_user))->result();
+     }
+ 
+-	public function listar($empresa, $paginacao = 0, $limite = 9999999, $campo_ordem = 'id', $ordem = 'DESC'){
++	
++	public function listar($where = array(), $paginacao = 0, $limite = 9999999, $campo_ordem = 'id', $ordem = 'DESC'){
+ 
+-		$query = $this->db->where("status", 1)
+-							->like("empresa", $empresa, "both")
+-						  	->order_by($campo_ordem, $ordem)
+-						  	->get('usuario', $limite, $paginacao);
++		$query = $this->db->where($where)
++						  ->order_by($campo_ordem, $ordem)
++						  ->get('usuario', $limite, $paginacao);
+ 		return $query->result();
+ 	}
+ 

@@ -1,0 +1,42 @@
+.inputData{
+    width: 155px;
+    background: white!important;
+    cursor: pointer!important;
+}
+.well, .well>div{
+    display: inline-flex;
+}
+.dDate1, .dDate2{
+    padding: 20px;
+}
+.well>div>label{
+    padding: 5px;
+}
+.well>button{
+    height: 30px;
+    margin-top: 20px;
+}
+.display{
+    display: none;
+}
+#dynatable-search-table-eqp{
+    margin-top: 7px;
+    height: 0px;
+}
+.painel-btns{
+    margin-left: 0;
+}
+
+@media print {
+    body	{background: #FFF; color: #000; font: 12pt serif;}
+    a:link, a:visited	{color: #333; text-decoration: underline;}
+    a[href]:after		{content: " (" attr(href) ")";}
+    .trSerial, .trPlaca, .trCliente, .trOs, .trValorServ, .trValorTotal{
+        list-style: none;
+        margin: 0 auto;
+    }
+    .painel-btns, #dynatable-search-table-eqp, #btn-gerar, .navbar-text{
+        display: none;
+    }
+
+}

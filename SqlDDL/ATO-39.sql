@@ -1,0 +1,2 @@
+INSERT INTO `showtecsystem`.`cad_permissoes_funcionarios` (descricao, cod_permissao, status, modulo)
+VALUES('Registro de Chamadas - Atendimento Omnilink', 'vis_registro_chamadas_atendimento_omnilink', '1', 'Atendimento Omnilink');

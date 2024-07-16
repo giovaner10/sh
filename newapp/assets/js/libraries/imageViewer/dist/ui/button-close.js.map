@@ -1,0 +1,1 @@
+{"version":3,"file":"button-close.js","sourceRoot":"","sources":["../../src/js/ui/button-close.js"],"names":[],"mappings":";;AAAA,oEAAoE;AACpE,IAAM,WAAW,GAAG;IAClB,IAAI,EAAE,OAAO;IACb,KAAK,EAAE,OAAO;IACd,KAAK,EAAE,EAAE;IACT,QAAQ,EAAE,IAAI;IACd,IAAI,EAAE;QACJ,WAAW,EAAE,IAAI;QACjB,KAAK,EAAE,uFAAuF;QAC9F,SAAS,EAAE,iBAAiB;KAC7B;IACD,OAAO,EAAE,OAAO;CACjB,CAAC;AAEF,kBAAe,WAAW,CAAC"}

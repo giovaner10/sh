@@ -1,0 +1,155 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-collapse .navbar-nav .nav-item{
+    margin: -8px 0;
+    padding: 8px 5px;
+}
+.navbar-collapse .navbar-nav .nav-item:hover{
+    cursor: pointer;
+    background-color: #888;
+}
+.navbar-collapse .navbar-nav .active{
+    background-color: #222;
+}
+
+.menu-negocio{
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px;
+    border: 0 solid #CCC;
+    border-radius: 4px;
+    box-shadow: 1px 1px 20px #EEE;
+    background-color: #EEE;
+}
+
+.container-negocios{
+    width: 100%;
+    min-height: 100%;
+    background: #FFF;
+    display: flex;
+    position: absolute;
+    border-top: 1px solid #CCC;
+}
+.container-negocios .colum{
+    width: 10%;
+    margin: 0px;
+    background: #FFF;
+    flex-grow: 1;
+}
+.container-negocios .colum ul{
+    height: 100%;
+    margin: 0px;
+    background: #FFF;
+    border-right: 1px dotted #DDD;
+    flex-grow: 1;
+}
+.container-negocios ul li{
+    list-style: none;
+}
+.container-negocios .colum .header-colum{
+    width: 100%;
+    min-height: 100px;
+    margin: 0%;
+    padding: 6px;
+    background: url("../images/cone-hover.png") no-repeat center;
+    background-size: 100%;
+    background-color: #DDD;
+    border-bottom: 1px solid #CCC;
+    border-right: 1px solid #CCC;
+}
+.container-negocios .colum .content-colum{
+    width: 100%;
+    min-height: 90px;
+    margin: 0;
+    padding: 6px;
+    border-bottom: 2px solid #EEE;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.arrow-green {
+    width: 100%;
+    margin-left: 0px;
+}
+.arrow-green input[type=radio] {
+    display: none;
+}
+.arrow-green label i.fa:before {
+    content:url('../../asset/images/arrow-active.png');
+    color: #FC0;
+    margin-left: -6px;
+
+}
+.arrow-green input[type=radio]:checked ~ label i.fa:before {
+    content:url('../../asset/images/arrow-desactive.png');
+    color: #CCC;
+    margin-left: -6px;
+}
+
+.form-hidden{
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
+.btn-separe{
+    border-left: 1px solid #FFF;
+    border-right: 1px solid #FFF;
+}
+
+.container-funil{
+    min-width: 100%;
+    min-height: 150px;
+    background: #EEE;
+}
+.funil{
+    margin: 15px 15px 15px 0;
+    background: url("../images/cone.png") no-repeat center ;
+    background-size: 100%;
+    float: left;
+    cursor: move;
+    flex-grow: 1;
+
+}
+.funil:hover{
+    background: url("../images/cone-hover.png") no-repeat center ;
+    background-size: 100%;
+    float: left;
+    cursor: move;
+}
+.text-funil{
+    min-width: 80px;
+    padding: 12px;
+}
+
+.text-gray{
+    color: #777;
+}
+
+
+.btn-status-atividade{
+    margin-top:-30px; float: right;
+}
+
+/* ALERT */
+
+.alert-stagnado{
+    background-color: #F55;
+    color: #EEE;
+}
+.alert-stagnado > div > .text-gray{
+    color: #FFF;
+}
+.label-stagnado{
+    height: 20px;
+    padding: 8px;
+    border-radius: 25px;
+    font-size: 15px;
+    background-color: #F55;
+    color: #FFF;
+}

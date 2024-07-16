@@ -1,0 +1,152 @@
+<!-- TabelaCabecalho -->
+<script type="text/javascript">
+function acaoPermissao(Seq,Acao,Modulo,Tipo) {
+   	$.post("includes/incAcao.php",
+   	{
+   		Seq: Seq,
+   		acao: Acao.toUpperCase(),
+		modulo: Modulo,
+		tipo: Tipo
+	},
+	function(data){
+		$('#conteudo').html(data);
+	});
+}
+</script>
+<table class="tablex" width="{TabelaCabecalho_largura}" align="center"> 
+  <thead  class="theadx"> 
+  <tr class="odd">
+
+<!-- TabelaCabecalhoCampos -->
+    <th scope="col" abbr="Home" class="thx">{TabelaCabecalho_campo}</th> 
+
+<!-- TabelaCabecalhoFim -->		
+  </tr>	
+  </thead>
+<tbody>
+
+<!-- TabelaLinha -->
+  <tr class="{TabelaLinha_odd}"> 
+    <th scope="row" class="column1">{TabelaLinha_campo1}</th> 
+
+<!-- TabelaLinhaCampos -->
+    <td class="tdx">{TabelaLinha_campo}</td> 
+	
+<!-- TabelaLinhaFim -->	
+  </tr>
+  
+<!-- TabelaFim -->
+</tbody> 
+</table>
+
+<!-- SelectInicio -->
+<select id="{SelectInicio_nome}" name="{SelectInicio_nome}" class="forms" onchange="{SelectInicio_onChange}">
+	<option></option>
+<!-- SelectItem -->
+	<option value="{SelectItem_valor}"{SelectItem_selected}>{SelectItem_nome}</option>
+<!-- SelectFim -->
+</select>
+
+<!-- FormInicio -->
+<form name="{FormInicio_nome}" method="post" action="{FormInicio_action}"> 
+
+<!-- FormFim -->
+</form>
+
+<!-- Input -->
+<input type="{Input_tipo}" id="{Input_nome}" name="{Input_nome}" value="{Input_valor}" size="{Input_tamanho}" class="forms">
+
+<!-- TextArea -->
+<textarea id="{TextArea_nome}" name="{TextArea_nome}" rows="{TextArea_linhas}" cols="{TextArea_colunas}" class="forms">{TextArea_valor}</textarea>
+
+<!-- Checkradio -->
+<input type="{Checkradio_tipo}" name="{Checkradio_nome}" value="{Checkradio_valor}" class="forms" {Checkradio_marcado}>
+
+
+<!-- Calendario_Includes -->
+<script type="text/javascript" src="{local_tpldir}/js/ui/ui.datepicker.js"></script>
+<script type="text/javascript" src="{local_tpldir}/js/ui/i18n/ui.datepicker-pt-BR.js"></script>
+
+<!-- Calendario -->
+<script type="text/javascript">
+$(function() {
+	$("#{Calendario_Id}").datepicker ( 
+			{
+		changeMonth: true,
+		changeYear: true
+	} );
+} );
+</script>
+   {Calendario_Titulo} <input type="text" size="{Calendario_Size}" id="{Calendario_Id}" value="{Calendario_Valor}" name="{Calendario_Id}" class="forms">
+
+	
+<!-- Imagem -->
+<img src="{Imagem_src}" width="{Imagem_width}" height="{Imagem_height}" onClick="{Imagem_onClick}" border="{Imagem_border}" style="{Imagem_style}">
+
+
+<!-- Grid -->
+<link rel="stylesheet" type="text/css" href="{local_tpldir}/css/flexigrid/flexigrid.css">
+<script type="text/javascript" src="{local_tpldir}/js/flexigrid/flexigrid.js"></script>
+<script type="text/javascript">
+jQuery(function(){
+
+	$("#{Grid_Id}").flexigrid (
+			{
+		url: 'js/json.php',
+		dataType: 'json',		
+		colModel : [
+<!-- Grid_ColModel -->
+				{
+					display: '{Grid_ColModel_Titulo}', name : '{Grid_ColModel_Campo}', width : '{Grid_ColModel_Width}', sortable : true, align: '{Grid_ColModel_Align}'
+				}
+				{Grid_ColModel_Virgula}
+<!-- Grid_Continuacao -->
+			],
+			buttons : [
+<!-- Grid_Buttons -->
+						{
+							name: '{Grid_Buttons_Titulo}', onpress : acao
+							},
+						{separator: true
+							}
+							{Grid_Buttons_Virgula}
+<!-- Grid_Continuacao2 -->
+			],
+		searchitems : [
+<!-- Grid_SearchItems -->
+				{
+					display: '{Grid_SearchItems_Titulo}', name : '{Grid_SearchItems_Campo}', isdefault: {Grid_SearchItems_IsDefault}
+				}
+				{Grid_SearchItems_Virgula}
+<!-- Grid_Final -->	
+			],
+		tabela: '{Grid_Tabela}',
+		campos: '{Grid_Campos}',
+		condicao: '{Grid_Condicao}',
+		sortname: '{Grid_SortName}',
+		sortorder: '{Grid_SortOrder}',
+		usepager: true,
+		singleSelect: true,
+		title: '{Grid_Titulo}',
+		useRp: true,
+		rp: {Grid_Linhas},
+		width: '{Grid_Width}',
+		height: '{Grid_Height}'
+	}); 
+
+});
+  
+</script>
+<table id="{Grid_Id}" style="display:none;"></table>
+
+<!-- Dialog -->
+<script type="text/javascript" src="{local_tpldir}/js/ui/ui.draggable.js"></script>
+<script type="text/javascript" src="{local_tpldir}/js/ui/ui.resizable.js"></script>
+<script type="text/javascript" src="{local_tpldir}/js/ui/ui.dialog.js"></script>
+<script type="text/javascript" src="js/external/bgiframe/jquery.bgiframe.js"></script>
+
+<!-- Tabs -->
+<script type="text/javascript" src="{local_tpldir}/js/ui/ui.tabs.js"></script>
+
+<!-- Functions -->
+<script type="text/javascript" src="{local_tpldir}/js/functions.js"></script>

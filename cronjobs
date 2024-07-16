@@ -1,0 +1,2 @@
+#envio de e-mail notificando faturas: à 3 dias pra vencer, no dia de vencimento, vencida à 3 dias
+00 5/1 * * * root php /var/www/html/shownet/newapp/index.php cron envia_notificacao_status_fatura

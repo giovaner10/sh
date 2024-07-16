@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+.navbar, .breadcrumb, .btn, .input, .input-prepend, .well, .well-small{
+	display: none;
+}
+
+.table, .table-bordered, .info, .warning{
+	background-color: #fff;
+}
+
+.container{
+	float:none;
+}
+

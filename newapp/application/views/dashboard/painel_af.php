@@ -1,0 +1,1 @@
+<iframe title="FabricaAf - CAPA" width="1140" height="541.25" src="https://app.powerbi.com/view?r=eyJrIjoiOGQyZTU5M2YtYWMwYy00MDcyLTg5YjYtMzgyYWU1ZmI5MGYxIiwidCI6ImFiODlkOGJjLTFlZjQtNGU3ZC1iMGNlLWM0M2ZiZmRmYWNlMyJ9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>

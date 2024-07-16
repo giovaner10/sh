@@ -1,0 +1,11 @@
+<?php
+$host = "localhost";
+$user = "usuario";
+$pass = "senha";
+ 
+$base = "banco_de_dados";
+ 
+#####################  Conexão com o banco de dados  ################################
+$conexao = mysql_connect($host, $user, $pass);
+$banco = mysql_select_db($base) or die ("Não foi possível selecionar o Banco de dados.");
+?>

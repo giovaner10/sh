@@ -1,0 +1,483 @@
+<!-- InicioDaPagina -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>SHOW TECNOLOGIA - PROPOSTA</title>
+
+<style type="text/css">
+.titulo {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.texto {
+	font-size: 11px;
+	text-align:justify;
+}
+.corpo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	width: 15cm;
+	text-align: left;
+	vertical-align: top;
+}
+p {
+	font-size: 11px;
+	text-align:justify;
+}
+
+#salto_pagina_despois {
+ 
+page-break-after:always;
+page-break-inside: auto;
+ 
+}
+ 
+#salto_pagina_antes {
+ 
+page-break-before:always;
+ 
+}
+
+.saltopagina {
+page-break-after: always;
+}
+    
+#moldura {
+	border: #CCCCCC solid 1px;
+	height: auto;
+	padding: 20px;
+	margin-bottom: 30px;
+	clear: both;
+}
+
+#moldura_0 {
+	border: #CCCCCC solid 1px;
+	height: auto;
+	padding: 0px;
+	margin-bottom: 0px;
+	clear: both;
+}
+
+#moldura .foto3x4 {
+	width: 100px;
+	height: 100px;
+	float: right;
+	margin-top: -8px;
+	text-align:center;
+}
+
+#moldura .foto3x4 .hover {
+	cursor: pointer;
+}
+
+.descricao {
+	position: absolute;
+	width: 100px;
+	color: #000000;
+	margin-top: 33px;
+	line-height: 15px;
+	font-weight: bold;
+}
+
+#moldura .titulo_moldura {
+	background-color:#FFFFFF;
+	color:#999999;
+	display:inline;
+	margin-bottom:10px;
+	margin-left:-10px;
+	margin-top:-30px;
+	padding-left:10px;
+	padding-right:10px;
+	position:absolute;
+	text-align:center;
+	width:auto;
+}
+
+.titulo{
+	background: url('../../../templates/default/img/bkg_topo.png') repeat-x;	
+}
+
+.rodape{
+	background: url('../../../templates/default/img/bkg_baixo.png') repeat-x;	
+}
+
+.menu{
+	margin-top: 0px;
+	width: 450px;
+	height: 25px;
+	padding-top:10px;
+	background-color: #cecece;
+	background: url('../../../templates/default/img/bkg-menu.png') repeat-x;
+	display: block;
+	position: relative;
+}
+
+.separador{
+	position: fixed;
+	width: 2px;
+	height: 60px;
+	background: url('/sistema/templates/default/img/separador.png') repeat-x;
+	margin-bottom: 0px;
+}
+
+.icone{
+	float:left;
+	width: auto;
+	text-align: center;
+	margin-right:12px;
+	margin-left:12px;
+}
+
+.icone p{
+	margin-top: 5px;
+	text-transform: uppercase;
+	color: #000;
+}
+
+/* ================ FISHEYE ================ */
+.fisheye{
+	text-align: center;
+	position: relative;
+	height: 50px;
+	margin-top: -5px;
+	width: 400px;
+	margin-left: -15px;
+}
+a.fisheyeItem
+{
+	text-align: center;
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+	position: absolute;
+	display: block;
+	top: 0;
+}
+.fisheyeItem img
+{
+	border: none;
+	margin: 0 auto 5px auto;
+	width: 100%;
+}
+.fisheyeItem span
+{
+	display: none;
+	positon: relative;
+	width: 120px;
+	margin-left: -28px;
+	text-decoration: none;
+}
+.fisheyeContainter
+{
+	height: 50px;
+	width: auto;
+	position: absolute;
+	margin-left: -15px;
+}
+
+A:VISITED {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	color: #000000;
+	text-decoration: none;
+}
+
+A:LINK {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	color: #000000;
+	text-decoration: none;
+
+}
+
+A:HOVER {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	text-decoration: underline;
+}
+
+A:ACTIVE {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	text-decoration: none;
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	font-size: 12px;
+	color: #666666;
+}
+
+td {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	font-size: 12px;
+	color: #666666;
+}
+
+
+.forms {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	font-size: 11px;
+	background-color: #FFFFFF;
+	border: 1px solid #999999;
+}
+
+
+.botao {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	font-size: 10px;
+	background-color: #CC6600;
+	border: 1px solid #999999;
+	color:#FFFFFF;
+}
+
+.laranja_escuro {
+  Color: #CC6600;
+}
+
+.azul_escuro {
+	Color: #002157;
+}
+.vermelho_escuro {
+	Color: #003471;
+}
+
+.tablex {
+	border-top:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	margin:1em auto;
+	border-collapse:collapse;
+	}
+tr.odd td	{
+	background:#f9f9f9;
+	}
+tr.odd .column1	{
+	background:#f3f3f3;
+	border-top:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	font-size: 12px;
+	}	
+.column1	{
+	background:#f9f9f9;
+	border-top:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	border-left:1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	font-size: 12px;
+	}
+.tdx {
+	color:#666666;
+	border-bottom:1px solid #cccccc;
+	border-left:1px solid #cccccc;
+	padding:.3em 1em;
+	text-align:center;
+	}				
+.thx {
+	font-weight:normal;
+	color: #ff0000;
+	text-align:left;
+	border-bottom: 1px solid #cccccc;
+	border-left:1px solid #cccccc;
+	padding:.3em 1em;
+	}							
+.theadx th {
+	background: #f0f0f0;
+	text-align:center;
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	font-size: 12px;
+	color:#000000;
+	}	
+
+        
+            
+    
+    
+    
+    
+    
+.classname {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}.classname:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}.classname:active {
+	position:relative;
+	top:1px;
+}
+/* This imageless css button was generated by CSSButtonGenerator.com */
+</style>
+
+<script type="text/javascript">
+function acaoPermissao(Seq,Acao,Modulo,Tipo) {
+   	$.post("includes/incAcao.php",
+   	{
+   		Seq: Seq,
+   		acao: Acao.toUpperCase(),
+		modulo: Modulo,
+		tipo: Tipo
+	},
+	function(data){
+		$('#conteudo').html(data);
+	});
+}
+</script>
+</head>
+
+<body>
+    <table width="700" align="center">
+        <tr>
+            <td class="corpo">
+                <div align="center" class="titulo">
+                   <img src="./{tpldir}/img/logo-showtecnologia.png" height="50" />
+               </div>
+
+            </td>
+        </tr>        
+        <tr>
+            <td colspan="8">
+                <br></br>
+À {cliente}....<br><br>
+                Prezados (as)<br></br>
+Com satisfação encaminhamos nossa proposta comercial para prestação de serviço em rastreamento e monitoramento como solicitado.
+                
+<br/><br/>
+Em anexo informativos sobre nossa empresa, produtos e serviços.<br><br>
+        Condições Proposta:
+            </td>
+        </tr>
+        <tr><td>
+
+    <table width="100%" align="center" cellspacing="0" cellpadding="5" border="1" id="cadP" style="font-family: 'Trebuchet MS',Tahoma,Arial; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; background-color: white;">
+        
+      <tbody>
+        <tr style="background-color: white;">
+          <td width="" align="right" style="font-family: 'Trebuchet MS',Tahoma,Arial; font-size: 12px; color: #666666; width: 110px; background-color: white;">Tipo
+            Proposta</td>
+          <td colspan="5" rowspan="1">{tipo} </td>
+          <td width="" align="right" style="font-family: 'Trebuchet MS',Tahoma,Arial; font-size: 12px; color: #666666; width: 110px; background-color: white;">Vencimento da
+            Proposta</td>
+          <td colspan="7" rowspan="1">{vencimento_proposta} dias </td>
+          
+        </tr>
+        <tr style="background-color: #ccffff;">
+          <td width="" align="right" style="font-family: 'Trebuchet MS',Tahoma,Arial; font-size: 12px; color: #666666;">Vendedor</td>
+          <td colspan="7" rowspan="1">{vendedor} </td>
+        </tr>
+        <tr>
+            <td  width="" align="right" style="font-family: 'Trebuchet MS', Tahoma, Arial; font-size: 12px; color: rgb(102, 102, 102);">Meses do contrato</td>
+               <td align="left" colspan="2">{meses} meses
+          </td>
+          <td align="right" colspan="2" rowspan="1">Vencimento<span class="Apple-converted-space"></span></td>
+          <td align="center">{vencimento}
+          </td>
+          <td align="right" style="width: 168px;" colspan="" rowspan="1">1ª
+            mensalidade  para<span class="Apple-converted-space">
+            </span></td>
+          <td align="center"><span class="Apple-converted-space">{primeira_mensalidade}</span></td>
+        </tr>
+        <tr style="background-color: #ccffff;">
+          <td width="" align="right" style="font-family: 'Trebuchet MS',Tahoma,Arial; font-size: 12px; color: #666666;">Quantidade
+          </td>
+            <td align="left" colspan="7">{qtd} Veículos
+          </td>
+          
+        </tr>
+        <tr>
+          <td width="" align="right" style="font-family: 'Trebuchet MS', Tahoma, Arial; font-size: 12px; color: rgb(102, 102, 102);">Valor
+            Mensal</td>
+          <td align="center" colspan="5">{valor_mes} por veículo<br />
+          </td>
+          
+          <td align="right" colspan="" rowspan="1"><!-- TOTAL MENSAL<span class="Apple-converted-space">
+            </span> --><br />
+          </td>
+          <td align="right"><!-- {total_mensal} --><br />
+          </td>
+        </tr>
+        <tr style="background-color: #ccffff;">
+          <td width="" align="right" colspan="1" rowspan="3" style="font-family: 'Trebuchet MS',Tahoma,Arial; font-size: 12px; color: #666666;">
+            <h3>Adesão</h3>
+          </td>
+            <td align="right" colspan="2">Valor</td>
+          
+          <td align="center" colspan="3">{adesao} por veículo</td>
+          
+          
+          <td align="right" colspan=""><!-- TOTAL INSTALAÇÃO  -->
+          </td>
+          <td align="right"><!-- {total_instalacao} -->
+          </td>
+        </tr>
+        <tr style="background-color: #ccffff;">
+          <td align="right" colspan="2" rowspan="1">Dividido em</td>
+          <td align="center" colspan="3">{divide}
+          </td>
+          
+          <td colspan="" align="right" rowspan="1" >Valor da Entrada
+          </td>
+          <td align="right">{valor_entrada}</td>
+        </tr>
+        <tr style="background-color: #ccffff;">
+            <td colspan="2" rowspan="1" align="right">1a. Parcela para<span class="Apple-converted-space"></span></td>
+            
+            <td colspan="3" align="center">{primeira_prestacao}</td>
+
+          <td colspan="" align="right" rowspan="1" >Valor da Parcela</td>
+          <td align="right">{valor_parcela}</td>
+
+        </tr>
+          
+      </tbody>
+    </table>
+    <br></br>
+Somos uma empresa que tem como diferencial um atendimento personalizado na busca de entender as necessidades do cliente para assim entregar as melhores soluções.
+<br></br>
+<strong>Formas de pagamento</strong><br>
+Trabalhamos com pagamento à vista ou parcelado em boleto bancário.
+            </td>
+        </tr>
+        <tr><td id="aqui"></td></tr>
+        <tr>
+            <td>
+                <br></br><br></br>
+                <img src="./{tpldir}/img/logo-showtecnologia.png" height="50" /><br>
+                {vendedor}<br>
+                {emailvendedor}<br>
+                {fone_vendedor}<br>
+                {celu_vendedor}
+            </td>
+        </tr>
+    </table>
+    <br></br>
+    <hr>
+    <center>
+        Show Prestadora	de Serviços do Brasil LTDA<br>
+       (83) 3271.6559 - (83) 9653.0506 - (83) 9653.0550<br>
+       www.showtecnologia.com	
+    </center>
+  
+</body>
+</html>

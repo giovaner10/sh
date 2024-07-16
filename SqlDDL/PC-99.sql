@@ -1,0 +1,2 @@
+INSERT INTO `showtecsystem`.`cad_permissoes_funcionarios` (descricao, cod_permissao, status, modulo)
+VALUES('Remover Solicitações - Portal Compras', 'rem_solicitacoes_portal_compras', '1', 'Portal de Compras');

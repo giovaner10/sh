@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<importacao>
+  <nota>
+    <rps_data>2018-04-24</rps_data>
+    <tomador_nome>MUNICÍPIO DE ITAPETININGA</tomador_nome>
+    <tomador_cnpjcpf>46.634.291/0001-70</tomador_cnpjcpf>
+    <tomador_inscrmunicipal/>
+    <tomador_logradouro>PC DOS TRES PODERES </tomador_logradouro>
+    <tomador_numero>2287</tomador_numero>
+    <tomador_complemento/>
+    <tomador_bairro>JARDIM MARABA</tomador_bairro>
+    <tomador_cep>18213-900</tomador_cep>
+    <tomador_municipio>ITAPETININGA</tomador_municipio>
+    <tomador_uf>SP</tomador_uf>
+    <tomador_email>TRANSPORTEESCOLAR@ITAPETININGA.SP.GOV.BR	</tomador_email>
+    <discriminacao>Contrato 204/2016 - Prestação de Serviços de Rastreamento e Monitoramento Veicular com a locação de rastreadores para os veículos da secretaria Municipal de Educação.
+Em OUTUBRO de 2017: 127 equipamentos a preço unitário de R$33,74; perfazendo o total de R$ 4.284,98.</discriminacao>
+    <observacao/>
+    <aliqinss>0.00</aliqinss>
+    <aliqirrf>0.00</aliqirrf>
+    <deducaoirrf>0.00</deducaoirrf>
+    <valordeducoes>0.00</valordeducoes>
+    <codservico/>
+    <estado>Normal</estado>
+    <valoriss>0.00</valoriss>
+    <basecalculo>4284.98<aliqpercentual>0.00</aliqpercentual></basecalculo>
+    <issretido>0.00</issretido>
+    <discriminacao/>
+  </nota>
+</importacao>

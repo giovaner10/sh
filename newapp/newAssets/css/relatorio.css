@@ -1,0 +1,69 @@
+#grafico {
+	margin-top: 10px;
+	padding: 15px 5px 15px 35px;
+	border: double 3px #0068B1;
+	border-radius: 15px;
+	width: 100%;
+	min-height: 280px;
+} 
+#numeros {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px;
+	border: double 3px;
+	border-radius: 15px;
+	min-height: 280px;
+	background: linear-gradient(to bottom, #d2dfed 0%,#c8d7eb 11%,#a6c0e3 38%,#a6c0e3 38%,#bed0ea 51%,#afc7e8 62%,#bad0ef 75%,#99b5db 88%,#799bc8 100%);
+    padding-top: 25px;
+}
+h2, h4 {
+	text-align: center;
+}
+hr {
+	margin-top: -3px;
+	margin-bottom: 8px;
+}
+.block {
+	vertical-align: middle;
+	margin: 6px;
+	padding-top: 5px;
+	float: left;
+	text-align: center;
+	border-radius: 12px;
+	border: dotted 1px;
+	width: 32%;
+	min-height: 100px;
+}
+.block:hover {
+	font-size: 110%;
+	opacity: 0.85;
+}
+.infomacao {
+	width: 100%;
+	float: left;
+	border-radius: 10px;
+	text-align: center;
+}
+.para {
+	font-size: 16px;
+	margin: 0px;
+}
+p a {
+	color: #ffffff;
+}
+.dados {
+	font-weight: bold;
+	color: #ffffff;
+	border-radius: 10px;
+	margin: 1.5px;
+	padding: 4px 4px 4px 4px;
+	background-color: #000000;
+}
+.letras div {
+	width: 49%;
+	margin: auto;
+}
+.noPadd {
+	padding: 0px;
+    margin: 1px;
+}

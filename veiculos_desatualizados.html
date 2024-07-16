@@ -1,0 +1,664 @@
+
+<!-- Contratos_Titulo -->
+<link href="./{tpldir}/css/estilos.css" rel="stylesheet" type="text/css" />
+<h2>{Contratos_Titulo}</h2>
+
+<!-- Contratos_SubTitulo -->
+<h3><u>Contrato</u>: {Contratos_SubTitulo_Id} - {Contratos_SubTitulo_Nome}</h3>
+
+<!-- Contratos_Acao -->
+<script type="text/javascript">
+
+function acao(com,grid)
+{
+
+	switch(com){
+            
+            
+		case "Cadastrar":
+	       	$.post("includes/Contratos/incContratosAbas.php",
+	       		{
+		       		acao: "CONTRATO_ABAS",
+				abaId:"dados",
+	           		tipo: 7,
+	           		id: ""
+				},
+				function(data){
+					$('#conteudo').html(data);
+				});
+				break;
+                                
+		case "Alteraar":
+
+
+			       	$.post("includes/incAcao.php",
+			       		{
+				       		acao: "CADASTRO_CLIENTE_ABAS",
+						abaId:"proposta",
+			           		tipo: 1,
+			           		idP: ''
+						},
+						function(data){
+                                                    //$('#conteudo').html(data);
+							$('#propostas').html(data);
+						});
+
+               
+			break;
+
+
+		case "Imprimir":
+			if($('.trSelected',grid).length>0){
+		    	var items = $('.trSelected',grid);
+		    	var id = items[0].cells[0].children[0].innerHTML;
+		       	$.post("includes/incAcao.php",
+		       		{
+			       		acao: "CONTRATO_IMPRIMIR",
+		           		id: id
+					},
+					function(data){
+						$('#conteudo').html(data);
+					});
+			}				
+			break;
+
+		case "Email":
+			if($('.trSelected',grid).length>0){
+		    	var items = $('.trSelected',grid);
+		    	var id = items[0].cells[0].children[0].innerHTML;
+		       	$.post("includes/incAcao.php",
+		       		{
+			       		acao: "CONTRATO_EMAIL",
+		           		id: id
+					},
+					function(data){
+						$('#conteudo').html(data);
+					});
+			}				
+			break;
+                        
+
+
+
+	}
+		
+}
+
+</script>
+
+<!-- Contratos_Formulario -->
+<script type="text/javascript" src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.dialog.js"></script>
+<script type="text/javascript" src="js/external/bgiframe/jquery.bgiframe.js"></script>
+<script type="text/javascript" src="{tpldir}/js/maskedinput/maskedinput-1.3.js"></script>
+<script type="text/javascript">
+                
+	function msg(id,msg){
+
+                $(".ui-dialog-title").html("");
+		
+		switch(id){
+			case 'erro': $("#aviso").attr("title","Erro");
+						 $(".ui-dialog-title").html("Erro");
+						 var img = '<span class="ui-icon ui-icon-alert"'+
+						 'style="float:left; margin:0 7px 20px 0;"></span>';
+						 break;
+			case 'sucesso': $("#aviso").attr("title","Sucesso");
+							$(".ui-dialog-title").html("Sucesso");
+							var img = '<span class="ui-icon ui-icon-circle-check"'+
+							 'style="float:left; margin:0 7px 20px 0;"></span>';
+							break;
+		}
+		if (msg != ''){
+		$(".msg").html(img+msg);
+                }
+
+		$("#aviso").dialog('open');
+		
+		$("#aviso").dialog({
+			bgiframe: true,
+			resizable: false,
+			autoOpen: false,
+			height:210,
+			modal: true,
+			overlay: {
+				backgroundColor: '#000',
+				opacity: 0.5
+			},
+			buttons: {
+				OK: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+        }
+
+	function retorno(data){ 
+		
+		switch(data){
+			case "cadastrado":
+				msg("sucesso","Contrato CADASTRADO com sucesso!");
+			break; 
+			
+			case "editado":
+				msg("sucesso","Contrato EDITADO com sucesso!");
+			break; 	
+			
+			default:
+				msg("erro","Os dados NÃO foram alterados ainda. Por favor TENTE NOVAMENTE!<br>");
+			break; 					
+		}
+		
+		if (data != ""){
+			
+			$.get('includes/Cadastros/incCadastrosClientesAbaPropostas.php', function(data) {		    	
+		        //$('#conteudo').html(data);
+                        $('#propostas').html(data);
+		    });
+		}
+	}  
+	
+	$(document).ready( function() {
+        
+		$("#primeira_mensalidade").mask("99/99/9999");
+                $("#data_prestacao").mask("99/99/9999");
+                $("#data_contrato").mask("99/99/9999");
+		
+		calculaTotalMensal();
+		calculaTotalInstalacao();
+		calculaValorPrestacao();
+		
+		$("#valor_mensal").change(function(){
+			calculaTotalMensal();
+		});
+		
+		$("#valor_instalacao").change(function(){
+			calculaTotalInstalacao();
+			calculaValorPrestacao();
+		});
+		
+		$("#quantidade_veiculos").change(function(){
+			calculaTotalMensal();
+			calculaTotalInstalacao();
+			calculaValorPrestacao();
+		});
+		
+		$("#prestacoes").change(function(){
+			calculaValorPrestacao();
+		});		
+		
+		$("#valor_entrada").change(function(){
+			calculaValorPrestacao();
+		});		
+                
+		function calculaTotalMensal(){
+			var qtd = parseFloat($("#quantidade_veiculos").val());
+			var vlMensal = parseFloat($("#valor_mensal").val());
+			if (qtd > 0) $("#total_mensal").val(qtd * vlMensal);
+			else $("#total_mensal").val(0);
+		}
+		
+		function calculaTotalInstalacao(){
+			var qtd = parseFloat($("#quantidade_veiculos").val());
+			var vlMensal = parseFloat($("#valor_instalacao").val());
+                        
+			if (qtd > 0) $("#total_instalacao").val(qtd * vlMensal);
+                        
+			else $("#total_instalacao").val(0);
+		}
+		
+		function calculaValorPrestacao(){
+			var instal = parseFloat($("#total_instalacao").val());
+                        var ventrada = parseFloat($("#valor_entrada").val());
+			var parcelas = parseFloat($("#prestacoes").val());
+                        
+			if (parcelas > 0) $("#valor_prestacao").val((instal-ventrada) / parcelas);
+			else $("#valor_prestacao").val(0);
+		}		
+
+                msg("","");
+
+		$.ui.dialog.defaults.bgiframe = true;
+		
+		$('#btEnviarP').css("cursor","pointer").click(function() {
+
+			// Fazendo as verificacoes
+			var mens1 = "";
+			if($("#id_cliente option:selected").val() == "") mens1 += "<li>Cliente</li>";
+			if($("#id_vendedor option:selected").val() == "") mens1 += "<li>Vendedor</li>";
+                        if($("#multa:checked").val() == "2" && $("#multa_valor").val() == "") mens1 += "<li>Valor da multa</li>";
+			if ($("#meses").val() == "" || $("#meses").val() == " ") mens1 += "<li>Meses do Contrato</li>";
+			if ($("#vencimento").val() == "" || $("#vencimento").val() == " ") mens1 += "<li>Dia do Vencimento</li>";
+			if ($("#primeira_mensalidade").val() == "" || $("#primeira_mensalidade").val() == " ") mens1 += "<li>1ª mensalidade</li>";
+			if ($("#quantidade_veiculos").val() == "" || $("#quantidade_veiculos").val() == " ") mens1 += "<li>Quantidade de Veículos</li>";
+			if ($("#valor_mensal").val() == "" || $("#valor_mensal").val() == " ") mens1 += "<li>Valor Mensal</li>";
+			if ($("#valor_instalacao").val() == "" || $("#valor_instalacao").val() == " ") mens1 += "<li>Valor da Instalação</li>";
+
+			if (mens1 = ""){
+				// Definindo as mensagens de erro
+				var mens = "Campos obrigatórios em branco:<br><ul>";
+				mens += mens1 + "</ul>";
+				msg("erro",mens);
+			}
+			else {
+				// Se nao houverem erros, enviar os dados
+                                
+				var params = { 
+						acao  : "CADASTRO_ENVIAR",
+						tipo: 77,
+						id    : $('#idP').val(),
+						oper  : "{oper}"
+					};
+				
+				$('#cadP').find("input[type='text'], input[type='hidden'],"+
+						 "input[type='password'], input[type='submit'], option:selected,"+
+						 "textarea").filter(":enabled").each(function(){
+						 	params[ this.name || this.id || this.parentNode.name || this.parentNode.id ] = this.value;
+						 });
+		
+				$('#cadP').find("input[type='checkbox'], input[type='radio']").each(function(){
+					if ($(this).is(":checked")) {
+						params[ this.name ] = this.value;
+					}
+				});
+                                
+					params[ 'id_cliente' ] = $('#id_cliente').val();
+					
+				
+				$.post("includes/incAcao.php", params,
+					function(data){
+						retorno(data);
+					}
+				);
+			}
+		})
+		.hover(
+			function(){ 
+				$(this).addClass("ui-state-hover"); 
+			},
+			function(){ 
+				$(this).removeClass("ui-state-hover"); 
+			}
+		).mousedown(function(){
+			$(this).addClass("ui-state-active"); 
+		})
+		.mouseup(function(){
+				$(this).removeClass("ui-state-active");
+		});
+	});
+        //$(this).getElementById("boleto").options[1];
+</script>
+<p align="center">
+</p>
+
+<table id="cadP" width="550" cellpadding="5" cellspacing="0"  >
+        
+  <tr>
+    <td width="100" align="right">Tipo Proposta</td>
+    <td>
+    
+<!-- Contratos_Formulario_Continuacao_Cliente -->
+	</td>
+</tr>
+  <tr>
+    <td width="100" align="right">Vendedor</td>
+    <td>
+    
+<!-- Contratos_Formulario_Continuacao_Vendedor -->
+	</td>
+  </tr>  
+  <tr>
+    <td width="100" align="right">Meses para Contrato</td>
+    <td><input type="text" name="meses" id="meses" value="{meses}" size="2" class="forms" style="text-align:right" />
+    	&nbsp;&nbsp;&nbsp;
+    	Dia do Vencimento <input type="text" name="vencimento" id="vencimento" value="{vencimento}" size="2" class="forms" style="text-align:right" />
+    	&nbsp;&nbsp;&nbsp;
+    	1ª mensalidade <input type="text" name="primeira_mensalidade" id="primeira_mensalidade" value="{primeira_mensalidade}" size="10" class="forms" />
+    	</td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">Número de Veículos</td>
+    <td><input type="text" name="quantidade_veiculos" id="quantidade_veiculos" value="{quantidade_veiculos}" size="2" class="forms" style="text-align:right" />
+    &nbsp;&nbsp;&nbsp;    
+    </td>
+  </tr>
+  <tr>
+    <td width="100" align="right">Valor Mensal</td>
+    <td>
+    	<input type="text" name="valor_mensal" id="valor_mensal" value="{valor_mensal}" size="10" class="forms" style="text-align:right" />
+    	por veículo
+    	&nbsp;&nbsp;&nbsp;
+    	TOTAL MENSAL <input type="text" name="total_mensal" id="total_mensal" value="{total_mensal}" size="10" class="forms" style="text-align:right" disabled />
+    	</td>
+
+  </tr>   
+  <tr>
+    <td width="100" align="right">Adesão</td>
+    <td>Valor
+    	<input type="text" name="valor_instalacao" id="valor_instalacao" value="{valor_instalacao}" size="10" class="forms" style="text-align:right" />
+    	por veículo
+    	&nbsp;&nbsp;&nbsp;
+    	TOTAL INSTALAÇÃO <input type="text" name="total_instalacao" id="total_instalacao" value="{total_instalacao}" size="10" class="forms" style="text-align:right" disabled /><br>
+        Valor da Entrada <input type="text" name="valor_entrada" id="valor_entrada" value="{valor_entrada}" size="10" class="forms" style="text-align:right"  />
+        &nbsp;&nbsp;
+        Dividir a Instalação em
+       <input type="text" name="prestacoes" id="prestacoes" value="{prestacoes}" size="2" class="forms" style="text-align:right" /> parcelas
+        <br>
+    	Valor da Parcela <input type="text" name="valor_prestacao" id="valor_prestacao" value="{valor_prestacao}" size="10" class="forms" style="text-align:right" readonly />
+        &nbsp;&nbsp;&nbsp;&nbsp
+        Data para 1a. Parcela <input type="text" name="data_prestacao" id="data_prestacao" value="{data_prestacao}" size="10" class="forms" />
+        
+    	</td>
+  </tr>
+  <tr>
+      <td>
+          Multa Contratual
+          
+      </td>
+      <td>
+          <input type="radio" value="1" name="multa" id="multa" {check1} />Multa Proporcional ao Contrato<br>
+          <input type="radio" value="2" name="multa" id="multa" {check2} />Multa valor Negociado por Veiculo
+                 <input type="text" name="multa_valor" id="multa_valor" value="{multa_valor}" size="10" class="forms" style="text-align:right"><br>
+          <input type="radio" value="3" name="multa" id="multa" {check3} />Sem Multa
+      </td>
+  </tr>
+      
+  <tr>
+      <td  width="100" align="right">
+   	Data da Proposta
+      </td>
+      <td>
+          <input type="text" name="data_contrato" id="data_contrato" value="{data_contrato}" size="10" class="forms" />
+      </td>
+  </tr>
+
+  <tr>
+      <td  width="100" align="right">
+   	Status
+      </td>
+      <td>
+<!-- Contrato_Formulario_Status -->      	
+      </td>
+  </tr>
+
+  <tr>
+    <td align="right">
+    	&nbsp;
+    	<input type="hidden" name="idP" id="idP" value="{idP}" />
+        <input type="hidden" name="id_cliente" id="id_cliente" value="{id_cliente}" />
+    </td>
+    <td><button id="btEnviarP" class="ui-button ui-state-default ui-corner-all">ENVIAR</button></td>
+  </tr>
+</table>
+
+<div id="aviso">
+	<p class="msg"></p>
+</div>
+
+
+<!-- Abas -->
+<script type="text/javascript">
+
+var loader = "<p align='center'><img src='{tpldir}/img/ajax-loader.gif'><br>Carregando...</p>";
+
+$(function() {
+	$("#{Abas_Id}").tabs();
+});
+
+function mostraFormulario(abaId,id) {
+	$("#" + abaId).html(loader);
+	$.ajax({  
+		type: "GET",  
+		url: "includes/incAcao.php?acao=CONTRATO_ABAS&abaId="+abaId+"&id="+id,
+		success: function(data) {  
+			$("#" + abaId).html(data)
+		}  
+	});	
+}
+
+</script>
+
+<!-- Abas_Cabecalho -->
+<div id="{Abas_Id}" style="width:100%;">
+	<ul class="abas">
+
+<!-- Abas_Cabecalho_LI -->
+		<li><a href="#{Abas_Titulo_Id}" onClick="mostraFormulario('{Abas_Titulo_Id}','{Abas_id}');">{Abas_Titulos}</a></li>
+
+<!-- Abas_Cabecalho_Fim -->
+	</ul>
+
+<!-- Abas_Conteudo_DIV -->
+	<div id="{Abas_Conteudo_Id}"></div>
+	
+<!-- Abas_Conteudo -->
+	<script type="text/javascript">
+		$(function() {
+			$("#{Abas_Conteudo_Id}").html(loader);
+			$.ajax({  
+				type: "GET",  
+				url: "includes/incAcao.php?acao=CONTRATO_ABAS&abaId=dados&id={id}",
+				success: function(data) {  
+					$("#{Abas_Conteudo_Id}").html(data)
+				}  
+			});
+		});
+	</script>	
+		
+<!-- Abas_Fim -->
+</div>
+
+<!-- Titulo_Abas_Conteudo -->
+ {Titulo_Abas_Conteudo}
+ 
+<!-- Contratos_IMPRIMIR_BASE -->
+<script src="{tpldir}/js/ui/ui.core.js"></script>
+<script src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script src="{tpldir}/js/ui/ui.dialog.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready( function() {
+	
+	$.ui.dialog.defaults.bgiframe = true;
+	$(".ui-dialog-content").css("padding","0");
+
+	dlg("includes/Contratos/incContratosModelo.php?id={id}");
+	
+});
+
+
+function dlg(arquivo){
+	var loader = "<center><p>&nbsp</p><img id='loader' hspace='5' src='{tpldir}/img/ajax-loader.gif'><br>Carregando...</center>";
+	
+	$("#print").dialog("open");
+	$("iframe#conteudo_impressao").attr("src",arquivo);
+	
+	$("#print").dialog({
+		
+		bgiframe: true,
+		resizable: false,
+		height:500,
+		width: 850,
+		modal: true,
+		overlay: {
+			backgroundColor: '#000',
+			opacity: 0.5
+		},
+		buttons: {
+			
+			Imprimir: function() {
+			  		 document.getElementById('conteudo_impressao').contentWindow.focus();
+					 document.getElementById('conteudo_impressao').contentWindow.print();
+			},
+			
+			Fechar: function() {
+				$("iframe#conteudo_impressao").remove();
+				$(this).dialog('close');
+                        $.get('includes/Cadastros/incCadastrosClientesAbaPropostas.php', function(data) {		    	
+		        //$('#conteudo').html(data);
+                        $('#propostas').html(data);
+			    });
+			}
+                        
+                        
+		}
+	});
+}
+</script>
+<style>
+.ui-dialog-titlebar-close{
+    display: none;
+}
+</style>
+
+<div id="print" title="Visualizar Impress&atilde;o" style="display:none;">
+	<iframe id="conteudo_impressao" width="100%" height="100%" frameborder="0" scrolling="auto"></iframe>
+</div>
+
+
+
+<!-- Titulo_Abas_Conteudo -->
+ {Titulo_Abas_Conteudo}
+ 
+<!-- Veiculos_IMPRIMIR_EMAIL -->
+<script src="{tpldir}/js/ui/ui.core.js"></script>
+<script src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script src="{tpldir}/js/ui/ui.dialog.js"></script>
+
+<script type="text/javascript">
+
+
+$(document).ready( function() {
+	
+	$.ui.dialog.defaults.bgiframe = true;
+	$(".ui-dialog-content").css("padding","0");
+
+	dlg("includes/Suporte/incVeiculosDesatualizados.php?id={id}");
+	
+});
+
+function msg(msg,ok){
+
+                $("#aviso").attr("title","Aviso");
+		$(".ui-dialog-title").html('Aviso');
+		var img = '<span class="ui-icon ui-icon-circle-check"'+
+                          'style="float:left; margin:0 7px 20px 0;"></span>';
+					
+                $(".msg").html(img+msg);
+
+		$("#aviso").dialog('open');
+		
+                if (ok==1){
+		$("#aviso").dialog({
+			bgiframe: true,
+			resizable: false,
+			autoOpen: false,
+			height:210,
+			modal: true,
+			overlay: {
+				backgroundColor: '#000',
+				opacity: 0.5
+			},
+			buttons: {
+				OK: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+                }
+                else
+                {
+		$("#aviso").dialog({
+			bgiframe: true,
+			resizable: false,
+			autoOpen: false,
+			height:210,
+			modal: true,
+			overlay: {
+				backgroundColor: '#000',
+				opacity: 0.5
+			}
+		});
+                
+                
+                }
+
+}
+
+function dlg(arquivo){
+	var loader = "<center><p>&nbsp</p><img id='loader' hspace='5' src='{tpldir}/img/ajax-loader.gif'><br>Carregando...</center>";
+	var loader1 = "<center><p>&nbsp</p><img id='loader' hspace='5' src='{tpldir}/img/ajax-loader.gif'><br>Enviando...</center>";
+	$("#print").dialog("open");
+	$("iframe#conteudo_impressao").attr("src",arquivo);
+	
+	$("#print").dialog({
+		
+		bgiframe: true,
+		resizable: false,
+		height:500,
+		width: 1000,
+		modal: true,
+		overlay: {
+			backgroundColor: '#000',
+			opacity: 0.5
+		},
+		buttons: {
+                    
+			Enviar: function() {
+
+                                  $(".ui-dialog-title").html(loader1);
+                                  //msg("Aguarde enviando email!",false);
+                                    $.get('tcpdf/examples/maladiretaproposta.php', function(data) {		    	
+                                        $(".ui-dialog-title").html(data);
+                                        alert(data);
+                                        //msg(data,true);
+                                        
+                                        $('#conteudo').html(data);
+                                  });
+                        },
+                    
+			
+			Imprimir: function() {
+			  		 document.getElementById('conteudo_impressao').contentWindow.focus();
+					 document.getElementById('conteudo_impressao').contentWindow.print();
+			},
+			
+			Fechar: function() {
+				$("iframe#conteudo_impressao").remove();
+				$(this).dialog('close');
+
+                        $.get('includes/Cadastros/incCadastrosClientesAbaPropostas.php', function(data) {		    	
+		        //$('#conteudo').html(data);
+                        $('#propostas').html(data);
+                                
+			    });
+			}
+                        
+                        
+		}
+	});
+}
+</script>
+<style>
+.ui-dialog-titlebar-close{
+    display: none;
+}
+</style>
+
+<div id="print" title="Visualizar Impress&atilde;o" style="display:none;">
+	<iframe id="conteudo_impressao" width="100%" height="100%" frameborder="0" scrolling="auto"></iframe>
+</div>
+
+
+	
+
+
+
+
+
+
+

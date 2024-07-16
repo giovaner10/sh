@@ -1,0 +1,238 @@
+#moldura {
+	border: #CCCCCC solid 1px;
+	height: auto;
+	padding: 20px;
+	margin-bottom: 30px;
+	clear: both;
+}
+
+#moldura .foto3x4 {
+	width: 100px;
+	height: 100px;
+	float: right;
+	margin-top: -8px;
+	text-align:center;
+}
+
+#moldura .foto3x4 .hover {
+	cursor: pointer;
+}
+
+.descricao {
+	position: absolute;
+	width: 100px;
+	color: #000000;
+	margin-top: 33px;
+	line-height: 15px;
+	font-weight: bold;
+}
+
+#moldura .titulo_moldura {
+	background-color:#FFFFFF;
+	color:#999999;
+	display:inline;
+	margin-bottom:10px;
+	margin-left:-10px;
+	margin-top:-30px;
+	padding-left:10px;
+	padding-right:10px;
+	position:absolute;
+	text-align:center;
+	width:auto;
+}
+
+.titulo{
+	background: url('/sistema/templates/default/img/bkg_topo.png') repeat-x;	
+}
+
+.rodape{
+	background: url('/sistema/templates/default/img/bkg_baixo.png') repeat-x;	
+}
+
+.menu{
+	margin-top: 0px;
+	width: 430px;
+	height: 25px;
+	padding-top:10px;
+	background-color: #cecece;
+	background: url('/sistema/templates/default/img/bkg-menu.png') repeat-x;
+	display: block;
+	position: relative;
+}
+
+.separador{
+	position: fixed;
+	width: 2px;
+	height: 60px;
+	background: url('/sistema/templates/default/img/separador.png') repeat-x;
+	margin-bottom: 0px;
+}
+
+.icone{
+	float:left;
+	width: auto;
+	text-align: center;
+	margin-right:12px;
+	margin-left:12px;
+}
+
+.icone p{
+	margin-top: 5px;
+	text-transform: uppercase;
+	color: #000;
+}
+
+/* ================ FISHEYE ================ */
+.fisheye{
+	text-align: center;
+	position: relative;
+	height: 50px;
+	margin-top: -5px;
+	width: 380px;
+	margin-left: -15px;
+}
+a.fisheyeItem
+{
+	text-align: center;
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+	position: absolute;
+	display: block;
+	top: 0;
+}
+.fisheyeItem img
+{
+	border: none;
+	margin: 0 auto 5px auto;
+	width: 100%;
+}
+.fisheyeItem span
+{
+	display: none;
+	positon: relative;
+	width: 120px;
+	margin-left: -28px;
+	text-decoration: none;
+}
+.fisheyeContainter
+{
+	height: 50px;
+	width: auto;
+	position: absolute;
+	margin-left: -15px;
+}
+
+A:VISITED {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	color: #000000;
+	text-decoration: none;
+}
+
+A:LINK {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	color: #000000;
+	text-decoration: none;
+
+}
+
+A:HOVER {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	text-decoration: underline;
+}
+
+A:ACTIVE {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	text-decoration: none;
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	font-size: 12px;
+	color: #666666;
+}
+
+td {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	font-size: 12px;
+	color: #666666;
+}
+
+
+.forms {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	font-size: 11px;
+	background-color: #FFFFFF;
+	border: 1px solid #999999;
+}
+
+
+.botao {
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	font-size: 10px;
+	background-color: #CC6600;
+	border: 1px solid #999999;
+	color:#FFFFFF;
+}
+
+.laranja_escuro {
+  Color: #CC6600;
+}
+
+.azul_escuro {
+	Color: #002157;
+}
+.vermelho_escuro {
+	Color: #003471;
+}
+
+.tablex {
+	border-top:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	margin:1em auto;
+	border-collapse:collapse;
+	}
+tr.odd td	{
+	background:#f9f9f9;
+	}
+tr.odd .column1	{
+	background:#f3f3f3;
+	border-top:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	font-size: 12px;
+	}	
+.column1	{
+	background:#f9f9f9;
+	border-top:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	border-left:1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	font-size: 12px;
+	}
+.tdx {
+	color:#666666;
+	border-bottom:1px solid #cccccc;
+	border-left:1px solid #cccccc;
+	padding:.3em 1em;
+	text-align:center;
+	}				
+.thx {
+	font-weight:normal;
+	color: #ff0000;
+	text-align:left;
+	border-bottom: 1px solid #cccccc;
+	border-left:1px solid #cccccc;
+	padding:.3em 1em;
+	}							
+.theadx th {
+	background: #f0f0f0;
+	text-align:center;
+	font-family: "Trebuchet MS", Tahoma, Arial;
+	font-size: 12px;
+	color:#000000;
+	}	

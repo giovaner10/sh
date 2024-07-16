@@ -1,0 +1,99 @@
+    /* Rules for icon sizes: */
+    .material-icons.md-18 { font-size: 18px; }
+    .material-icons.md-24 { font-size: 24px; } /* Default */
+    .material-icons.md-36 { font-size: 36px; }
+    .material-icons.md-48 { font-size: 48px; }
+
+    .material-icons{
+        position: relative;
+        bottom: -15px;
+    }
+
+    .material-icons.right { float: right; }
+
+    .dashboard-container{
+        width: 100%;
+        padding: 25px;
+        margin: 20px 0 20px 0;
+        background-color: #fff;
+        box-shadow: 0px 0px 5px 0px rgba(143,143,143,1);
+    }
+    .divisor{
+        border-color: #ccc;
+    }
+    .well{
+        padding: 5px 10px 5px 10px;
+    }
+    .well-titulo{
+        font-size: medium;
+    }
+    .well-info{
+        
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .well.alert{
+        background-color: #ffae00;
+        border: none;
+        color: white;
+        
+    }
+    .well.danger{
+        background-color: #e60000;
+        border: none;
+        color: white;
+    }
+    .well.primary-rounded{
+        background-color: white;
+        border: 1px solid #0062ff;
+        color: #0062ff;
+    }
+    .well.success-rounded{
+        background-color: white;
+        border: 1px solid #009900;
+        color: #009900;
+        height: 80px;
+    }
+    .well.secondary-rounded{
+        background-color: white;
+        border: 1px solid #808080;
+        color: #808080;
+        height: 80px;
+    }
+    .well.alert-rounded{
+        background-color: white;
+        border: 1px solid #ffae00;
+        color: #ffae00;
+        height: 80px;
+    }
+    .well.danger-rounded{
+        background-color: white;
+        border: 1px solid #e60000;
+        color: #e60000;
+        height: 80px;
+    }
+    .well-rounded-titulo{
+        color: #404040;
+        font-weight: bold;
+    }
+    /* Cards */
+    .card{
+        padding: 0;
+        margin: 0;
+        /* border: 1px solid #ccc; */
+        box-shadow: 0px 0px 5px 0px rgba(143,143,143,1);
+    }
+    .card .card-header{
+        width: 100%;
+        padding: 10px;
+        font-size: medium;
+        border-bottom: 1px solid #ccc;
+    }
+    .card .card-body{
+        width: 100%;
+        padding: 10px;
+        
+    }
+    .row-card-margin{
+        margin-top: 50px;
+    }

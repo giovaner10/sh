@@ -1,0 +1,521 @@
+:root{
+    --bg-primary: #06a9f6;
+    --bg-primary-dark: #0096dd;
+    --bg-danger: #d9534f;
+    --bg-danger-dark: #af423f;
+    --bg-secondary: #efefef;
+    --bg-secondary-dark: #e4e4e4;
+    --bg-dark: #807f7f;
+    --yellow: #ffd600;
+    --green: #08c908;
+    --red: #e72222;
+}
+
+/** BUTTONS */
+
+.btn-primary{
+    background-color: var(--bg-primary) !important;
+    border-radius: 1px !important;
+    border-color: var(--bg-primary) !important;
+}
+.btn-primary:hover{
+    background-color: var(--bg-primary-dark) !important;
+    border-radius: 1px !important;
+    border-color: var(--bg-primary-dark) !important;
+}
+
+.btn-danger{
+    background-color: var(--bg-danger) !important;
+    border-radius: 1px !important;
+    border-color: var(--bg-danger) !important;
+}
+.btn-danger:hover{
+    background-color: var(--bg-danger-dark) !important;
+    border-radius: 1px !important;
+    border-color: var(--bg-danger-dark) !important;
+}
+
+
+.btn-secondary{
+    /* background-color: #efefef !important; */
+    background-color: var(--bg-secondary) !important;
+    border-radius: 1px !important;
+    border-color: var(--bg-secondary) !important;
+    color: black !important;
+}
+.btn-secondary:hover{
+    background-color: var(--bg-secondary-dark) !important;
+    border-radius: 1px !important;
+    border-color: var(--bg-secondary) !important;
+    color: black !important;
+}
+
+
+/* INPUTS E SELECTS*/
+input{
+    height: 31px !important;
+}
+
+label {
+    color: var(--bg-dark);
+}
+
+input[type="search"] {
+    border: 1px solid #ccc !important;
+    height: 20px !important;
+}
+
+
+/* TITULO E SUBTITULO */
+.titulo{
+    font-size: x-large;
+}
+.subtitulo{
+    margin-top: 10px;
+    font-size: large;
+    font-weight: bold !important;
+}
+.right {
+    position: absolute;
+    top: 0;
+    right: 30px;
+}
+
+/* BORDERS */
+.border_bottom{
+    border-bottom: 1px solid var(--bg-secondary) !important;
+    width: 100% !important;
+}
+.border_top_bottom{
+    border-bottom: 1px solid var(--bg-secondary) !important;
+    border-top: 1px solid var(--bg-secondary) !important;
+    width: 100% !important;
+}
+
+
+/* CARDS */
+.min-height-cards{
+    min-height: 200px;
+}
+.card {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 10px;
+    min-height: 250px;
+    width: 100% !important;
+    margin-bottom: 20px;
+}
+.card > .card-header, .card > .border_top_bottom > .card-header {
+    font-size: medium;
+    color: #666565;
+    padding: 5px;
+    font-weight: bold !important;
+}
+.card > .card-body, .card > .border_top_bottom > .card-body {
+    padding: 5px;
+
+}
+.card > .card-footer {
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-small{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 5px;
+    width: 100% !important;
+    height: 100% !important;
+    margin-bottom: 15px;
+}
+.card-small > .card-header {
+    padding: 5px;
+}
+.card-small > .card-body {
+    padding: 5px;
+
+}
+
+.card-small > .card-body > .big-info {
+    font-size: x-large;
+    text-decoration: none;
+    color: #4da4dc;
+}
+.card-small > .card-body > .x-big-info {
+    font-size: xx-large;
+    text-decoration: none;
+    color: #4da4dc;
+}
+
+.card-small > .card-body > a:hover {
+    color: #3e81ac;
+    cursor: pointer;
+}
+
+.card-blue{
+    border: 1px solid var(--bg-primary) !important;
+}
+.card-yellow{
+    border: 1px solid var(--yellow) !important;
+}
+.card-green{
+    border: 1px solid var(--green) !important;
+}
+.card-red{
+    border: 1px solid var(--red) !important;
+}
+
+
+/* MIN-HEIGHT */
+.min_heigth_150{
+    min-height: 150px !important;
+}
+.min_heigth_300{
+    min-height: 300px !important;
+}
+.min_heigth_410{
+    min-height: 410px !important;
+}
+.min_heigth_500{
+    min-height: 500px !important;
+}
+
+/* HEIGHT */
+.heigth_150{
+    height: 150px !important;
+}
+.heigth_300{
+    height: 300px !important;
+}
+.heigth_410{
+    height: 410px !important;
+}
+.heigth_500{
+    height: 500px !important;
+}
+.height_550{
+    height: 550px !important;
+}
+.heigth_100pc {
+    height: 100% !important;
+}
+
+
+#icone_users{
+    font-size: 400px;
+    color: #ebebeb;
+}
+
+/* MARGIN */
+.margin_bottom_20{
+    margin-bottom: 20px !important;
+}
+
+/* TAB LIST */
+
+.nav-tabs>li>a:not(.active){
+    color: #ccc !important;
+}
+.nav-tabs>li:not(.active)>a:hover{
+    background-color: white !important;
+    color: var(--bg-dark) !important;
+    border-left: none !important;
+    border-right: none !important;
+    transition: .3s;
+}
+
+.nav-tabs > li:hover{
+    cursor: pointer;
+}
+.nav-tabs > li.active > a{
+    color: var(--bg-primary) !important;
+}
+
+/* badges not active */
+.nav-tabs>li:not(.active)>a>small{
+    background-color: #ccc !important;
+}
+.nav-tabs>li:not(.active)>a:hover>small{
+    background-color: var(--bg-dark) !important;
+    transition: .3s;
+}
+/* badge active */
+.nav-tabs > li.active > a > small{
+    background-color: var(--bg-primary) !important;
+}
+
+/* COLORS CARDS VISÃO DE PRODUTOS */
+#ABERTO{
+    color: var(--bg-primary) !important;
+}
+
+#VENCIDO{
+    color: var(--yellow) !important;
+}
+
+#LIQUIDADO{
+    color: var(--green) !important;
+}
+
+.color_blue{
+    color: var(--bg-primary) !important;
+}
+.color_yellow{
+    color: var(--yellow) !important;
+}
+.color_green{
+    color: var(--green) !important;
+}
+.color_red{
+    color: var(--red) !important;
+}
+
+
+/* DATATABLE */
+.btn-datatable {
+    display: inline-block !important;
+    padding: 3px 6px !important;
+    margin-bottom: 0 !important;
+    font-weight: normal !important;
+    line-height: 1.42857143 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+    -ms-touch-action: manipulation !important;
+    touch-action: manipulation !important;
+    cursor: pointer !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    background-color: white !important;
+    border: 1px solid var(--bg-primary) !important;
+    border-radius: 2px !important;
+    color: var(--bg-primary) !important;
+}
+
+.modal-x-lg{
+    width: 90vw !important;
+}
+
+table {
+    width: 100% !important;
+}
+
+table > thead {
+    color: var(--bg-primary) !important;
+    font-weight: large !important;
+}
+
+/* GRUPO ECONÔMICO */
+.linkGrupoEconomico{
+    text-decoration: none !important;
+    font-size: large !important;
+    color: #337ab7 !important;
+    cursor: pointer !important;
+}
+.linkGrupoEconomico:hover{
+    color: #145b97 !important;
+}
+#tab_grupo_economico{
+    height: 300px !important;
+    overflow-y: scroll !important;
+}
+/*INPUT SEARCH DATATABLES*/
+.inputSearch{
+    width: 100% !important;
+    position: relative !important;
+    display: none;
+    min-width: 100px !important;
+    margin-top: 10px !important;
+}
+.btnFilterDatatable{
+    position: relative !important; 
+    float: right !important;
+    color: #ccc !important;
+    cursor: pointer !important;
+}
+.btnFilterDatatable:hover{
+    color: gray !important;
+}
+
+.btn-body-datatable {
+    margin-right: 5px !important;
+    margin-bottom: 5px !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0px !important;
+}
+.btn-body-datatable > i {
+    font-size: medium !important;
+    position: relative; 
+    top: 2px; 
+}
+
+/*
+    CUSTOM SWITCH CHECKBOX
+*/
+
+/* The switch - the box around the slider */
+.switch {
+position: absolute;
+display: inline-block;
+width: 30px;
+height: 17px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+/* The slider */
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 13px;
+width: 13px;
+left: 2px;
+bottom: 2px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+input:checked + .slider {
+background-color: #2196F3;
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+-webkit-transform: translateX(13px);
+-ms-transform: translateX(13px);
+transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+
+#bodyAtividadeDeServico{
+    height: 80vh !important;
+    overflow-y: scroll !important;
+}
+
+.btnActive {
+    background-color: #5cb85c !important;
+    border-color: #5cb85c !important;
+}
+.btnActive:hover {
+    background-color: #4f9b4f !important;
+    border-color: #4f9b4f !important;
+}
+#formItemDeContrato>.modal-body>.row{
+	margin-bottom: 10px !important;
+
+}
+
+/* STEP BY STEP CADASTRO ITEM DE CONTRATO */
+.abaItemDeContrato:not(.active) {
+	display: none !important;
+}
+.abaItemDeContrato.active {
+	display: block !important;
+}
+/* Tamanho do modal */
+#modalItemDeContrato>div.modal-dialog {
+	width: 80vw !important;
+}
+
+/* Tamanho do modal body com overflow scroll */
+.scrollModal{
+	height: 70vh !important;
+	overflow-y: scroll !important;
+    min-height: 300px !important;
+}
+
+#bodyModalItemDeContrato {
+    height: 63vh !important;
+}
+
+#bodyModalBuscarBaseInstalada {
+    max-height: 76vh !important;
+    overflow-x: hidden !important;
+	overflow-y: auto !important;
+}
+
+#header_tabs_item_contrato{
+	border-bottom: 0 !important;
+	margin-bottom: 0 !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+    border-bottom: none !important;
+    display: none;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+
+.max_height_modal {
+max-height: 70vh !important;
+overflow-y: scroll !important;
+}
+
+.tamanhoAcao {
+width: 200px !important;
+}
+.tamanhoAcaoAnotation {
+    width: 75px !important;
+}
+
+#select2-serialBuscarContrato-container {
+    line-height: 26px !important;
+}
+.clienteDoContrato:hover{
+    cursor: pointer;
+}
+
+#dropdown-modal-os:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown>.dropdown-toggle-modal-os:active {
+/*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+  
+.disable-div {
+    pointer-events: none;
+}
+
+.wrap {
+    white-space: normal;
+}
+
+.export-button-row {
+    align-items: center;
+    display: flex;
+    margin-bottom: 6px;
+}

@@ -1,0 +1,268 @@
+<!-- Documento_Titulo -->
+<link href="./{tpldir}/css/estilos.css" rel="stylesheet" type="text/css" />
+<h2>{Documento_Titulo}</h2>
+<input id="pt" name="pasta" type="hidden" value="./{tpldir}/img/propostas/"/>
+<!-- Documento_SubTitulo -->
+<h3><u>{Documento_SubTitulo_Id}</u> {Documento_SubTitulo_Nome}</h3>
+
+<!-- Documento_Acao -->
+<script type="text/javascript">
+
+function acao(com,grid)
+{
+
+	switch(com){
+		case "Enviar":
+	       	$.post("includes/incAcao.php",
+	       		{
+	           		acao: "ARQUIVO_ENVIAR",
+	           		tipo: 1,
+	           		pasta: $("#pt").val()
+				},
+				function(data){
+					$('#conteudo').html(data);
+				});
+			break;
+
+		case "Baixar":
+				if($('.trSelected',grid).length>0){
+			    	var items = $('.trSelected',grid);
+			    	var id = items[0].cells[0].children[0].innerHTML;
+			       	$.post("includes/incAcao.php",
+			       		{
+							acao: "ARQUIVO_BAIXAR",
+							tipo: 2,
+			           		id: id
+						},
+						function(data){
+							$('#conteudo').html(data);
+						});
+				}				
+				break;
+
+								
+	}
+		
+}
+
+</script>
+
+<!-- Documento_Formulario_Cadastro_INICIO -->
+<script type="text/javascript" src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.dialog.js"></script>
+<script type="text/javascript" src="js/external/bgiframe/jquery.bgiframe.js"></script>
+<script type="text/javascript">
+            
+	function msg(id,msg){
+
+                $(".ui-dialog-title").html("");
+
+		switch(id){
+			case 'erro': $("#aviso").attr("title","Erro");
+						 $(".ui-dialog-title").html("Erro");
+						 var img = '<span class="ui-icon ui-icon-alert"'+
+						 'style="float:left; margin:0 7px 20px 0;"></span>';
+						 break;
+			case 'sucesso': $("#aviso").attr("title","Sucesso");
+							$(".ui-dialog-title").html("Sucesso");
+							var img = '<span class="ui-icon ui-icon-circle-check"'+
+							 'style="float:left; margin:0 7px 20px 0;"></span>';
+							break;
+		}
+		
+		$(".msg").html(img+msg);
+		$("#aviso").dialog('open');
+		$("#aviso").dialog({
+			bgiframe: true,
+			resizable: false,
+			autoOpen: false,
+			height:210,
+			modal: true,
+			overlay: {
+				backgroundColor: '#000',
+				opacity: 0.5
+			},
+			buttons: {
+				OK: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+	}
+
+	function retorno(data){ 
+		
+		switch(data){
+			case "cadastrado":
+				msg("sucesso","Arquivo CADASTRADO com sucesso!");
+			break; 
+			
+			case "editado":
+				msg("sucesso","Vendedor(a) EDITADO(A) com sucesso!");
+			break; 	
+			
+			default:
+				msg("erro",data+"Os dados NÃO foram alterados ainda. Por favor TENTE NOVAMENTE!");
+			break; 					
+		}
+		
+		if (data != ""){
+			
+			$.get('includes/Documentos/incListaArquivos'+$("#pasta").val()+'.php', function(data) {		    	
+		        $('#conteudo').html(data);
+		    });
+		}
+	}  
+
+        
+	$(document).ready( function() {
+		
+        	msg("","");
+
+		$.ui.dialog.defaults.bgiframe = true;
+		
+		$('#btEnviar').css("cursor","pointer").click(function() {
+
+			// Fazendo as verificacoes
+			var mens1 = "";
+                        if ($("#file").val() == "" || $("#file").val() == " ") mens1 += "<li>Selecione um arquivo</li>";
+
+			if (mens1 != ""){
+				// Definindo as mensagens de erro
+				var mens = "Campos obrigatórios em branco:<br><ul>";
+				mens += mens1 + "</ul>";
+				msg("erro",mens);
+			}
+			else {
+				// Se nao houverem erros, enviar os dados
+                                document.forms["upload"].submit();
+				var params = { 
+						acao  : "CADASTRO_ARQUIVO",
+						tipo  : 1,
+						id    : $('#id').val()
+						//oper  : {oper}
+					};
+				
+				$('#upload').find("input[type='file'], input[type='text'], input[type='hidden'],"+
+						 "input[type='password'], input[type='submit'], option:selected,"+
+						 "textarea").filter(":enabled").each(function(){
+						 	params[ this.name || this.id || this.parentNode.name || this.parentNode.id ] = this.value;
+						 });
+		
+				$('#upload').find("input[type='checkbox'], input[type='radio']").each(function(){
+					if ($(this).is(":checked")) {
+						params[ this.name ] = this.value;
+					}
+				});
+				
+				$.post("includes/incAcao.php", params,
+					function(data){
+						retorno(data);
+					}
+				);
+			}
+		})
+                .hover(
+			function(){ 
+				$(this).addClass("ui-state-hover"); 
+			},
+			function(){ 
+				$(this).removeClass("ui-state-hover"); 
+			}
+		).mousedown(function(){
+			$(this).addClass("ui-state-active"); 
+		})
+		.mouseup(function(){
+				$(this).removeClass("ui-state-active");
+		});                
+                
+                
+                
+                $('#btEnviar1').css("cursor","pointer").click(function() {
+
+			// Fazendo as verificacoes
+			var mens1 = "";
+			//if ($("#descricao").val() == "" || $("#descricao").val() == " ") mens1 += "<li>Descricao</li>";
+                        if ($("#file1").val() == "" || $("#file1").val() == " ") mens1 += "<li>Selecione um arquivo</li>";
+
+			if (mens1 != ""){
+				// Definindo as mensagens de erro
+				var mens = "Campos obrigatórios em branco:<br><ul>";
+				mens += mens1 + "</ul>";
+				msg("erro",mens);
+			}
+			else {
+				// Se nao houverem erros, enviar os dados
+                                document.forms["upload1"].submit();
+				var params = { 
+						acao  : "CADASTRO_ARQUIVO",
+						tipo  : 0,
+						id    : $('#id').val()
+						//oper  : {oper}
+					};
+				
+				$('#upload1').find("input[type='file'], input[type='text'], input[type='hidden'],"+
+						 "input[type='password'], input[type='submit'], option:selected,"+
+						 "textarea").filter(":enabled").each(function(){
+						 	params[ this.name || this.id || this.parentNode.name || this.parentNode.id ] = this.value;
+						 });
+		
+				$('#upload1').find("input[type='checkbox'], input[type='radio']").each(function(){
+					if ($(this).is(":checked")) {
+						params[ this.name ] = this.value;
+					}
+				});
+				
+				$.post("includes/incAcao.php", params,
+					function(data){
+						retorno(data);
+					}
+				);
+			}
+		})
+                
+		.hover(
+			function(){ 
+				$(this).addClass("ui-state-hover"); 
+			},
+			function(){ 
+				$(this).removeClass("ui-state-hover"); 
+			}
+		).mousedown(function(){
+			$(this).addClass("ui-state-active"); 
+		})
+		.mouseup(function(){
+				$(this).removeClass("ui-state-active");
+		});
+                
+	});
+         //<form id="upload" action="includes/save.php" method="post" enctype="multipart/form-data" target="divResultado" > 
+        //<form action="includes/save.php" method="post" enctype="multipart/form-data" target="divResultado" > 
+        //</form>
+</script>
+<p>
+	
+</p>
+        <form id="upload" action="includes/saveP.php" method="post" enctype="multipart/form-data" target="divResultado">
+            <h2>{proposta0}</h2>
+            <input id="pt" name="filename" type="hidden" value="proposta0.pdf"/>
+	<input id="file1" name="file1" type="file" />
+        <input id="btEnviar0" class="ui-button ui-state-default ui-corner-all" type="submit" value="Mudar" />
+        <iframe id="p1" src="./{tpldir}/img/propostas/proposta0.pdf" width="100%"></iframe>
+        </form>
+<hr>
+        <form id="upload1" action="includes/saveP.php" method="post" enctype="multipart/form-data" target="divResultado">
+            <h2>{proposta1}</h2>
+            <input id="pt" name="filename" type="hidden" value="proposta1.pdf"/>
+	<input id="file1" name="file1" type="file" />
+        <input id="btEnviar1" class="ui-button ui-state-default ui-corner-all" type="button" value="Mudar" />
+        <iframe id="p2" src="./{tpldir}/img/propostas/proposta1.pdf" width="100%"></iframe>
+        </form>
+
+        <iframe id="divResultado" width="100%" height="80" style="border: 0"></iframe>
+<div id="aviso">
+	<p class="msg"></p>
+</div>
+
+<!-- Documento_Formulario_Cadastro_FIM -->

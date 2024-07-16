@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    RewriteRule ^(.*)$ index.php/$1 [PT,L]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    # If we don't have mod_rewrite installed, all 404's
+    # can be sent to index.php, and everything works as normal.
+    
+</IfModule> 
+
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Bloqueia acesso aberto a listagem de arquivos dos diretorios
+Options -Indexes

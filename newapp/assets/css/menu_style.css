@@ -1,0 +1,122 @@
+.btn_disabled {
+  opacity: .4;
+  cursor: default !important;
+  pointer-events: none;
+}
+
+#menu-interno > nav {
+	position: relative;
+	width: 100%;
+}
+
+#menu-interno > nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu-interno > nav ul li a {
+	background-color: #ffffff !important;
+	color: #1492E6 !important;
+	display: block;
+	padding-left: 22px;
+	text-decoration: none;
+}
+
+#menu-interno > nav ul li a:hover {
+	background-color: #d1ecff !important;
+	text-decoration: none;
+}
+
+#menu-interno > nav ul a:hover {
+	color: #fff !important;
+	background-color: #d1ecff !important;
+	text-decoration: none;
+}
+
+#menu-interno a.active {
+  background-color: #1492E6 !important;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+#menu-interno > nav ul li ul li {
+  padding-left: 20px;
+  color: #ffffff !important;
+}
+
+#menu-interno > nav ul li ul li a {
+  background-color: #ffffff !important;
+  color: #1492E6 !important;
+  display: block;
+  padding-left: 22px px;
+  text-decoration: none;
+}
+
+#menu-interno > nav ul li ul li a:active {
+  background-color: #1C69AD !important;
+  color: #ffffff !important;
+}
+
+#menu-interno a.active {
+  background-color: #1C69AD;
+  color: #ffffff !important;
+}
+
+#menu-interno > nav ul li ul li a:hover {
+  background-color: #d1ecff !important;
+  text-decoration: none;
+}
+
+.menu-interno-link {
+	padding-right: 20px;
+}
+
+.menu-interno {
+	padding: 0px;
+	margin-bottom: 20px;
+	padding-bottom: 5px;
+}
+
+.menu-interno h4 {
+	margin-left: 30px;
+}
+
+.menu-interno ul {
+	list-style-type: none;
+	padding-left: 0px;
+}
+
+.menu-interno ul a {
+	font-family: 'Mont SemiBold';
+	padding-left: 30px;
+	width: 100%;
+	display: block;
+	line-height: 40px;
+	color: #1492E6 !important;
+	cursor: pointer;
+}
+
+.menu-interno ul a.selected {
+	background-color: #1C69AD !important;
+	color: #fff !important;
+}
+
+.menu-interno ul a:hover {
+	color: #fff !important;
+	background-color: #348AD6 !important;
+	text-decoration: none;
+}
+
+.icon_cadeado {
+  float: right;
+  text-align: right;
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+.icon_seta {
+  width: 16px;
+  margin: 10px;
+  float: right;
+}

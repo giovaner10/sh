@@ -1,0 +1,50 @@
+body {
+	font-family: 'Tahoma', Verdana, Arial, Helvetica;
+	color: #000000;
+	margin: 0px;	
+}
+.cabecalho {
+	font-size: 16px;
+}
+h1 {
+	font-size: 20px;
+	text-transform:uppercase;
+}
+h1.tabela{
+	font-size: 16px;
+	text-transform:uppercase;
+}
+table #formulario {		
+	border-width: 0px;
+	border-spacing: 0px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: white;
+}
+td #formulario {
+	border-width: 1px;
+	padding: 0px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+.label {
+	font-size: 11px;
+}
+.cont_formulario {
+	font-size: 12px;
+	font-weight: bold;
+}
+.nome {
+	font-size: 14px;
+}
+.texto {
+	text-align:justify;
+	line-height:30px;
+}
+.texto-nome {
+	display:inline;
+	border-bottom:solid 1px #000000;
+}

@@ -1,0 +1,113 @@
+#barraDeDetalhes {
+	width: 30%;
+}
+#linhaTempo {
+	width: 69%;
+	padding: 7px 4px;
+}
+#alertaStatus {
+	text-align: center;
+	color: #ffffff;
+	width: 30px;
+    height: 30px;
+	border-radius: 25px;
+	border: solid 2px;
+	padding: 2px 0px 0px 0px;
+}
+h2, h4 {
+	text-align: center;
+}
+.dados {
+	padding: 1px 7px;
+	background-color: #bbddff;
+	border-radius: 40px 0px 40px 0px;
+/*	-moz-border-radius: 40px 0px 40px 0px;
+	-webkit-border-radius: 40px 0px 40px 0px;*/
+	border: 2px solid #fff;
+}
+#datas, #forma, #valores {
+	color: #ffffff;
+	font-weight: bold;
+	padding: 0px;
+	margin: auto;
+}
+.data {
+    padding-top: 3px;
+	font-size: 17px;
+	float: left;
+	width: 19%;
+	text-align: center;
+	margin: 1px;
+	min-height: 30px;
+}
+#forma p {
+	font-size: 17px;
+	float: left;
+	padding: 0px;
+	width: 19%;
+	margin: 1px;
+}
+.tamanho {
+	width: 19%;
+	margin: 1px;
+	float: left;
+}
+.valor {
+	width: 90%;
+	border-radius: 35px;
+	font-size: 16px;
+	padding: 7px 0px 0px 0px;
+	text-align: center;
+	margin: auto;
+	min-height: 35px;
+}
+.data:hover {
+	font-size: 99%;
+	color: #005492;
+	width: 20%;
+	padding-top: 5px;
+}
+.flexaFim {
+	margin: 1px 0px 0px -1px;
+	float: left;
+	width: 0px;
+	height: 0px;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+	border-left: 15px solid;
+}
+.flexaInicio {
+	position: absolute;
+	margin: 1px -15px 0px 0px;
+	float: left;
+	width: 0px;
+	height: 0px;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+	border-left: 10px solid #bbddff;
+}
+#alertaStatus:hover {
+	font-size: 130%;
+	border: dotted;
+	padding: 0px;
+	background-color: #bbddff;
+}
+.data1{
+	background-color: #858fa5;
+}
+.data2{
+	background-color: #e87e7b;
+}
+.data3{
+	background-color: #4fb7d8;
+}
+.data4{
+	background-color: #65ce65;
+}
+.data5{
+	background-color: #e4c128;
+}
+.dataJS {
+	padding: 0px 5px;
+	font-size: 16px;
+}

@@ -1,0 +1,132 @@
+body{
+    background: #cee;
+}
+
+.painel{
+    margin-top: 0.5%;
+    border: 0 none;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .5);
+}
+
+.panel-heading, .panel-footer{
+    background: #033C73 !important;
+}
+
+.panel-footer{
+    color: #FFFFFF;
+    padding-bottom: 1px;
+}
+
+.panel-title{
+    font-size: 22px;
+}
+
+.corpo{
+    padding: 0;
+}
+
+.calamp, .maxtrack, .continental, .suntech, .quanta, .queclink, .desatualizados{
+    padding: 10px 0;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.desatualizados{
+    background: #000000;
+    padding: 3px 10px 3px 10px;
+}
+
+.calamp{
+    background: #B22222;
+}
+
+.maxtrack{
+    background: #008000;
+}
+
+.continental{
+    background: #8B008B;
+}
+
+.suntech{
+    background: #FF8800;
+}
+
+.quanta{
+    background: #0066FF;
+}
+
+.queclink{
+    background: #FF2299;
+}
+
+.grafico{
+    background: #EEEEEE;
+    text-align: center;
+    #padding: 2% 2% 2% 2%;
+}
+
+.box {
+    margin: 0px auto;
+    width: 90%;
+}
+
+.box-chart {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.modulos_desatualizados{
+    font-size: 18px;
+}
+
+.transparencia {
+     filter:alpha(opacity=60);
+     opacity: 0.6;
+     -moz-opacity:0.6;
+     -webkit-opacity:0.6;
+     padding-top: 5px;
+     padding-bottom: 5px;
+}
+
+.modalCalAmp{
+    background: #B22222;
+}
+
+.modalMaxtrack{
+    background: #005000;
+}
+
+.modalContinental{
+    background: #680068;
+}
+
+.modalSuntech{
+    background: #FF8800;
+}
+
+.modalQuanta{
+    background: #0066FF;
+}
+
+.modal-title{
+    font-weight: bold;
+    text-align: center;
+    font-size: 28px;
+    color: #FFFFFF;
+}
+
+.modal-body{
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.modal-footer{
+    text-align: center;
+}
+
+.texto-pequeno{
+    font-size: 13px;
+}

@@ -1,0 +1,424 @@
+<!-- Faturas_Titulo -->
+<link href="./{tpldir}/css/estilos.css" rel="stylesheet" type="text/css" />
+<h2>{Faturas_Titulo}</h2>
+
+<!-- Fatura_SubTitulo -->
+<h3><u>{SubTitulo}</u> {Fatura_SubTitulo_Id}{Fatura_SubTitulo_Nome}</h3>
+
+<!-- Contratos_Acao -->
+<script type="text/javascript">
+
+function acao(com,grid)
+{
+
+	switch(com){
+            
+
+		case "Gerar":
+	       	$.post("includes/Financeiro/incFaturas.php",
+	       		{
+		       		acao: "CONTRATO_FATURAS",
+				abaId:"",
+	           		tipo: 0,
+	           		id: ""
+				},
+				function(data){
+					$('#conteudo').html(data);
+				});
+				break;
+
+
+		case "Cadastrar":
+	       	$.post("includes/Contratos/incContratosAbas.php",
+	       		{
+		       		acao: "CONTRATO_ABAS",
+				abaId:"dados",
+	           		tipo: 7,
+	           		id: ""
+				},
+				function(data){
+					$('#conteudo').html(data);
+				});
+				break;
+
+		case "Editar":
+			if($('.trSelected',grid).length>0){
+		    	var items = $('.trSelected',grid);
+		    	var id = items[0].cells[0].children[0].innerHTML;
+                        var nfat = prompt ("Entre com numero da fatura para essa cobrança?","");
+                        if (nfat!=''){
+		       	$.post("includes/Financeiro/incFaturasLista.php",
+		       		{
+			       		acao: "FATURA_TROCA",
+		           		id: id,
+                                        nfat: nfat
+					},
+					function(data){
+						$('#conteudo').html(data);
+					});
+			}				
+                        }
+			break;
+
+		case "Imprimir":
+			if($('.trSelected',grid).length>0){
+		    	var items = $('.trSelected',grid);
+		    	var id = items[0].cells[0].children[0].innerHTML;
+                        var numfat = items[0].cells[1].children[0].innerHTML;
+		       	$.post("includes/incAcao.php",
+		       		{
+			       		acao: "FATURA_IMPRIMIR",
+		           		id: id,
+                                        numero: numfat
+					},
+					function(data){
+						$('#conteudo').html(data);
+					});
+			}				
+			break;
+                        
+		case "Lanc. Diversos":
+			if($('.trSelected',grid).length>0){
+		    	var items = $('.trSelected',grid);
+		    	var id = items[0].cells[0].children[0].innerHTML;
+                        var cli = items[0].cells[3].children[0].innerHTML;
+		       	$.post("includes/Financeiro/incFaturasDiversos.php",
+		       		{
+			       		acao: "FATURA_DIVERSOS",
+		           		id: id,
+                                        cli: cli
+                                },
+					function(data){
+						$('#conteudo').html(data);
+					});
+			}				
+			break;
+                        
+			
+	}
+		
+}
+
+</script>
+
+<!-- Faturas_Formulario -->
+<script type="text/javascript" src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.dialog.js"></script>
+<script type="text/javascript" src="js/external/bgiframe/jquery.bgiframe.js"></script>
+<script type="text/javascript" src="./{tpldir}/js/ui/ui.datepicker.js"></script>
+<script type="text/javascript" src="./{tpldir}/js/ui/i18n/ui.datepicker-pt-BR.js"></script>
+<script type="text/javascript" src="{tpldir}/js/maskedinput/maskedinput-1.3.js"></script>
+<script type="text/javascript">
+                
+	function msg(id,msg){
+
+                $(".ui-dialog-title").html("");
+		
+		switch(id){
+			case 'erro': $("#aviso").attr("title","Erro");
+						 $(".ui-dialog-title").html("Erro");
+						 var img = '<span class="ui-icon ui-icon-alert"'+
+						 'style="float:left; margin:0 7px 20px 0;"></span>';
+						 break;
+			case 'sucesso': $("#aviso").attr("title","Sucesso");
+							$(".ui-dialog-title").html("Sucesso");
+							var img = '<span class="ui-icon ui-icon-circle-check"'+
+							 'style="float:left; margin:0 7px 20px 0;"></span>';
+							break;
+		}
+//		if (msg != ''){
+		$(".msg").html(img+msg);
+//                }
+
+		$("#aviso").dialog('open');
+		
+		$("#aviso").dialog({
+			bgiframe: true,
+			resizable: false,
+			autoOpen: false,
+			height:210,
+			modal: true,
+			overlay: {
+				backgroundColor: '#000',
+				opacity: 0.5
+			},
+			buttons: {
+				OK: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+        }
+
+	function retorno(data){ 
+		
+		switch(data){
+			case "cadastrado":
+				msg("sucesso","Faturas GERADAS com sucesso!");
+			break; 
+			
+			case "editado":
+				msg("sucesso","Faturas EDITADO com sucesso!");
+			break; 	
+			
+			default:
+//				msg("erro","Os dados NÃO foram alterados ainda. Por favor TENTE NOVAMENTE!");
+			break; 					
+		}
+		
+		if (data != ""){
+			$.get('includes/Financeiro/incFaturasImprimirreceber.php', function(data) {		    	
+		        $('#conteudo').html(data);
+		    });
+		}
+	}  
+	
+	$(document).ready( function() {
+	$("#data_inicial").datepicker();
+	$("#data_final").datepicker();
+
+		$.ui.dialog.defaults.bgiframe = true;
+		
+		$('#btEnviar').css("cursor","pointer").click(function() {
+
+			// Fazendo as verificacoes
+			var mens1 = "";
+                        if ($("#data_inicial").val() == "" || $("#data_inicial").val() == " ") mens1 += "<li>Data Inicial</li>";
+                        if ($("#data_final").val() == "" || $("#data_final").val() == " ") mens1 += "<li>Data Final</li>";
+
+			if (mens1 != ""){
+				// Definindo as mensagens de erro
+				var mens = "Campos obrigatórios em branco:<br><ul>";
+				mens += mens1 + "</ul>";
+				msg("erro",mens);
+			}
+			else {
+				// Se nao houverem erros, enviar os dados
+				var params = { 
+						acao  : "RELATORIO_PAGOS",
+                                                id:  $('#id_cliente').val(),
+                                                ini: $('#data_inicial').val(),
+                                                fim: $('#data_final').val(),
+                                                ped: $('#pendente').val()
+                                                
+					};
+				
+				$('#cad').find("input[type='text'], input[type='hidden'],"+
+						 "input[type='password'], input[type='submit'], option:selected,"+
+						 "textarea").filter(":enabled").each(function(){
+						 	params[ this.name || this.id || this.parentNode.name || this.parentNode.id ] = this.value;
+						 });
+		
+				$('#cad').find("input[type='checkbox'], input[type='radio']").each(function(){
+					if ($(this).is(":checked")) {
+						params[ this.name ] = this.value;
+					}
+				});
+
+				$.post("includes/incAcao.php", params ,
+					function(data){
+                                            $('#conteudo').html(data);
+                                        }
+					//retorno(data);
+					//}
+				);
+                                
+			}
+		}
+//                          
+                )
+		.hover(
+			function(){ 
+				$(this).addClass("ui-state-hover"); 
+			},
+			function(){ 
+				$(this).removeClass("ui-state-hover"); 
+			}
+		).mousedown(function(){
+			$(this).addClass("ui-state-active"); 
+		})
+		.mouseup(function(){
+				$(this).removeClass("ui-state-active");
+		});
+	});
+</script>
+<p>
+	Favor preencher corretamente o formulário abaixo.
+</p>
+
+<table id="cad" width="550" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="100" align="right">Cliente</td>
+    <td>
+    
+<!-- Contratos_Formulario_Continuacao_Cli -->
+	</td>
+  </tr>
+  
+      <tr>
+    <td width="100" align="right">Data da Inicial</td>
+    <td>
+    	<input type="text" name="data_inicial" id="data_inicial" value="{data_inicial}" size="12" class="forms" />
+    	(ex: 99/99/9999) &nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>  
+  <tr>
+    <td width="100" align="right">Data da Final</td>
+    <td>
+    	<input type="text" name="data_final" id="data_final" value="{data_final}" size="12" class="forms" />
+    	(ex: 99/99/9999) &nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+      <td>
+          Periodo referente a?   
+  <select name="pendente" id="pendente">
+      <option value="0">Data Pagamento</option>
+      <option value="1">Data Vencimento</option>
+  </select>
+      </td>
+  </tr>
+  
+  <tr>
+      <td></td>
+      <td><button id="btEnviar" class="ui-button ui-state-default ui-corner-all">OK</button></td>
+  </tr>
+</table>
+
+<div id="aviso">
+	<p class="msg"></p>
+</div>
+
+
+<!-- Contratos_Formulario_Continuacao_Cli_ -->
+	</td>
+  </tr>
+
+
+<!-- Abas -->
+<script type="text/javascript">
+
+var loader = "<p align='center'><img src='{tpldir}/img/ajax-loader.gif'><br>Carregando...</p>";
+
+$(function() {
+	$("#{Abas_Id}").tabs();
+});
+
+function mostraFormulario(abaId,id) {
+	$("#" + abaId).html(loader);
+	$.ajax({  
+		type: "GET",  
+		url: "includes/incAcao.php?acao=CONTRATO_ABAS&abaId="+abaId+"&id="+id,
+		success: function(data) {  
+			$("#" + abaId).html(data)
+		}  
+	});	
+}
+
+</script>
+
+<!-- Abas_Cabecalho -->
+<div id="{Abas_Id}" style="width:100%;">
+	<ul class="abas">
+
+<!-- Abas_Cabecalho_LI -->
+		<li><a href="#{Abas_Titulo_Id}" onClick="mostraFormulario('{Abas_Titulo_Id}','{Abas_id}');">{Abas_Titulos}</a></li>
+
+<!-- Abas_Cabecalho_Fim -->
+	</ul>
+
+<!-- Abas_Conteudo_DIV -->
+	<div id="{Abas_Conteudo_Id}"></div>
+	
+<!-- Abas_Conteudo -->
+	<script type="text/javascript">
+		$(function() {
+			$("#{Abas_Conteudo_Id}").html(loader);
+			$.ajax({  
+				type: "GET",  
+				url: "includes/incAcao.php?acao=CONTRATO_ABAS&abaId=dados&id={id}",
+				success: function(data) {  
+					$("#{Abas_Conteudo_Id}").html(data)
+				}  
+			});
+		});
+	</script>	
+		
+<!-- Abas_Fim -->
+</div>
+
+<!-- Titulo_Abas_Conteudo -->
+ {Titulo_Abas_Conteudo}
+ 
+<!-- Faturas_IMPRIMIR_BASE -->
+<script src="{tpldir}/js/ui/ui.core.js"></script>
+<script src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script src="{tpldir}/js/ui/ui.dialog.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready( function() {
+	
+	$.ui.dialog.defaults.bgiframe = true;
+	$(".ui-dialog-content").css("padding","0");
+
+	dlg("includes/Financeiro/faturapago.php?id={id}&ini={ini}&fim={fim}&ped={ped}");
+	
+});
+
+function dlg(arquivo){
+	var loader = "<center><p>&nbsp</p><img id='loader' hspace='5' src='{tpldir}/img/ajax-loader.gif'><br>Carregando...</center>";
+	
+	$("#print").dialog("open");
+	$("iframe#conteudo_impressao").attr("src",arquivo);
+	
+	$("#print").dialog({
+		
+		bgiframe: true,
+		resizable: false,
+		height:500,
+		width: 1000,
+		modal: true,
+		overlay: {
+			backgroundColor: '#000',
+			opacity: 0.5
+		},
+		buttons: {
+			
+			Imprimir: function() {
+			  		 document.getElementById('conteudo_impressao').contentWindow.focus();
+					 document.getElementById('conteudo_impressao').contentWindow.print();
+                                
+				//$.post("includes/Financeiro/incFaturasLista.php",
+                                //{
+		       		//acao: "FATURAS_IMPRESSA",
+				//idi: '{numfat}'
+				//},
+				//function(data){
+				//	$('#conteudo').html(data);
+				//});
+                            
+			},
+			
+			Fechar: function() {
+				$("iframe#conteudo_impressao").remove();
+				$(this).dialog('close');
+				$.get('includes/Financeiro/incFaturasPagas.php', function(data) {		    	
+			        $('#conteudo').html(data);
+			    });
+			}
+		}
+	});
+}
+</script>
+<style>
+.ui-dialog-titlebar-close{
+    display: none;
+}
+</style>
+
+<div id="print" title="Visualizar Impress&atilde;o" style="display:none;">
+	<iframe id="conteudo_impressao" width="100%" height="100%" frameborder="0" scrolling="auto"></iframe>
+</div>

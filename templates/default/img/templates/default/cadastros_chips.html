@@ -1,0 +1,281 @@
+<!-- Chips_Titulo -->
+<link href="./{tpldir}/css/estilos.css" rel="stylesheet" type="text/css" />
+<h2>{Chips_Titulo}</h2>
+
+<!-- Chips_SubTitulo -->
+<h3><u>Chip</u>: {Chips_SubTitulo_Id} - {Chips_SubTitulo_Nome}</h3>
+
+<!-- Chips_Acao -->
+<script type="text/javascript">
+
+function acao(com,grid)
+{
+
+	switch(com){
+		case "Cadastrar":
+	       	$.post("includes/Cadastros/incCadastrosChipsAbas.php",
+	       		{
+		       		acao: "CADASTRO_CHIPS_ABAS",
+					abaId:"dados",
+	           		tipo: 6,
+	           		id: ""
+				},
+				function(data){
+					$('#conteudo').html(data);
+				});
+			break;
+
+		case "Editar":
+				if($('.trSelected',grid).length>0){
+			    	var items = $('.trSelected',grid);
+			    	var id = items[0].cells[0].children[0].innerHTML;
+			       	$.post("includes/Cadastros/incCadastrosChipsAbas.php",
+			       		{
+				       		acao: "CADASTRO_CHIPS_ABAS",
+							abaId:"dados",
+			           		tipo: 6,
+			           		id: id
+						},
+						function(data){
+							$('#conteudo').html(data);
+						});
+				}				
+				break;
+
+	}
+		
+}
+
+</script>
+
+<!-- Chips_Formulario -->
+<script type="text/javascript" src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.dialog.js"></script>
+<script type="text/javascript" src="js/external/bgiframe/jquery.bgiframe.js"></script>
+<script type="text/javascript" src="{tpldir}/js/maskedinput/maskedinput-1.3.js"></script>
+<script type="text/javascript">
+	function msg(id,msg){
+		
+		$(".ui-dialog-title").html("");
+		
+		switch(id){
+			case 'erro': $("#aviso").attr("title","Erro");
+						 $(".ui-dialog-title").html("Erro");
+						 var img = '<span class="ui-icon ui-icon-alert"'+
+						 'style="float:left; margin:0 7px 20px 0;"></span>';
+						 break;
+			case 'sucesso': $("#aviso").attr("title","Sucesso");
+							$(".ui-dialog-title").html("Sucesso");
+							var img = '<span class="ui-icon ui-icon-circle-check"'+
+							 'style="float:left; margin:0 7px 20px 0;"></span>';
+							break;
+		}
+		
+		$(".msg").html(img+msg);
+		
+		$("#aviso").dialog('open');
+		
+		$("#aviso").dialog({
+			bgiframe: true,
+			resizable: false,
+			autoOpen: false,
+			height:210,
+			modal: true,
+			overlay: {
+				backgroundColor: '#000',
+				opacity: 0.5
+			},
+			buttons: {
+				OK: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+	}
+
+	function retorno(data){ 
+		
+		switch(data){
+			case "cadastrado":
+				msg("sucesso","Chip CADASTRADO com sucesso!");
+			break; 
+			
+			case "editado":
+				msg("sucesso","Chip EDITADO com sucesso!");
+			break; 	
+			
+			default:
+				msg("erro","Os dados NÃO foram alterados ainda. Por favor TENTE NOVAMENTE!");
+			break; 					
+		}
+		
+		if (data != ""){
+			
+			$.get('includes/Cadastros/incCadastrosChipsLista.php', function(data) {		    	
+		        $('#conteudo').html(data);
+		    });
+		}
+	}  
+	
+	$(document).ready( function() {
+		
+		$("#numero").mask("(99) 9999-9999");
+
+		msg("","");
+
+		$.ui.dialog.defaults.bgiframe = true;
+		
+		$('#btEnviar').css("cursor","pointer").click(function() {
+
+			// Fazendo as verificacoes
+			var mens1 = "";
+			if ($("#ccid").val() == "" || $("#ccid").val() == " ") mens1 += "<li>CCID</li>";
+
+			if (mens1 != ""){
+				// Definindo as mensagens de erro
+				var mens = "Campos obrigatórios em branco:<br><ul>";
+				mens += mens1 + "</ul>";
+				msg("erro",mens);
+			}
+			else {
+				// Se nao houverem erros, enviar os dados
+				var params = { 
+						acao  : "CADASTRO_ENVIAR",
+						tipo: 6,
+						id    : $('#id').val(),
+						oper  : {oper}
+					};
+				
+				$('#cad').find("input[type='text'], input[type='hidden'],"+
+						 "input[type='password'], input[type='submit'], option:selected,"+
+						 "textarea").filter(":enabled").each(function(){
+						 	params[ this.name || this.id || this.parentNode.name || this.parentNode.id ] = this.value;
+						 });
+		
+				$('#cad').find("input[type='checkbox'], input[type='radio']").each(function(){
+					if ($(this).is(":checked")) {
+						params[ this.name ] = this.value;
+					}
+				});
+				
+				$.post("includes/incAcao.php", params,
+					function(data){
+						retorno(data);
+					}
+				);
+			}
+		})
+		.hover(
+			function(){ 
+				$(this).addClass("ui-state-hover"); 
+			},
+			function(){ 
+				$(this).removeClass("ui-state-hover"); 
+			}
+		).mousedown(function(){
+			$(this).addClass("ui-state-active"); 
+		})
+		.mouseup(function(){
+				$(this).removeClass("ui-state-active");
+		});
+	});
+</script>
+<p>
+	Favor preencher corretamente o formulário abaixo.
+</p>
+<table id="cad" width="500" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="100" align="right">CCID</td>
+    <td><input type="text" name="ccid" id="ccid" value="{ccid}" size="30" class="forms" /></td>
+  </tr>
+  <tr>
+    <td width="100" align="right">Número</td>
+    <td><input type="text" name="numero" id="numero" value="{numero}" size="14" class="forms" /></td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">Operadora</td>
+    <td><input type="text" name="operadora" id="operadora" value="{operadora}" size="15" class="forms" /></td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">MB/mês</td>
+    <td><input type="text" name="mb_mes" id="mb_mes" value="{mb_mes}" size="15" class="forms" style="text-align:right" /></td>
+  </tr>   
+  <tr>
+    <td width="100" align="right">Mensalidade</td>
+    <td><input type="text" name="custo_mes" id="custo_mes" value="{custo_mes}" size="15" class="forms" style="text-align:right" /></td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">Status</td>
+    <td>
+    
+<!-- Chips_Formulario_FIM -->   
+	</td>
+  </tr>     
+  <tr>
+    <td align="right">
+    	&nbsp;
+    	<input type="hidden" name="id" id="id" value="{id}" />
+    </td>
+    <td><button id="btEnviar" class="ui-button ui-state-default ui-corner-all">ENVIAR</button></td>
+  </tr>
+</table>
+
+<div id="aviso">
+	<p class="msg"></p>
+</div>
+
+<!-- Abas -->
+<script type="text/javascript">
+
+var loader = "<p align='center'><img src='{tpldir}/img/ajax-loader.gif'><br>Carregando...</p>";
+
+$(function() {
+	$("#{Abas_Id}").tabs();
+});
+
+function mostraFormulario(abaId,id) {
+	$("#" + abaId).html(loader);
+	$.ajax({  
+		type: "GET",  
+		url: "includes/incAcao.php?acao=CADASTRO_CHIPS_ABAS&abaId="+abaId+"&id="+id,
+		success: function(data) {  
+			$("#" + abaId).html(data)
+		}  
+	});	
+}
+
+</script>
+
+<!-- Abas_Cabecalho -->
+<div id="{Abas_Id}" style="width:100%;">
+	<ul class="abas">
+
+<!-- Abas_Cabecalho_LI -->
+		<li><a href="#{Abas_Titulo_Id}" onClick="mostraFormulario('{Abas_Titulo_Id}','{Abas_id}');">{Abas_Titulos}</a></li>
+
+<!-- Abas_Cabecalho_Fim -->
+	</ul>
+
+<!-- Abas_Conteudo_DIV -->
+	<div id="{Abas_Conteudo_Id}"></div>
+	
+<!-- Abas_Conteudo -->
+	<script type="text/javascript">
+		$(function() {
+			$("#{Abas_Conteudo_Id}").html(loader);
+			$.ajax({  
+				type: "GET",  
+				url: "includes/incAcao.php?acao=CADASTRO_CHIPS_ABAS&abaId=dados&id={id}",
+				success: function(data) {  
+					$("#{Abas_Conteudo_Id}").html(data)
+				}  
+			});
+		});
+	</script>	
+		
+<!-- Abas_Fim -->
+</div>
+
+<!-- Titulo_Abas_Conteudo -->
+ {Titulo_Abas_Conteudo}

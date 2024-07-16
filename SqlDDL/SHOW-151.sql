@@ -1,0 +1,2 @@
+DROP TABLE showtecsystem.comentarios_consulta_perfil_profissional;
+

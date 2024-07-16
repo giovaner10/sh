@@ -1,0 +1,1 @@
+UPDATE showtecsystem.menu SET nome = 'Relatório de Iscas', lang_pt = 'Relatório de Iscas', lang_en = 'Bait Report' WHERE caminho = 'iscas/isca/relatorioIscas'

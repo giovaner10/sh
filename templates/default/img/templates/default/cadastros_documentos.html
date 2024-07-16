@@ -1,0 +1,278 @@
+<!-- Documento_Titulo -->
+<link href="./{tpldir}/css/estilos.css" rel="stylesheet" type="text/css" />
+<h2>{Documento_Titulo}</h2>
+<input id="pasta" name="pasta" type="hidden" value="{ida}"/>
+<!-- Documento_SubTitulo -->
+<h3><u>Arquivo</u>: {Documento_SubTitulo_Id} - {Documento_SubTitulo_Nome}</h3>
+
+<!-- Documento_Acao -->
+<script type="text/javascript">
+
+function acao(com,grid)
+{
+
+	switch(com){
+		case "Enviar":
+	       	$.post("includes/incAcao.php",
+	       		{
+	           		acao: "ARQUIVO_ENVIAR",
+	           		tipo: 1,
+	           		pasta: $("#pasta").val()
+				},
+				function(data){
+					$('#conteudo').html(data);
+				});
+			break;
+
+		case "Baixar":
+				if($('.trSelected',grid).length>0){
+			    	var items = $('.trSelected',grid);
+			    	var id = items[0].cells[0].children[0].innerHTML;
+			       	$.post("includes/incAcao.php",
+			       		{
+							acao: "ARQUIVO_BAIXAR",
+							tipo: 2,
+			           		id: id
+						},
+						function(data){
+							$('#conteudo').html(data);
+						});
+				}				
+				break;
+
+								
+	}
+		
+}
+
+</script>
+
+<!-- Documento_Formulario_Cadastro_INICIO -->
+<script type="text/javascript" src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.dialog.js"></script>
+<script type="text/javascript" src="js/external/bgiframe/jquery.bgiframe.js"></script>
+<script type="text/javascript" src="{tpldir}/js/maskedinput/maskedinput-1.3.js"></script>
+<script type="text/javascript">
+	function msg(id,msg){
+		
+		$(".ui-dialog-title").html("");
+		
+		switch(id){
+			case 'erro': $("#aviso").attr("title","Erro");
+						 $(".ui-dialog-title").html("Erro");
+						 var img = '<span class="ui-icon ui-icon-alert"'+
+						 'style="float:left; margin:0 7px 20px 0;"></span>';
+						 break;
+			case 'sucesso': $("#aviso").attr("title","Sucesso");
+							$(".ui-dialog-title").html("Sucesso");
+							var img = '<span class="ui-icon ui-icon-circle-check"'+
+							 'style="float:left; margin:0 7px 20px 0;"></span>';
+							break;
+		}
+		
+		$(".msg").html(img+msg);
+		
+		$("#aviso").dialog('open');
+		
+		$("#aviso").dialog({
+			bgiframe: true,
+			resizable: false,
+			autoOpen: false,
+			height:210,
+			modal: true,
+			overlay: {
+				backgroundColor: '#000',
+				opacity: 0.5
+			},
+			buttons: {
+				OK: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+	}
+
+	function retorno(data){ 
+		
+		switch(data){
+			case "cadastrado":
+				msg("sucesso","Arquivo CADASTRADO com sucesso!");
+			break; 
+			
+			case "editado":
+				msg("sucesso","Vendedor(a) EDITADO(A) com sucesso!");
+			break; 	
+			
+			default:
+				msg("erro",data+"Os dados NÃO foram alterados ainda. Por favor TENTE NOVAMENTE!");
+			break; 					
+		}
+		
+		if (data != ""){
+			
+			$.get('includes/Documentos/incListaArquivosAgenda.php', function(data) {		    	
+		        $('#conteudo').html(data);
+		    });
+		}
+	}  
+	
+	$(document).ready( function() {
+		
+        	//msg("","");
+
+		$.ui.dialog.defaults.bgiframe = true;
+		
+		$('#btEnviar').css("cursor","pointer").click(function() {
+
+			// Fazendo as verificacoes
+			var mens1 = "";
+			if ($("#descricao").val() == "" || $("#descricao").val() == " ") mens1 += "<li>Descricao</li>";
+                        if ($("#file").val() == "" || $("#file").val() == " ") mens1 += "<li>Selecione um arquivo</li>";
+
+			if (mens1 != ""){
+				// Definindo as mensagens de erro
+				var mens = "Campos obrigatórios em branco:<br><ul>";
+				mens += mens1 + "</ul>";
+				msg("erro",mens);
+			}
+			else {
+				// Se nao houverem erros, enviar os dados
+                                document.forms["upload"].submit();
+				var params = { 
+						acao  : "CADASTRO_ARQUIVO",
+						tipo  : 1,
+						id    : $('#id').val()
+						//oper  : {oper}
+					};
+				
+				$('#cad').find("input[type='file'], input[type='text'], input[type='hidden'],"+
+						 "input[type='password'], input[type='submit'], option:selected,"+
+						 "textarea").filter(":enabled").each(function(){
+						 	params[ this.name || this.id || this.parentNode.name || this.parentNode.id ] = this.value;
+						 });
+		
+				$('#cad').find("input[type='checkbox'], input[type='radio']").each(function(){
+					if ($(this).is(":checked")) {
+						params[ this.name ] = this.value;
+					}
+				});
+				
+				$.post("includes/incAcao.php", params,
+					function(data){
+						retorno(data);
+					}
+				);
+			}
+		})
+		.hover(
+			function(){ 
+				$(this).addClass("ui-state-hover"); 
+			},
+			function(){ 
+				$(this).removeClass("ui-state-hover"); 
+			}
+		).mousedown(function(){
+			$(this).addClass("ui-state-active"); 
+		})
+		.mouseup(function(){
+				$(this).removeClass("ui-state-active");
+		});
+	});
+        //<form action="includes/save.php" method="post" enctype="multipart/form-data" target="divResultado" > 
+        //</form>
+</script>
+<p>
+	Favor preencher corretamente o formulário abaixo.
+</p>
+
+
+<table id="cad" width="500" border="0" align="left" cellpadding="5" cellspacing="0">
+    <tr>
+        <td>
+        <form id="upload" action="includes/save.php" method="post" enctype="multipart/form-data" target="divResultado" > 
+        <input id="pasta" name="pasta"  type="text" style="width: 0px;border: 0" value="{ida}"/>
+        Descrição:
+        <input id="descricao" name="descricao" type="text"  size="100"/>
+        <br>
+        Arquivo a ser enviado:
+	<input id="File" name="file" type="file" />
+        <br>
+        <input id="btEnviar" class="ui-button ui-state-default ui-corner-all" type="button" value="Enviar" />
+        </form>
+        <iframe id="divResultado" width="100%" height="50%" style="border: 0"></ifreme>
+        </td>
+</tr>        
+        
+  <tr>
+    <td width="100" align="right">Nome</td>
+    <td><input type="text" name="nome" id="nome" value="{nome}" size="30" class="forms" /></td>
+  </tr>
+   <tr>
+    <td align="right">CPF</td>
+    <td><input type="text" name="cpf" id="cpf" value="{cpf}" size="14" class="forms" /></td>
+  </tr>  
+  <tr>
+    <td align="right">Endereço</td>
+    <td>
+    	<input type="text" name="endereco" id="endereco" value="{endereco}" size="30" class="forms" />
+    	Número <input type="text" name="numero" id="numero" value="{numero}" size="5" class="forms" />
+    </td>
+  </tr>
+  <tr>
+    <td align="right">Complemento</td>
+    <td><input type="text" name="complemento" id="complemento" value="{complemento}" size="30" class="forms" /></td>
+  </tr>
+   <tr>
+    <td align="right">Bairro</td>
+    <td><input type="text" name="bairro" id="bairro" value="{bairro}" size="30" class="forms" /></td>
+  </tr> 
+   <tr>
+    <td align="right">Cidade</td>
+    <td>
+    	<input type="text" name="cidade" id="cidade" value="{cidade}" size="30" class="forms" /></td>
+  </tr> 
+   <tr>
+    <td align="right">Estado</td>
+    <td>
+
+<!-- Documento_Formulario_Cadastro_UF_FIM -->      	
+    </td>
+  </tr> 
+<!-- Documento_Formulario_Cadastro_FIM -->    
+   <tr>
+    <td align="right">CEP</td>
+    <td><input type="text" name="cep" id="cep" value="{cep}" size="10" class="forms" /></td>
+  </tr>    
+   <tr>
+    <td align="right">Telefone Fixo</td>
+    <td><input type="text" name="fone" id="fone" value="{fone}" size="14" class="forms" /></td>
+  </tr> 
+   <tr>
+    <td align="right">Telefone Celular</td>
+    <td><input type="text" name="cel" id="cel" value="{cel}" size="14" class="forms" /></td>
+  </tr>
+   <tr>
+    <td align="right">E-mail</td>
+    <td><input type="text" name="email" id="email" value="{email}" size="30" class="forms" /></td>
+  </tr> 
+   <tr>
+    <td align="right">Comissão por veículo</td>
+    <td><input type="text" name="comissao_veiculo" id="comissao_veiculo" value="{comissao_veiculo}" size="10" class="forms" style="text-align:right" /></td>
+  </tr>
+  <tr>
+    <td align="right">Salário</td>
+    <td><input type="text" name="salario" id="salario" value="{salario}" size="10" class="forms" style="text-align:right"  /></td>
+  </tr>
+  <tr>
+    <td align="right">
+    	&nbsp;
+    	<input type="hidden" name="id" id="id" value="{id}" />
+    </td>
+    <td><button id="btEnviar" class="ui-button ui-state-default ui-corner-all">ENVIAR</button></td>
+  </tr>
+</table>
+
+<div id="aviso">
+	<p class="msg"></p>
+</div>

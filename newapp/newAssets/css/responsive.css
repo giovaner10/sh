@@ -1,0 +1,152 @@
+/*até 1366*/
+@media (max-width: 1367px) {
+    #cad-chip {
+        padding-left: 335px!important;
+    }
+    #check-right{
+        margin-left: 95px!important;
+    }
+    #check-large{
+        width: 60px!important;
+        height: 80px!important;
+        margin-right: 31px!important;
+        margin-top: 40px!important;
+        margin-left: -100% !important;
+    }
+    #inputs-text > input{
+        width: 530px!important;
+        margin-left: -90px!important;
+        border-radius: 0px!important;
+        -webkit-box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        -moz-box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        border: none;
+    }
+    #list-chips{
+        background: white!important;
+        height: 435px!important;
+        left: -17px!important;
+        width: 385px!important;
+    }
+    .btn-addChip{
+        margin-right: 75px!important;
+    }
+    .btn-cadChip{
+        margin-right: 55px!important;
+    }
+
+}
+
+@media (min-width: 1440px) and (max-width: 1599px) {
+    #cad-chip {
+        padding-left: 335px!important;
+    }
+    #check-right{
+        margin-left: 95px!important;
+    }
+    #check-large{
+        width: 60px!important;
+        height: 80px!important;
+        margin-right: 31px!important;
+        margin-top: 40px!important;
+        margin-left: -100% !important;
+    }
+    #inputs-text > input{
+        width: 530px!important;
+        margin-left: -90px!important;
+        border-radius: 0px!important;
+        -webkit-box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        -moz-box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        border: none;
+    }
+    #list-chips{
+        background: white!important;
+        height: 435px!important;
+        left: -17px!important;
+        width: 385px!important;
+    }
+    .btn-addChip{
+        margin-right: 115px!important;
+    }
+    .btn-cadChip{
+        margin-right: 85px!important;
+    }
+
+}
+
+@media (min-width: 1600px) and (max-width: 1679px) {
+    #cad-chip {
+        padding-left: 335px!important;
+    }
+    #check-right{
+        margin-left: 95px!important;
+    }
+    #check-large{
+        width: 70px !important;
+        height: 80px !important;
+        margin-right: 31px !important;
+        margin-top: 40px !important;
+        margin-left: -110% !important;
+    }
+    #inputs-text > input{
+        width: 570px!important;
+        margin-left: -90px!important;
+        border-radius: 0px!important;
+        -webkit-box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        -moz-box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        border: none;
+    }
+    #list-chips{
+        background: white!important;
+        height: 435px!important;
+        left: -120px!important;
+        width: 510px!important;
+    }
+    .btn-addChip{
+        margin-right: 210px!important;
+    }
+    .btn-cadChip{
+        margin-right: 130px!important;
+    }
+
+}
+
+@media (min-width: 1680px) and (max-width: 1800px) {
+    #cad-chip {
+        padding-left: 335px!important;
+    }
+    #check-right{
+        margin-left: 95px!important;
+    }
+    #check-large{
+        width: 70px !important;
+        height: 80px !important;
+        margin-right: 31px !important;
+        margin-top: 40px !important;
+        margin-left: -110% !important;
+    }
+    #inputs-text > input{
+        width: 570px!important;
+        margin-left: -90px!important;
+        border-radius: 0px!important;
+        -webkit-box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        -moz-box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        box-shadow: 0px 0px 5px -4px rgba(0,0,0,0.75)!important;
+        border: none;
+    }
+    #list-chips{
+        background: white!important;
+        height: 435px!important;
+        left: -120px!important;
+        width: 510px!important;
+    }
+    .btn-addChip{
+        margin-right: 210px!important;
+    }
+    .btn-cadChip{
+        margin-right: 160px!important;
+    }
+
+}

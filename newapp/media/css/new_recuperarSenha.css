@@ -1,0 +1,273 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    background-image: url('../img/shownet_login_background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body, html {
+    min-height: 100%;
+}
+
+.main-container {
+    flex: 1 0 auto;
+    max-height: max-content;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 3rem;
+    margin-top: 9%;
+}
+
+.login-icon {
+    max-width: 105%;
+    max-height: 105%;
+}
+
+.login-card::after {
+    content: "";
+    position: fixed;
+    width: 11.875rem;
+    height: 11.875rem;
+    left: 50%;
+    margin-left: -78px;
+    top: -95px;
+    border-radius: 50%;
+    border: 1px solid #EFF2F8;
+    z-index: 1;
+    display: none;
+    background: linear-gradient(transparent, #EFF2F8);
+}
+
+.login-body {
+    padding: 0 3.125rem 1.875rem 2.8125rem;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.4375rem;
+}
+
+.title-container p {
+    color: #7F7F7F;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    font-size: 0.6875rem;
+}
+
+.icon-label {
+    color: #1C69AD;
+    font-weight: bold;
+    font-size: 0.6875rem;
+}
+
+a {
+    color: #348AD6;
+    font-size: 0.6875rem;
+}
+
+.btn-entrar {
+    background-color: #348AD6;
+    border: none;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding: 0.3125rem 2.1875rem;
+    font-size: 0.875rem;
+    transition: 0.3s;
+    margin-top: -0.625rem;
+}
+
+.email-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    margin: 10px 6;
+}
+
+.email-container h2 {
+    color: #1C69AD;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    font-size: 0.6875rem;
+    white-space: nowrap;
+    max-width: 100%;
+    align-self: center;
+    margin-bottom: 5px;
+    margin-top: 7px;
+}
+
+.form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.footer {
+    flex-shrink: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+    color: #EFF2F8;
+    position: relative;
+    bottom: 70px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.6875rem;
+}
+
+.footer-images {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 0.625rem;
+}
+
+.footer-img {
+    width: 5.3125rem;
+    height: auto;
+}
+
+.login-card {
+    width: 21.25rem;
+    height: 20.625rem;
+    background-color: #EFF2F8;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    z-index: 1;
+    padding-top: 3.75rem;
+    margin-bottom: 3.5rem;
+    -webkit-mask-image: radial-gradient(circle 71px at 50% -3%, transparent 0%, transparent 100%, black 101%);
+    mask-image: radial-gradient(circle 71px at 50% -3%, transparent 0%, transparent 100%, black 101%);
+}
+
+
+.email-alert .label-icon {
+    margin-right: 10px;
+}
+
+.email-alert h2 {
+    font-size: 11px;
+    margin: 0;
+}
+
+.email-alert-enviado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: -30px 0;
+    color: black;
+    font-weight: bold;
+    font-size: 11px;
+    z-index: 1000;
+    height: 60px;
+    visibility: hidden;
+}
+
+.email-alert-enviado .label-icon {
+    margin-right: 10px;
+}
+
+.email-alert-enviado h2 {
+    font-size: 11px;
+    margin: 0;
+    white-space: nowrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-icon-container {
+    width: 7.1875rem;
+    height: 7.1875rem;
+    border-radius: 50%;
+    background-color: #1C69AD;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -175%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.title-container h2 {
+    color: #1C69AD;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    font-size: 11px;
+    white-space: nowrap;
+    max-width: 100%;
+    align-self: center;
+    margin-bottom: 5px;
+    margin-top: 7px;
+}
+
+.email-container .label-icon {
+    position: absolute;
+    top: 49%;
+    left: 55px;
+    z-index: 2;
+    width: 22px;
+    height: 22px;
+}
+
+.label-icon {
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.form-control {
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 100%;
+    height: 35px;
+    margin: 0 auto;
+    border-radius: 10px;
+    font-size: 11px;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.input-container {
+    width: 260px;
+    margin: 10px 6;
+    margin-top: -3px;
+    margin-right: auto;
+    margin-left: auto;
+    color: #f0f8ff;
+}
+
+.email-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: #EFF2F8;
+    font-weight: bold;
+    font-size: 0.8125rem;
+    z-index: 1000;
+    margin-top: 22rem;
+}

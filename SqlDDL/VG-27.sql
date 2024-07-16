@@ -1,0 +1,1 @@
+UPDATE `showtecsystem`.`usuario_gestor` SET `permissoes` = NULL WHERE (`permissoes` = 'false');

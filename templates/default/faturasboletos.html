@@ -1,0 +1,574 @@
+<!-- Faturas_Titulo -->
+<link href="./{tpldir}/css/estilos.css" rel="stylesheet" type="text/css" />
+<h2>{Faturas_Titulo}</h2>
+
+<!-- Fatura_SubTitulo -->
+<h3><u>{SubTitulo}</u> {Fatura_SubTitulo_Id}{Fatura_SubTitulo_Nome}</h3>
+
+<!-- Contratos_Acao -->
+<script type="text/javascript">
+
+function acao(com,grid)
+{
+
+	switch(com){
+            
+
+		case "Gerar":
+	       	$.post("includes/Financeiro/incFaturas.php",
+	       		{
+		       		acao: "CONTRATO_FATURAS",
+				abaId:"",
+	           		tipo: 0,
+	           		id: ""
+				},
+				function(data){
+					$('#conteudo').html(data);
+				});
+				break;
+
+
+		case "Cadastrar":
+	       	$.post("includes/Contratos/incContratosAbas.php",
+	       		{
+		       		acao: "CONTRATO_ABAS",
+				abaId:"dados",
+	           		tipo: 7,
+	           		id: ""
+				},
+				function(data){
+					$('#conteudo').html(data);
+				});
+				break;
+
+		case "Editar":
+			if($('.trSelected',grid).length>0){
+		    	var items = $('.trSelected',grid);
+		    	var id = items[0].cells[0].children[0].innerHTML;
+		       	$.post("includes/Financeiro/incFaturasBoleto.php",
+		       		{
+			       		acao: "BOLETOS_TROCA",
+		           		id: id
+					},
+					function(data){
+						$('#conteudo').html(data);
+					});
+			}				
+                        
+			break;
+
+		case "Imprimir":
+			if($('.trSelected',grid).length>0){
+		    	var items = $('.trSelected',grid);
+		    	var id = items[0].cells[0].children[0].innerHTML;
+                        var numfat = items[0].cells[1].children[0].innerHTML;
+		       	$.post("includes/incAcao.php",
+		       		{
+			       		acao: "FATURA_IMPRIMIR",
+		           		id: id,
+                                        numero: numfat
+					},
+					function(data){
+						$('#conteudo').html(data);
+					});
+			}				
+			break;
+                        
+		case "Lanc. Diversos":
+			if($('.trSelected',grid).length>0){
+		    	var items = $('.trSelected',grid);
+		    	var id = items[0].cells[0].children[0].innerHTML;
+                        var cli = items[0].cells[3].children[0].innerHTML;
+		       	$.post("includes/Financeiro/incFaturasDiversos.php",
+		       		{
+			       		acao: "FATURA_DIVERSOS",
+		           		id: id,
+                                        cli: cli
+                                },
+					function(data){
+						$('#conteudo').html(data);
+					});
+			}				
+			break;
+                        
+			
+	}
+		
+}
+
+</script>
+
+<!-- Faturas_Formulario -->
+<script type="text/javascript" src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script type="text/javascript" src="{tpldir}/js/ui/ui.dialog.js"></script>
+<script type="text/javascript" src="js/external/bgiframe/jquery.bgiframe.js"></script>
+<script type="text/javascript" src="./{tpldir}/js/ui/ui.datepicker.js"></script>
+<script type="text/javascript" src="./{tpldir}/js/ui/i18n/ui.datepicker-pt-BR.js"></script>
+<script type="text/javascript" src="{tpldir}/js/maskedinput/maskedinput-1.3.js"></script>
+<script type="text/javascript">
+                
+	function msg(id,msg){
+
+                $(".ui-dialog-title").html("");
+		
+		switch(id){
+			case 'erro': $("#aviso").attr("title","Erro");
+						 $(".ui-dialog-title").html("Erro");
+						 var img = '<span class="ui-icon ui-icon-alert"'+
+						 'style="float:left; margin:0 7px 20px 0;"></span>';
+						 break;
+			case 'sucesso': $("#aviso").attr("title","Sucesso");
+							$(".ui-dialog-title").html("Sucesso");
+							var img = '<span class="ui-icon ui-icon-circle-check"'+
+							 'style="float:left; margin:0 7px 20px 0;"></span>';
+							break;
+		}
+//		if (msg != ''){
+		$(".msg").html(img+msg);
+//                }
+
+		$("#aviso").dialog('open');
+		
+		$("#aviso").dialog({
+			bgiframe: true,
+			resizable: false,
+			autoOpen: false,
+			height:210,
+			modal: true,
+			overlay: {
+				backgroundColor: '#000',
+				opacity: 0.5
+			},
+			buttons: {
+				OK: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+        }
+  
+	function retorno(data){ 
+		
+		switch(data){
+			case "cadastrado":
+				msg("sucesso","Vencimento Alterado com sucesso!");
+			break; 
+			
+			case "editado":
+				msg("sucesso","Vencimento EDITADO com sucesso!");
+			break; 	
+			
+			default:
+				msg("erro","Os dados NÃO foram alterados ainda. Por favor TENTE NOVAMENTE!");
+			break; 					
+		}
+		
+		if (data != ""){
+			
+			$.get('includes/Financeiro/incFaturasLista.php', function(data) {		    	
+		        $('#conteudo').html(data);
+		    });
+                
+		}
+	}  
+	
+	$(document).ready( function() {
+        
+                $("#boleto_vencimento").datepicker();
+                
+var dateDif = {
+ dateDiff: function(strDate1,strDate2){
+ return (((Date.parse(strDate2))-(Date.parse(strDate1)))/(24*60*60*1000)).toFixed(0);
+ }
+}
+
+function diasEntreDatas(dataInicial, dataFinal) 
+{
+ var mes, dataAtual, dataInicial, arrDataInicial, novaDataInicial, diasEntreDatas;
+ mes = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+ arrDataFinal = dataFinal.split('/');
+ arrDataInicial = dataInicial.split('/');
+ novaDataInicial = mes[(arrDataInicial[1] - 1)] + ' ' + arrDataInicial[0] + ' ' + arrDataInicial[2];
+ novaDataFinal = mes[(arrDataFinal[1] - 1)] + ' ' + arrDataFinal[0] + ' ' + arrDataFinal[2];
+ diasEntreDatas = dateDif.dateDiff(novaDataInicial, novaDataFinal);
+ //alert(diasEntreDatas + " dias");
+ return diasEntreDatas;
+}                
+
+                
+                
+                calculajuros();
+                calculamulta();
+                calculatotal();
+                
+        	$("#multa").change(function(){
+			calculatotal();
+		});
+                
+        	$("#juros").change(function(){
+			calculatotal();
+		});
+                
+        	$("#boleto_vencimento").change(function(){
+                    
+                    d = diasEntreDatas('{venc}', $("#boleto_vencimento").val());
+                    $("#dias_atraso").val(d);
+                        calculajuros();
+			calculatotal();
+		});
+
+		function calculajuros(){
+                    var valor = ((($("#total_fatura").val() * 8)/100)/30) * $("#dias_atraso").val();
+                    $("#juros").val( valor.toFixed(2) ); //.toFixed(2)
+                    calculatotal();
+                    
+		}
+		function calculamulta(){
+                    var valor = ($("#total_fatura").val() * 2)/100
+                    $("#multa").val( valor.toFixed(2) );
+                    calculatotal();
+		}
+
+		function calculatotal(){
+                    var valor = parseFloat($("#total_fatura").val()) + parseFloat($("#multa").val()) + parseFloat($("#juros").val());
+                    $("#valor_boleto").val( valor.toFixed(2) );
+		}
+
+                msg("","");
+
+		$.ui.dialog.defaults.bgiframe = true;
+		
+		$('#btEnviar').css("cursor","pointer").click(function() {
+
+			// Fazendo as verificacoes
+			var mens1 = "";
+			if($("#boleto_vencimento").val() == "") mens1 += "<li>Vencimento Boleto</li>";
+
+			if (mens1 != ""){
+				// Definindo as mensagens de erro
+				var mens = "Campos obrigatórios em branco:<br><ul>";
+				mens += mens1 + "</ul>";
+				msg("erro",mens);
+			}
+			else {
+				// Se nao houverem erros, enviar os dados
+				var params = { 
+						acao  : "ALTERA_BOLETO",
+                                                id: $('#id').val(),
+                                                dven: $('#boleto_vencimento').val(),
+                                                nro: $('#numero').val()
+                                                //cli: $('#id_cliente').val(),
+                                                //ins: $('#instrucoes1').val(),
+						//mes: $('#mes').val(),
+						//ano: $('#ano').val()
+						//oper  : {oper}
+					};
+				
+				$('#cad').find("input[type='text'], input[type='hidden'],"+
+						 "input[type='password'], input[type='submit'], option:selected,"+
+						 "textarea").each(function(){
+						 	params[ this.name || this.id || this.parentNode.name || this.parentNode.id ] = this.value;
+						 });
+		
+				$('#cad').find("input[type='checkbox'], input[type='radio']").each(function(){
+					if ($(this).is(":checked")) {
+						params[ this.name ] = this.value;
+					}
+				});
+				
+				$.post("includes/incAcao.php", params,
+					function(data){
+						retorno(data);
+					}
+				);
+			}
+		}
+//                          
+                )
+		.hover(
+			function(){ 
+				$(this).addClass("ui-state-hover"); 
+			},
+			function(){ 
+				$(this).removeClass("ui-state-hover"); 
+			}
+		).mousedown(function(){
+			$(this).addClass("ui-state-active"); 
+		})
+		.mouseup(function(){
+				$(this).removeClass("ui-state-active");
+		});
+	});
+        // Multa de 2% e Jurus de 8% ao mes
+</script>
+<p>
+	Favor preencher corretamente o formulário abaixo.
+</p>
+
+<table id="cad" width="550" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="100" align="right">Vencimento Para</td>
+    <td>
+    	<input type="text" name="boleto_vencimento" id="boleto_vencimento" value="{boleto_vencimento}" size="12" class="forms" />
+    	(Vencimento : {venc}) &nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+    <tr>
+      <td>
+          Valor da Fatura
+      </td>
+      <td>
+          <input type="text" name="total_fatura" id="total_fatura" value="{total_fatura}" size="10" class="forms" style="text-align:right" disabled />
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Dias Atrazo
+      </td>
+      <td>
+            <input type="text" name="dias_atraso" id="dias_atraso" value="{dias}" size="10" class="forms" style="text-align:right" disabled />
+      </td>
+  </tr>  
+  <tr>
+      <td>
+          Multa
+      </td>
+      <td>
+          <input type="text" name="multa" id="multa" value="{multa}" size="10" class="forms" style="text-align:right" />
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Juros
+      </td>
+      <td>
+          <input type="text" name="juros" id="juros" value="{juros}" size="10" class="forms" style="text-align:right" />
+      </td>
+  </tr>  
+  <tr>
+      <td>
+          Valor Corrigido
+      </td>
+      <td>
+          <input type="text" name="valor_boleto" id="valor_boleto" value="{valor_boleto}" size="10" class="forms" style="text-align:right" disabled />
+      </td>
+  </tr>  
+  <tr>
+      <td>
+          <input type="hidden" name="numero" id="numero" value="{numero}" size="20" class="forms" />
+          <input type="hidden" name="id" id="id" value="{id}" /></td>
+      <td><button id="btEnviar" class="ui-button ui-state-default ui-corner-all">ENVIAR</button></td>
+  </tr>
+</table>
+
+<div id="aviso">
+	<p class="msg"></p>
+</div>
+
+
+<!-- Contratos_Formulario_Continuacao_Cli -->
+	</td>
+  </tr>
+
+
+
+<!-- formulario -->
+<p align="center">
+	<b>Todos os campos são de preenchimento obrigatório!</b><br>
+	Favor preencher corretamente o formulário abaixo.
+</p>
+<table id="cad0" width="550" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="100" align="right">Cliente</td>
+    <td><input type="text" name="descricaoes" id="mes" value="{mes}" size="5" class="forms" /></td>
+    
+<!-- Contratos_Formulario_Continuacao_Cliente -->
+	</td>
+  </tr>
+  <tr>
+    <td width="100" align="right">Vendedor</td>
+    <td>
+    
+<!-- Contratos_Formulario_Continuacao_Vendedor -->
+	</td>
+  </tr>  
+  <tr>
+    <td width="100" align="right">Meses do Contrato</td>
+    <td><input type="text" name="meses" id="meses" value="{meses}" size="2" class="forms" style="text-align:right" />
+    	&nbsp;&nbsp;&nbsp;
+    	Dia do Vencimento <input type="text" name="vencimento" id="vencimento" value="{vencimento}" size="2" class="forms" style="text-align:right" />
+    	&nbsp;&nbsp;&nbsp;
+    	1ª mensalidade <input type="text" name="primeira_mensalidade" id="primeira_mensalidade" value="{primeira_mensalidade}" size="10" class="forms" />
+    	</td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">Número de Veículos</td>
+    <td><input type="text" name="quantidade_veiculos" id="quantidade_veiculos" value="{quantidade_veiculos}" size="2" class="forms" style="text-align:right" /></td>
+  </tr> 
+  <tr>
+    <td width="100" align="right">Valor Mensal</td>
+    <td>
+    	<input type="text" name="valor_mensal" id="valor_mensal" value="{valor_mensal}" size="10" class="forms" style="text-align:right" />
+    	por veículo
+    	&nbsp;&nbsp;&nbsp;
+    	TOTAL MENSAL <input type="text" name="total_mensal" id="total_mensal" value="{total_mensal}" size="10" class="forms" style="text-align:right" disabled />
+    	</td>
+  </tr>   
+  <tr>
+    <td width="100" align="right">Valor da Instalação</td>
+    <td>
+    	<input type="text" name="valor_instalacao" id="valor_instalacao" value="{valor_instalacao}" size="10" class="forms" style="text-align:right" />
+    	por veículo
+    	&nbsp;&nbsp;&nbsp;
+    	TOTAL INSTALAÇÃO <input type="text" name="total_instalacao" id="total_instalacao" value="{total_instalacao}" size="10" class="forms" style="text-align:right" disabled />
+    	</td>
+  </tr>   
+  <tr>
+    <td width="100" align="right">Dividir a Instalação em</td>
+    <td><input type="text" name="prestacoes" id="prestacoes" value="{prestacoes}" size="2" class="forms" style="text-align:right" /> parcelas
+    	&nbsp;&nbsp;&nbsp;
+    	Valor da Parcela <input type="text" name="valor_prestacao" id="valor_prestacao" value="{valor_prestacao}" size="10" class="forms" style="text-align:right" readonly />
+    	</td>
+  </tr>
+  <tr>
+    <td align="right">
+    	&nbsp;
+    	<input type="hidden" name="id" id="id" value="{id}" />
+    </td>
+    <td><button id="btEnviar0" class="ui-button ui-state-default ui-corner-all">GRAVAR</button></td>
+  </tr>
+</table>
+
+<div id="aviso0">
+	<p class="msg"></p>
+</div>
+
+
+<!-- Abas -->
+<script type="text/javascript">
+
+var loader = "<p align='center'><img src='{tpldir}/img/ajax-loader.gif'><br>Carregando...</p>";
+
+$(function() {
+	$("#{Abas_Id}").tabs();
+});
+
+function mostraFormulario(abaId,id) {
+	$("#" + abaId).html(loader);
+	$.ajax({  
+		type: "GET",  
+		url: "includes/incAcao.php?acao=CONTRATO_ABAS&abaId="+abaId+"&id="+id,
+		success: function(data) {  
+			$("#" + abaId).html(data)
+		}  
+	});	
+}
+
+</script>
+
+<!-- Abas_Cabecalho -->
+<div id="{Abas_Id}" style="width:100%;">
+	<ul class="abas">
+
+<!-- Abas_Cabecalho_LI -->
+		<li><a href="#{Abas_Titulo_Id}" onClick="mostraFormulario('{Abas_Titulo_Id}','{Abas_id}');">{Abas_Titulos}</a></li>
+
+<!-- Abas_Cabecalho_Fim -->
+	</ul>
+
+<!-- Abas_Conteudo_DIV -->
+	<div id="{Abas_Conteudo_Id}"></div>
+	
+<!-- Abas_Conteudo -->
+	<script type="text/javascript">
+		$(function() {
+			$("#{Abas_Conteudo_Id}").html(loader);
+			$.ajax({  
+				type: "GET",  
+				url: "includes/incAcao.php?acao=CONTRATO_ABAS&abaId=dados&id={id}",
+				success: function(data) {  
+					$("#{Abas_Conteudo_Id}").html(data)
+				}  
+			});
+		});
+	</script>	
+		
+<!-- Abas_Fim -->
+</div>
+
+<!-- Titulo_Abas_Conteudo -->
+ {Titulo_Abas_Conteudo}
+ 
+<!-- Faturas_IMPRIMIR_BASE -->
+<script src="{tpldir}/js/ui/ui.core.js"></script>
+<script src="{tpldir}/js/ui/ui.draggable.js"></script>
+<script src="{tpldir}/js/ui/ui.resizable.js"></script>
+<script src="{tpldir}/js/ui/ui.dialog.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready( function() {
+	
+	$.ui.dialog.defaults.bgiframe = true;
+	$(".ui-dialog-content").css("padding","0");
+
+	dlg("includes/Financeiro/fatura.php?id={id}&numero={numfat}");
+	
+});
+
+function dlg(arquivo){
+	var loader = "<center><p>&nbsp</p><img id='loader' hspace='5' src='{tpldir}/img/ajax-loader.gif'><br>Carregando...</center>";
+	
+	$("#print").dialog("open");
+	$("iframe#conteudo_impressao").attr("src",arquivo);
+	
+	$("#print").dialog({
+		
+		bgiframe: true,
+		resizable: false,
+		height:500,
+		width: 850,
+		modal: true,
+		overlay: {
+			backgroundColor: '#000',
+			opacity: 0.5
+		},
+		buttons: {
+			
+			Imprimir: function() {
+			  		 document.getElementById('conteudo_impressao').contentWindow.focus();
+					 document.getElementById('conteudo_impressao').contentWindow.print();
+                                
+				$.post("includes/Financeiro/incFaturasLista.php",
+                                {
+		       		acao: "FATURAS_IMPRESSA",
+				idi: '{numfat}'
+				},
+				function(data){
+					$('#conteudo').html(data);
+				});
+                            
+			},
+			
+			Fechar: function() {
+				$("iframe#conteudo_impressao").remove();
+				$(this).dialog('close');
+				$.get('includes/Financeiro/incFaturasLista.php', function(data) {		    	
+			        $('#conteudo').html(data);
+			    });
+			}
+		}
+	});
+}
+</script>
+<style>
+.ui-dialog-titlebar-close{
+    display: none;
+}
+</style>
+
+<div id="print" title="Visualizar Impress&atilde;o" style="display:none;">
+	<iframe id="conteudo_impressao" width="100%" height="100%" frameborder="0" scrolling="auto"></iframe>
+</div>

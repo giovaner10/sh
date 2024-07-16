@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="49px" height="65px" viewBox="0 0 49 65" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>relatorio-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cadastro-chip---gerar-relatórios-visualizar" transform="translate(-1070.000000, -659.000000)" fill="#F8AA27">
+            <g id="Group-2">
+                <g id="Card-Copy" transform="translate(962.976597, 567.000000)">
+                    <g id="relatorio-icon" transform="translate(107.216779, 92.137931)">
+                        <path d="M48,56.667 L48,0 L0,0 L0,64 L40.667,64 L48,56.667 Z M40.879,61.808 L40.879,56.88 L45.807,56.88 L40.879,61.808 Z M1.4,1.4 L46.6,1.4 L46.6,55.479 L39.479,55.479 L39.479,62.6 L1.4,62.6 L1.4,1.4 Z" id="Shape"></path>
+                        <rect id="Rectangle-path" x="27.995" y="24.572" width="1.4" height="3.217"></rect>
+                        <rect id="Rectangle-path" x="30.819" y="17.099" width="1.4" height="10.689"></rect>
+                        <rect id="Rectangle-path" x="33.642" y="11.668" width="1.4" height="16.12"></rect>
+                        <rect id="Rectangle-path" x="36.465" y="16.759" width="1.4" height="11.029"></rect>
+                        <rect id="Rectangle-path" x="39.287" y="21.951" width="1.4" height="5.838"></rect>
+                        <rect id="Rectangle-path" x="19.876" y="36.72" width="20.888" height="1.4"></rect>
+                        <rect id="Rectangle-path" x="19.876" y="40.228" width="20.888" height="1.4"></rect>
+                        <rect id="Rectangle-path" x="19.876" y="47.43" width="20.888" height="1.4"></rect>
+                        <rect id="Rectangle-path" x="19.876" y="50.938" width="20.888" height="1.4"></rect>
+                        <path d="M14.628,29.272 C19.68,29.272 23.776,25.176 23.776,20.124 C23.776,15.072 19.68,10.976 14.628,10.976 C9.576,10.976 5.48,15.072 5.48,20.124 C5.48,25.176 9.576,29.272 14.628,29.272 Z M14.628,12.389 C18.894,12.389 22.364,15.859 22.364,20.125 C22.364,24.391 18.894,27.861 14.628,27.861 C10.362,27.861 6.892,24.391 6.892,20.125 C6.892,15.859 10.363,12.389 14.628,12.389 Z" id="Shape"></path>
+                        <polygon id="Shape" points="20.442 19.624 15.128 19.624 15.128 14.316 14.128 14.316 14.128 20.624 20.442 20.624"></polygon>
+                        <polygon id="Shape" points="11.137 37.855 6.758 37.855 6.758 40.749 11.137 40.749 11.137 43.639 17.565 39.302 11.137 34.965"></polygon>
+                        <polygon id="Shape" points="11.137 48.465 6.758 48.465 6.758 51.359 11.137 51.359 11.137 54.249 17.565 49.912 11.137 45.575"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

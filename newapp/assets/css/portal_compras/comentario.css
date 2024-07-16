@@ -1,0 +1,72 @@
+.mensagem-footer {
+  text-align: center;
+}
+
+.mensagem-header {
+  font-size: 0.8em;
+  color: #999999;
+  margin-bottom: 5px;
+}
+
+.chat-container {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.chat-box {
+  height: 300px;
+  overflow-y: scroll;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.input-group-btn {
+  width: 1%;
+}
+
+.balao-mensagem {
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 5px;
+  display: block;
+  width: fit-content;
+  max-width: 80%;
+}
+
+.estilo-mensagem-solicitante {
+  background-color: #d9edf7;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+
+.estilo-mensagem-aprovador {
+  background-color: #f2dede;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+
+.estilo-mensagem-area-compras {
+  background-color: #dff0d8;
+  margin-right: 20%;
+  text-align: left;
+}
+
+.estilo-mensagem-area-financeira {
+  background-color: #e2e2e2;
+  margin-right: 20%;
+  text-align: left;
+}
+
+.estilo-mensagem-area-fiscal {
+  background-color: #e2e2e2;
+  margin-right: 20%;
+  text-align: left;
+}
+
+.input-group-btn {
+  width: 1%;
+}

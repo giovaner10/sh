@@ -1,0 +1,9 @@
+diff a/newapp/application/controllers/OCR/DadosGerenciamentoOCR.php b/newapp/application/controllers/OCR/DadosGerenciamentoOCR.php	(rejected hunks)
+@@ -474,6 +474,7 @@
+         $placa = $this->input->post('placa');
+         $dataInicial = $this->input->post('dataInicial');
+         $dataFinal = $this->input->post('dataFinal');
++        $tipoMatch = $this->input->post('tipoMatch');
+ 
+         $startRow++;
+ 

@@ -1,0 +1,58 @@
+body {
+    background: #9fd6ff;
+}
+#content {
+	margin-top: 10px;
+	padding: 5px;
+	border: double 3px;
+	border-radius: 15px;
+	min-height: 240px;
+	background-color: #bbddff;
+}
+h2, h4 {
+	text-align: center;
+}
+hr {
+	margin-top: -3px;
+	margin-bottom: 8px;
+}
+.block {
+	vertical-align: middle;
+	margin: 6px;
+	padding-top: 5px;
+	float: left;
+	text-align: center;
+	border-radius: 12px;
+	border: dotted 1px;
+	width: 32%;
+	min-height: 100px;
+}
+.block:hover {
+	font-size: 110%;
+	opacity: 0.85;
+}
+.infomacao {
+	width: 100%;
+	float: left;
+	border-radius: 10px;
+	text-align: center;
+}
+p {
+	font-size: 16px;
+	margin: 0px;
+}
+p a {
+	color: #ffffff;
+}
+.dados {
+	font-weight: bold;
+	color: #ffffff;
+	border-radius: 10px;
+	margin: 1.5px;
+	padding: 4px 4px 4px 4px;
+	background-color: #000000;
+}
+.letras div {
+	width: 49%;
+	margin: auto;
+}

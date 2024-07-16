@@ -1,0 +1,2 @@
+INSERT INTO `showtecsystem`.`cad_permissoes_funcionarios` (descricao, cod_permissao, status, modulo)
+VALUES('Visualizar Pedidos - Portal Compras', 'vis_pedidos_portal_compras', '1', 'Portal de Compras');

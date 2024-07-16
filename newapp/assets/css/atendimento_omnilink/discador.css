@@ -1,0 +1,61 @@
+.info {
+  color: #FFF;
+}
+
+#btn-backspace {
+  position: absolute;
+  right: 10%;
+  top: 25%;
+  cursor: pointer;
+}
+
+.digito {
+  width: 58px !important;
+  height: 58px !important;
+  background-color: #d4eeff !important;
+  color: #1c69ad !important;
+  font-size: 150% !important;
+  box-shadow: none !important;
+  padding-top: 14px !important;
+}
+
+.modal-header-discador {
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem 1.6rem;
+  border-bottom: 1px solid #dee2e6;
+  align-items: center;
+}
+
+.btn-success-discador {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.input-group-discador {
+  position: relative;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+}
+
+.rounded-pill {
+  border-radius: 50rem !important;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+#btn-copiar-protocolo {
+	background-color: #000000 !important;
+	border-color: none !important;
+	color: #28A745;
+}

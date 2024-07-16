@@ -1,0 +1,14 @@
+-------------
+Crie uma banco de dados e execute o arquivo 'bd.sql' que contem na pasta, apos isso configure o arquivo 
+
+'dbconfig.php' com as informações do banco de dados criado.
+-------------
+
+Joabe Pinheiro
+joabebrasil@hotmail.com
+
+
+-------------
+Correção 
+Hilton Kevin de Carvalho
+hilton_bin2@hotmail.com

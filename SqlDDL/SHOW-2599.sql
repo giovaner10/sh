@@ -1,0 +1,3 @@
+ALTER TABLE showtecsystem.cad_faturas 
+MODIFY COLUMN atividade enum('0','1','2','3','4','5','6') CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' NULL 
+COMMENT '0 - Outros; 	1- Atividade de Monitoramento;		2 - Servicos Tecnicos;		3 - Aluguel de outras maquinas e equipamentos;	4 - Suporte técnico, manutenção e outros serviços em tecnologia da informação;	5 - Desenvolvimento e licenciamento de programas de computador customizáveis;		6 - Serviços combinados de escritório e apoio administrativo';

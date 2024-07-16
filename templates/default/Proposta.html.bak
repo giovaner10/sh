@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+    <title>Proposta</title>
+  </head>
+  <body>
+    <p></p>
+    <br />
+    <table cellspacing="0" cellpadding="5" border="1" id="cadP" style="font-family: 'Trebuchet MS',Tahoma,Arial; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; background-color: white;">
+      <tbody>
+        <tr style="background-color: white;">
+          <td width="100" align="right" style="font-family: 'Trebuchet MS',Tahoma,Arial; font-size: 12px; color: #666666; width: 186px; background-color: white;">Tipo
+            Proposta</td>
+          <td colspan="7" rowspan="1">{tipo} </td>
+        </tr>
+        <tr style="background-color: #ccffff;">
+          <td width="100" align="right" style="font-family: 'Trebuchet MS',Tahoma,Arial; font-size: 12px; color: #666666;">Vendedor</td>
+          <td colspan="7" rowspan="1">{vendedor} </td>
+        </tr>
+        <tr>
+          <td width="100" align="right" style="font-family: 'Trebuchet MS', Tahoma, Arial; font-size: 12px; color: rgb(102, 102, 102);">Contrato
+            de<br />
+          </td>
+          <td align="center">{mes} meses<br />
+          </td>
+          <td align="right" colspan="2" rowspan="1"> Dia do Vencimento<span class="Apple-converted-space"></span></td>
+          <td align="center">{dia}<br />
+          </td>
+          <td align="right" style="width: 168px;" colspan="2" rowspan="1">1ª
+            mensalidade  para<span class="Apple-converted-space"><br />
+            </span></td>
+          <td align="center"><span class="Apple-converted-space">{primeira}</span></td>
+        </tr>
+        <tr style="background-color: #ccffff;">
+          <td width="100" align="right" style="font-family: 'Trebuchet MS',Tahoma,Arial; font-size: 12px; color: #666666;">Quantidade<br />
+          </td>
+          <td align="center">{qtd}<br />
+          </td>
+          <td rowspan="1" colspan="6">Veículos </td>
+        </tr>
+        <tr>
+          <td width="100" align="right" style="font-family: 'Trebuchet MS', Tahoma, Arial; font-size: 12px; color: rgb(102, 102, 102);">Valor
+            Mensal</td>
+          <td align="center">{valor_mes}<br />
+          </td>
+          <td style="width: 137px;" colspan="2" rowspan="1">por veículo</td>
+          <td align="right" colspan="3" rowspan="1">TOTAL MENSAL<span class="Apple-converted-space">
+            </span><br />
+          </td>
+          <td>{total_mensal}<br />
+          </td>
+        </tr>
+        <tr style="background-color: #ccffff;">
+          <td width="100" align="right" colspan="1" rowspan="3" style="font-family: 'Trebuchet MS',Tahoma,Arial; font-size: 12px; color: #666666;">
+            <h3>Adesão</h3>
+          </td>
+          <td align="center">Valor<span class="Apple-converted-space"></span></td>
+          <td align="center">{adesao}</td>
+          <td colspan="2" rowspan="1">por veículo</td>
+          <td align="right" rowspan="1" colspan="2">TOTAL INSTALAÇÃO<br />
+          </td>
+          <td>{total_instalacao}<br />
+          </td>
+        </tr>
+        <tr style="background-color: #ccffff;">
+          <td colspan="2" rowspan="1">Dividir a Instalação em</td>
+          <td align="center">{divide}<br />
+          </td>
+          <td><span class="Apple-converted-space"></span>parcelas</td>
+          <td align="right" rowspan="1" colspan="2">Valor da Parcela<br />
+          </td>
+          <td>{valor_parcela}<br />
+          </td>
+        </tr>
+        <tr style="background-color: #ccffff;">
+          <td colspan="2" rowspan="1">Data para 1a. Parcela<span class="Apple-converted-space"></span></td>
+          <td>{data_parcela}<br />
+          </td>
+          <td rowspan="1" colspan="4"><br />
+          </td>
+        </tr>
+        <tr style="background-color: white;">
+          <td align="right" style="font-family: 'Trebuchet MS',Tahoma,Arial; font-size: 12px; color: #666666;">Multa
+            Contratual</td>
+          <td rowspan="1" colspan="7">{multa}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+  </body>
+</html>

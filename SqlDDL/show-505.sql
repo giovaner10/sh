@@ -1,0 +1,2 @@
+INSERT INTO showtecsystem.cad_permissoes_funcionarios (descricao,cod_permissao,status,data_cad,modulo) VALUES
+('visualizar sinistro agendamento','vis_visualizarsinistroagendamento','1','2022-12-13 11:33:34','Financeiro');
